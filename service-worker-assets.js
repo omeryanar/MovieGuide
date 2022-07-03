@@ -185,7 +185,7 @@
       "url": "images\/tvshow.svg"
     },
     {
-      "hash": "sha256-Ay7LSZCHmj2CahZWlnrEj0YatD6u+9OBQR+XY5XHUbk=",
+      "hash": "sha256-0yfykw7DHOhNxLAhtSS+TsFw5zIEU23Yizej+PQ6tlY=",
       "url": "index.html"
     },
     {
