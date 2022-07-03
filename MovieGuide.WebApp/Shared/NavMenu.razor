@@ -1,0 +1,15 @@
+﻿<MudNavMenu>
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">@Resources.Home</MudNavLink>
+    <MudNavGroup Icon="@Icons.Material.Outlined.Movie" Title="@Resources.Movies" Expanded="true">
+        <MudNavLink Href="/discover/movie" Match="NavLinkMatch.Prefix">@Resources.Discover</MudNavLink>
+        <MudNavLink Href="/genre/movie" Match="NavLinkMatch.Prefix">@Resources.Genres</MudNavLink>
+        <MudNavLink Href="@($"/list/8205977/{Resources.OscarWinners}")" Match="NavLinkMatch.Prefix">@Resources.OscarWinners</MudNavLink>
+        <MudNavLink Href="@($"/list/10265/{Resources.ImdbTop250}")" Match="NavLinkMatch.Prefix">@Resources.ImdbTop250</MudNavLink>
+    </MudNavGroup>
+    <MudNavGroup Icon="@Icons.Material.Outlined.LiveTv" Title="@Resources.TvShows" Expanded="true">
+        <MudNavLink Href="/discover/tv" Match="NavLinkMatch.Prefix">@Resources.Discover</MudNavLink>
+        <MudNavLink Href="/genre/tv" Match="NavLinkMatch.Prefix">@Resources.Genres</MudNavLink>
+        <MudNavLink Href="@($"/list/142134/{Resources.ImdbTop250}")" Match="NavLinkMatch.Prefix">@Resources.ImdbTop250</MudNavLink>
+    </MudNavGroup>
+    <MudNavLink Icon="@Icons.Material.Filled.PeopleAlt" Href="/person/popular" Match="NavLinkMatch.Prefix">@Resources.People</MudNavLink>
+</MudNavMenu>

@@ -1,0 +1,26 @@
+﻿<MudStack Class="mt-2" Spacing="1">
+    @if(MediaItems != null)
+    {
+        foreach(SearchBase item in MediaItems)
+        {
+            if (item is SearchMovie movie)
+            {
+                <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("movie/" + movie.Id)">
+                    <MudText Style="opacity:0.6">@movie.Title</MudText>
+                </MudLink>
+            }
+            if (item is SearchTvShow tvShow)
+            {
+                <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("tv/" + tvShow.Id)">
+                    <MudText Style="opacity:0.6">@tvShow.Name</MudText>
+                </MudLink>
+            }            
+        }
+    }
+</MudStack>
+
+@code
+{
+    [Parameter]
+    public List<SearchBase> MediaItems { get; set; }
+}

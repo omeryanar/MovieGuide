@@ -1,0 +1,33 @@
+﻿@inherits MudComponentBase
+@inject NavigationManager NavigationManager
+
+<MudChipSet Class="mx-n2">
+    @if(Keywords != null)
+    {
+        foreach(Keyword keyword in Keywords)
+        {
+            <MudChip Text="@keyword.Name" Value="keyword.Id" OnClick="() => Navigate(keyword.Id)">@keyword</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code 
+{
+    [Parameter]
+    public IEnumerable<Keyword> Keywords { get; set; }
+
+    [Parameter]
+    public MediaType MediaType { get; set; } = MediaType.Movie;
+
+    protected override void OnParametersSet()
+    {
+        endpoint = "discover/" + (MediaType == MediaType.Movie ? "movie" : "tv");
+    }
+
+    private void Navigate(int keywordId)
+    {
+        NavigationManager.NavigateTo($"{endpoint}?with_keywords={keywordId}");
+    }
+
+    private string endpoint;
+}

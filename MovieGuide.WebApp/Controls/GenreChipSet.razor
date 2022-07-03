@@ -1,0 +1,33 @@
+﻿@inherits MudComponentBase
+@inject NavigationManager NavigationManager
+
+<MudChipSet Class="mx-n2">
+    @if(Genres != null)
+    {
+        foreach(Genre genre in Genres)
+        {
+            <MudChip Text="@genre.Name" Value="genre.Id" OnClick="() => Navigate(genre.Id)">@genre</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code 
+{
+    [Parameter]
+    public IEnumerable<Genre> Genres { get; set; }
+
+    [Parameter]
+    public MediaType MediaType { get; set; } = MediaType.Movie;
+
+    protected override void OnParametersSet()
+    {
+        endpoint = "discover/" + (MediaType == MediaType.Movie ? "movie" : "tv");
+    }
+
+    private void Navigate(int genreId)
+    {
+        NavigationManager.NavigateTo($"{endpoint}?with_genres={genreId}");
+    }
+
+    private string endpoint;
+}

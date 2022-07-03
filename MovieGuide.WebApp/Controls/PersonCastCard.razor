@@ -1,0 +1,15 @@
+﻿<MudLink Underline="Underline.None" Href="@("person/" + Cast.Id)">
+    <MudCard Style="width:140px; height:100%" Elevation="3">
+        <MudImage Class="rounded-t" Src="@Cast.ProfileFullPath" Width="140" Height="180" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Top" />
+        <MudCardContent Class="pt-1">
+            <MudText Typo="Typo.body1" Style="font-weight:bold">@Cast.Name</MudText>
+            <MudText Typo="Typo.body2">@Cast.Character</MudText>
+        </MudCardContent>
+    </MudCard>
+</MudLink>
+
+@code
+{
+    [Parameter]
+    public Cast Cast { get; set; }
+}

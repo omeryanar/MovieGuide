@@ -1,0 +1,74 @@
+﻿@inject TmdbService TmdbService
+
+<MudAutocomplete Margin="Margin.Dense" @bind-Value="Keyword" SearchFunc="SearchKeywords"></MudAutocomplete>
+<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+    @if (Keywords != null)
+    {
+        foreach (Keyword keyword in Keywords)
+        {
+            <MudChip Text="@keyword.Name" Value="keyword.Id" Tag="@keyword" Color="Color.Primary">@keyword</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code
+{
+    [Parameter]
+    public ICollection<object> SelectedKeywords { get; set; }
+
+    [Parameter]
+    public EventCallback<ICollection<object>> SelectedKeywordsChanged { get; set; }
+
+    public Keyword Keyword
+    {
+        get => keyword;
+        set
+        {
+            keyword = value;
+            if(keyword != null)
+            {
+                Keywords.Add(keyword);
+
+                if (SelectedKeywords == null)
+                    SelectedKeywords = new List<object>() { keyword.Id };
+                else
+                    SelectedKeywords.Add(keyword.Id);
+
+                SelectedKeywordsChanged.InvokeAsync(SelectedKeywords);
+                keyword = null;
+            }
+        }
+    }
+    private Keyword keyword;
+
+    private List<Keyword> Keywords = new List<Keyword>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        if (SelectedKeywords?.Count > Keywords.Count)
+        {
+            foreach(object keywordId in SelectedKeywords)
+            {
+                Keyword keyword = await TmdbService.GetKeyword(keywordId.ToString());
+                if (keyword != null)
+                    Keywords.Add(keyword);
+            }
+        }
+    }
+
+    private async Task<IEnumerable<Keyword>> SearchKeywords(string query)
+    {
+        SearchContainer<Keyword> search = await TmdbService.SearchKeyword(query);
+        return search.Results;
+    }
+
+    private void Remove(MudChip chip)
+    {
+        if (chip?.Tag is Keyword keyword)
+        {
+            Keywords?.Remove(keyword);
+            SelectedKeywords?.Remove(keyword.Id);
+            SelectedKeywordsChanged.InvokeAsync(SelectedKeywords);
+        }
+    }
+}

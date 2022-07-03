@@ -1,0 +1,107 @@
+﻿@page "/person/{Id:int}"
+
+@if (Person == null)
+{
+    <LoadingCircular />
+}
+else
+{
+    <MudStack Class="flex-wrap" Row="true">
+        <MudImage Class="rounded-lg" Width="300" Height="450" Src="@Person.ProfileFullPath" />
+        <MudStack Style="max-width:800px">
+            <MudText Typo="Typo.h4">@Person.Name</MudText>
+            <MudStack Row="true" Spacing="8">
+                <LabeledItem Label="@Resources.PlaceOfBirth" Text="@Person.PlaceOfBirth" />
+                <LabeledItem Label="@Resources.Birthday" Text="@Person.Birthday?.ToString("MMM d, yyyy")" />
+                <LabeledItem Label="@Resources.Deathday" Text="@Person.Deathday?.ToString("MMM d, yyyy")" />
+            </MudStack>
+            <MudStack Row="true">
+                <SocialMediaLink SocialMedia="SocialMediaType.ImdbName" Id="@Person.ImdbId" />
+                <SocialMediaLink SocialMedia="SocialMediaType.Twitter" Id="@Person.ExternalIds?.TwitterId" />
+                <SocialMediaLink SocialMedia="SocialMediaType.Facebook" Id="@Person.ExternalIds?.FacebookId" />
+                <SocialMediaLink SocialMedia="SocialMediaType.Instagram" Id="@Person.ExternalIds?.InstagramId" />
+            </MudStack>
+            <LabeledItem Label="@Resources.Biography" Text="@Person.LocalizedBiography" />
+        </MudStack>
+    </MudStack>
+    <MudStack Class="mt-4" Spacing="4" Style="width:100%; max-width:1080px">
+        <ExpansionPanel Title="@Resources.KnownFor" ItemSize="185" Items="Person.KnownFor" Expanded="true">
+            <MediaCard Media="context" />
+        </ExpansionPanel>
+        <MudPaper Elevation="1">
+            <MudNavGroup Title="@Resources.Movies">
+                <MudDivider />
+                <MudDataGrid Class="px-4" Items="Person.KnownMovieCredits" Dense="true" Hover="true" Sortable="true" Virtualize="true" ShowColumnOptions="false" Height="400px" QuickFilter="movieFilter">
+                    <ToolBarContent>
+                        <MudSpacer />
+                        <MudTextField Class="mt-0" @bind-Value="movieSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
+                    </ToolBarContent>
+                    <Columns>
+                        <Column T="MovieCrew" Field="Title" Title="@Resources.Title">
+                            <CellTemplate>
+                                <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body2" Href="@("movie/" + context.Item.Id)">
+                                    <MudHighlighter Text="@context.Item.Title" HighlightedText="@movieSearchString" />
+                                </MudLink>
+                            </CellTemplate>
+                        </Column>
+                        <Column T="MovieCrew" Field="Department" Title="@Resources.Department">
+                            <CellTemplate>
+                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
+                            </CellTemplate>
+                        </Column>
+                        <Column T="MovieCrew" Field="Job" Title="@Resources.JobRole">
+                            <CellTemplate>
+                                <MudHighlighter Text="@context.Item.Job" HighlightedText="@movieSearchString" />
+                            </CellTemplate>
+                        </Column>
+                        <Column T="MovieCrew" Field="ReleaseDate" Title="@Resources.ReleaseDate">
+                            <CellTemplate>
+                                <MudText Typo="Typo.body2">@context.Item.ReleaseDate?.ToString("MMM d, yyyy")</MudText>
+                            </CellTemplate>
+                        </Column>
+                    </Columns>
+                </MudDataGrid>
+            </MudNavGroup>
+        </MudPaper>
+        <MudPaper Elevation="1">
+            <MudNavGroup Title="@Resources.TvShows">
+                <MudDivider />
+                <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" Sortable="true" Virtualize="true" ShowColumnOptions="false" Height="400px" QuickFilter="tvShowFilter">
+                    <ToolBarContent>
+                        <MudSpacer />
+                        <MudTextField Class="mt-0" @bind-Value="tvShowSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
+                    </ToolBarContent>
+                    <Columns>
+                        <Column T="TvCrew" Field="Name" Title="@Resources.Name">
+                            <CellTemplate>
+                                <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body2" Href="@("tv/" + context.Item.Id)">
+                                    <MudHighlighter Text="@context.Item.Name" HighlightedText="@tvShowSearchString" />
+                                </MudLink>
+                            </CellTemplate>
+                        </Column>
+                        <Column T="TvCrew" Field="Department" Title="@Resources.Department">
+                            <CellTemplate>
+                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
+                            </CellTemplate>
+                        </Column>
+                        <Column T="TvCrew" Field="Job" Title="@Resources.JobRole">
+                            <CellTemplate>
+                                <MudHighlighter Text="@context.Item.Job" HighlightedText="@tvShowSearchString" />
+                            </CellTemplate>
+                        </Column>
+                        <Column T="TvCrew" Field="FirstAirDate" Title="@Resources.FirstAirDate">
+                            <CellTemplate>
+                                <MudText Typo="Typo.body2">@context.Item.FirstAirDate?.ToString("MMM d, yyyy")</MudText>
+                            </CellTemplate>
+                        </Column>
+                    </Columns>
+                </MudDataGrid>
+            </MudNavGroup>
+        </MudPaper>
+        <ExpansionPanel Title="@Resources.Profiles" ItemSize="185" Items="Person.Images?.Profiles">
+            <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
+            </MudLink>
+        </ExpansionPanel>
+    </MudStack>   
+}

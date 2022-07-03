@@ -1,0 +1,84 @@
+﻿@page "/movie/{Id:int}"
+
+@if (Movie == null)
+{
+    <LoadingCircular />
+}
+else
+{
+    <MudStack Class="flex-wrap" Row="true">
+        <MudImage Class="rounded-lg" Width="300" Height="450" Src="@Movie.PosterFullPath" />
+        <MudStack Style="max-width:800px">
+            <MudStack Row="true">
+                <MudText Typo="Typo.h4">@Movie.Title</MudText>
+                <MudText Typo="Typo.h4" Style="opacity:0.6">@Movie.ReleaseDate?.ToString("(yyyy)")</MudText>
+            </MudStack>
+            <GenreChipSet Genres="@Movie.Genres" />
+            <MudStack Row="true" AlignItems="AlignItems.Center">
+                <RatingCircular Value="@Movie.VoteAverage" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Style="opacity:0.6; font-style:italic">@Movie.LocalizedTagline</MudText>
+            </MudStack>        
+            <LabeledItem Label="@Resources.Overview" Text="@Movie.LocalizedOverview" />        
+            <MudGrid>
+                @if (Movie.FeaturedCrew != null)
+                {
+                    foreach(Crew crew in Movie.FeaturedCrew)
+                    {
+                        <MudItem xs="4">
+                            <FeaturedCrewLink Crew="crew" />
+                        </MudItem>
+                    }
+                }
+            </MudGrid>
+        </MudStack>
+    </MudStack>
+    <MudStack Class="flex-wrap mt-4" Row="true" Spacing="4">
+        <MudStack Style="width:100%; max-width:952px">
+            <ExpansionPanel Title="@Resources.Starring" ItemSize="140" Items="Movie.Starring" Expanded="true">
+                <PersonCastCard Cast="context" />
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Crew" ItemSize="140" Items="Movie.Crew">
+                <PersonCrewCard Crew="context" />
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Posters" ItemSize="185" Items="Movie.Images?.Posters">
+                <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
+                </MudLink>
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Backdrops" ItemSize="300" Items="Movie.Images?.Backdrops">
+                <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
+                </MudLink>
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Videos" ItemSize="240" Items="Movie.Videos?.Results">
+                <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                    <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
+                </MudLink>
+            </ExpansionPanel>
+        </MudStack>
+        <MudStack Style="width:280px">
+            <MudStack Row="true" Class="mx-n2" Spacing="0">
+                <SocialMediaLink SocialMedia="SocialMediaType.ImdbTitle" Id="@Movie.ImdbId" />
+                <SocialMediaLink SocialMedia="SocialMediaType.Youtube" Id="@Movie.TrailerLink" />
+            </MudStack>
+            <LabeledItem Label="@Resources.PartOf" ChildObject="@Movie.BelongsToCollection">
+                <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("collection/" + Movie.BelongsToCollection?.Id)">
+                    <MudText Style="opacity:0.6">@Movie.BelongsToCollection?.Name</MudText>
+                </MudLink>
+            </LabeledItem>
+            <LabeledItem Label="@Resources.OriginalLanguage" Text="@LanguageName" />
+            <LabeledItem Label="@Resources.OriginalTitle" Text="@Movie.OriginalTitle" />        
+            <LabeledItem Label="@Resources.Status" Text="@Movie.Status?.GetLocalizedText()" />
+            <LabeledItem Label="@Resources.Runtime" Text="@Movie.Runtime.GetRuntimeDescription()" />
+            <LabeledItem Label="@Resources.Budget" Text="@(Movie.Budget == 0 ? "" : $"$ {Movie.Budget:#,#}")" />
+            <LabeledItem Label="@Resources.Revenue" Text="@(Movie.Revenue == 0 ? "" : $"$ {Movie.Revenue:#,#}")" />
+            <LabeledItem Label="@Resources.ProductionCountries" Text="@Movie.Countries" />
+            <LabeledItem Label="@Resources.Keywords" ChildObject="@Movie.Keywords.Keywords.FirstOrDefault()">
+                <KeywordChipSet Keywords="Movie.Keywords.Keywords" />
+            </LabeledItem>
+            <LabeledItem Label="@Resources.ProductionCompanies" ChildObject="@Movie.ProductionCompanies.FirstOrDefault()">
+                <CompanyChipSet Companies="Movie.ProductionCompanies" />
+            </LabeledItem>
+        </MudStack>
+    </MudStack>    
+}

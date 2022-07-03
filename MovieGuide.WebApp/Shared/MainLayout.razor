@@ -1,0 +1,68 @@
+﻿@inherits LayoutComponentBase
+
+<style>
+    .search-bar .mud-input{height:42px;}
+    .search-bar.mud-input-control{background-color:rgba(255,255,255,.15);margin-bottom:5px;height:42px;border-radius:var(--mud-default-borderradius);}
+    .search-bar.mud-input-control .mud-input-root,.search-bar.mud-input-control .mud-icon-default{color:#fafafa;}
+    .search-bar .mud-input.mud-input-outlined .mud-input-outlined-border{border:none;border-radius:var(--mud-default-borderradius);}
+    .add-button {position:fixed;bottom:16px;right:16px;z-index:100}
+</style>
+
+<ThemeProvider @bind-IsDarkMode="darkMode" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="0">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => drawerOpen = !drawerOpen)" />
+        <MudSpacer />
+        <MudTextField AdornmentIcon="@Icons.Material.Filled.Search" Adornment="Adornment.End" Placeholder="@Resources.Search" Variant="Variant.Outlined" Class="search-bar" @bind-Value="searchText" OnKeyUp="Enter"></MudTextField>
+        <MudSpacer />
+        <MudMenu AnchorOrigin="Origin.BottomCenter">
+            <ActivatorContent>
+                <MudButton StartIcon="@Icons.Material.Filled.Translate" Color="Color.Inherit">@Language</MudButton>
+            </ActivatorContent>
+            <ChildContent>
+                @foreach(Language language in SupportedLanguages)
+                {
+                    <MudMenuItem Disabled="@(CultureInfo.DefaultThreadCurrentCulture.Name == language.Iso_639_1)" OnClick="@((e) => ChangeLanguage(language.Iso_639_1))">@language</MudMenuItem>
+                }
+            </ChildContent>            
+        </MudMenu>
+        <MudToggleIconButton @bind-Toggled="darkMode" Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" Title="@Resources.Dark"
+            ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit" ToggledTitle="@Resources.Light">
+        </MudToggleIconButton>
+    </MudAppBar>
+    <MudDrawer @bind-Open="drawerOpen" Elevation="1" Anchor="Anchor.Left" ClipMode="DrawerClipMode.Always">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Movie Guide</MudText>
+        </MudDrawerHeader>
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent Class="d-flex justify-center">
+        <MudContainer MaxWidth="MaxWidth.Large" Class="ma-0 pa-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code 
+{
+
+    private bool drawerOpen = true;
+
+    private bool darkMode = false;
+
+    private string searchText;
+
+    private void Enter(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            string endpoint = "search";
+            string uri = endpoint.AddQueryString("query", searchText);
+
+            NavigationManager.NavigateTo(uri);
+        }
+    }
+}

@@ -1,0 +1,33 @@
+﻿@typeparam T
+
+<MudPaper Elevation="1">
+    <MudNavGroup Title="@Title" Expanded="@Expanded">
+        <MudDivider />
+        <MudStack Class="overflow-auto py-4" Spacing="4" Row="true">            
+            @if(Items != null)
+            {
+                <Virtualize Items="@Items" ItemSize="@ItemSize" Context="item">
+                    @ChildContent(item)
+                </Virtualize>
+            }
+        </MudStack>
+    </MudNavGroup>
+</MudPaper>
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public bool Expanded { get; set; }
+
+    [Parameter]
+    public float ItemSize { get; set; }
+
+    [Parameter]
+    public ICollection<T> Items{ get; set; }
+
+    [Parameter]
+    public RenderFragment<T> ChildContent { get; set; }
+}

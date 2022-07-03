@@ -1,0 +1,73 @@
+﻿@inject CacheService CacheService
+
+<MudAutocomplete Margin="Margin.Dense" @bind-Value="Network" SearchFunc="SearchNetworks"></MudAutocomplete>
+<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+    @if (Networks != null)
+    {
+        foreach (Network network in Networks)
+        {
+            <MudChip Text="@network.Name" Value="network.Id" Tag="@network" Color="Color.Primary">@network</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code
+{
+    [Parameter]
+    public ICollection<object> SelectedNetworks { get; set; }
+
+    [Parameter]
+    public EventCallback<ICollection<object>> SelectedNetworksChanged { get; set; }
+
+    public Network Network
+    {
+        get => network;
+        set
+        {
+            network = value;
+            if(network != null)
+            {
+                Networks.Add(network);
+
+                if (SelectedNetworks == null)
+                    SelectedNetworks = new List<object>() { network.Id };
+                else
+                    SelectedNetworks.Add(network.Id);
+
+                SelectedNetworksChanged.InvokeAsync(SelectedNetworks);
+                network = null;
+            }
+        }
+    }
+    private Network network;
+
+    private List<Network> Networks = new List<Network>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        if (SelectedNetworks?.Count > Networks.Count)
+        {
+            foreach(object networkId in SelectedNetworks)
+            {
+                Network network = await CacheService.GetNetwork(networkId.ToString());
+                if (network != null)
+                    Networks.Add(network);
+            }
+        }
+    }
+
+    private async Task<IEnumerable<Network>> SearchNetworks(string query)
+    {
+        return await CacheService.SearchNetwork(query);
+    }
+
+    private void Remove(MudChip chip)
+    {
+        if (chip?.Tag is Network network)
+        {
+            Networks?.Remove(network);
+            SelectedNetworks?.Remove(network.Id);
+            SelectedNetworksChanged.InvokeAsync(SelectedNetworks);
+        }
+    }
+}

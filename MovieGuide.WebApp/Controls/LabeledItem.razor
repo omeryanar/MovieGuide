@@ -1,0 +1,29 @@
+﻿@if (ChildContent != null && ChildObject != null)
+{
+    <MudStack Spacing="0">
+        <MudText Typo="Typo.h6">@Label</MudText>
+        @ChildContent
+    </MudStack>
+}
+else if (!String.IsNullOrEmpty(Text))
+{
+    <MudStack Spacing="0">
+        <MudText Typo="Typo.h6">@Label</MudText>
+        <MudText Style="opacity:0.6">@Text</MudText>
+    </MudStack>
+}
+
+@code {
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public object ChildObject { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

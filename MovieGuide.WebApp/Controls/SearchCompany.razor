@@ -1,0 +1,74 @@
+﻿@inject TmdbService TmdbService
+
+<MudAutocomplete Margin="Margin.Dense" @bind-Value="Company" SearchFunc="SearchCompanies"></MudAutocomplete>
+<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+    @if (Companies != null)
+    {
+        foreach (ProductionCompany company in Companies)
+        {
+            <MudChip Text="@company.Name" Value="company.Id" Tag="@company" Color="Color.Primary">@company</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code
+{
+    [Parameter]
+    public ICollection<object> SelectedCompanies { get; set; }
+
+    [Parameter]
+    public EventCallback<ICollection<object>> SelectedCompaniesChanged { get; set; }
+
+    public ProductionCompany Company
+    {
+        get => company;
+        set
+        {
+            company = value;
+            if(company != null)
+            {
+                Companies.Add(company);
+
+                if (SelectedCompanies == null)
+                    SelectedCompanies = new List<object>() { company.Id };
+                else
+                    SelectedCompanies.Add(company.Id);
+
+                SelectedCompaniesChanged.InvokeAsync(SelectedCompanies);
+                company = null;
+            }
+        }
+    }
+    private ProductionCompany company;
+
+    private List<ProductionCompany> Companies = new List<ProductionCompany>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        if (SelectedCompanies?.Count > Companies.Count)
+        {
+            foreach(object companyId in SelectedCompanies)
+            {
+                ProductionCompany company = await TmdbService.GetCompany(companyId.ToString());
+                if (company != null)
+                    Companies.Add(company);
+            }
+        }
+    }
+
+    private async Task<IEnumerable<ProductionCompany>> SearchCompanies(string query)
+    {
+        SearchContainer<ProductionCompany> search = await TmdbService.SearchCompany(query);
+        return search.Results;
+    }
+
+    private void Remove(MudChip chip)
+    {
+        if (chip?.Tag is ProductionCompany company)
+        {
+            Companies?.Remove(company);
+            SelectedCompanies?.Remove(company.Id);
+            SelectedCompaniesChanged.InvokeAsync(SelectedCompanies);
+        }        
+    }
+}

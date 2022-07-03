@@ -1,0 +1,19 @@
+﻿<MudLink Underline="Underline.None" Href="@($"tv/{TvShow.Id}/season/{Season.SeasonNumber}")">
+    <MudCard Style="width:185px; height:100%" Elevation="3">
+        <MudCardMedia Image="@Season.PosterFullPath" Height="278" />
+        <MudCardContent Class="pt-1">
+            <MudText Typo="Typo.body1" Inline="true" Style="font-weight:bold">@Season.Name</MudText>
+            <MudText Typo="Typo.body2" Inline="true" Style="opacity:0.6" Class="@(Season.EpisodeCount == 0 ? "d-none" : "ml-2")">@String.Format(Resources.SeasonEpisodes, Season.EpisodeCount)</MudText>
+            <MudText Typo="Typo.body2">@Season.AirDate?.ToString("MMM d, yyyy")</MudText>            
+        </MudCardContent>
+    </MudCard>
+</MudLink>
+
+@code
+{
+    [Parameter]
+    public TvShow TvShow { get; set; }
+
+    [Parameter]
+    public SearchTvSeason Season { get; set; }
+}

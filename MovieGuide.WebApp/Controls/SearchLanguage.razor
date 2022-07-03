@@ -1,0 +1,44 @@
+﻿@inject TmdbService TmdbService
+
+<MudAutocomplete @bind-Value="Language" SearchFunc="SearchLanguages"></MudAutocomplete>
+
+@code 
+{
+    [Parameter]
+    public string SelectedLanguage { get; set; }
+
+    [Parameter]
+    public EventCallback<string> SelectedLanguageChanged { get; set; }
+
+    public Language Language
+    {
+        get => language;
+        set
+        {
+            if (language != value)
+            {
+                language = value;
+                SelectedLanguage = language.Iso_639_1;
+                SelectedLanguageChanged.InvokeAsync(SelectedLanguage);
+            }
+        }
+    }
+    private Language language;
+
+    private Task<IEnumerable<Language>> SearchLanguages(string query)
+    {
+        if (String.IsNullOrWhiteSpace(query))
+            return Task.FromResult(languages?.FindAll(x => x.Iso_639_1 != "xx").AsEnumerable());
+
+        return Task.FromResult(languages?.FindAll(x => x.Name.StartsWith(query, StringComparison.OrdinalIgnoreCase) || x.EnglishName.StartsWith(query, StringComparison.OrdinalIgnoreCase)).AsEnumerable());
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        languages = await TmdbService.GetLanguages();
+        if (SelectedLanguage != null)
+            Language = languages.Find(x => x.Iso_639_1 == SelectedLanguage);
+    }
+
+    private List<Language> languages;
+}

@@ -1,0 +1,76 @@
+﻿<MudLink Disabled="@disabled" Underline="Underline.None" Target="_blank" Href="@link">
+    <span class="fa-stack fa-xl">
+        <i class="fa-solid fa-square fa-stack-1x" style="@borderStyle font-size:2.8rem"></i>
+        <i class="@icon fa-stack-2x" style="@iconStyle"></i>
+    </span>
+</MudLink>
+
+@code {
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public SocialMediaType SocialMedia { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        disabled = String.IsNullOrEmpty(Id);
+
+        switch (SocialMedia)
+        {
+            case SocialMediaType.ImdbName:
+                link = $"{Constants.ImdbName}{Id}";
+                icon = "fa-brands fa-imdb";
+                iconStyle = disabled ? "" : "color:#E6B91E";
+                borderStyle = disabled ? "visibility: hidden;" : "color:#000000;";
+                break;
+
+            case SocialMediaType.ImdbTitle:
+                link = $"{Constants.ImdbTitle}{Id}";
+                icon = "fa-brands fa-imdb";
+                iconStyle = disabled ? "" : "color:#E6B91E";
+                borderStyle = disabled ? "visibility: hidden;" : "color:#000000;";
+                break;
+
+            case SocialMediaType.Twitter:
+                link = $"{Constants.Twitter}{Id}";
+                icon = "fa-brands fa-twitter-square";
+                iconStyle = disabled ? "" : "color:#1DA1F2";
+                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                break;
+
+            case SocialMediaType.Facebook:
+                link = $"{Constants.FaceBook}{Id}";
+                icon = "fa-brands fa-facebook-square";
+                iconStyle = disabled ? "" : "color:#3B5998";
+                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                break;
+
+            case SocialMediaType.Instagram:
+                link = $"{Constants.Instagram}{Id}";
+                icon = "fa-brands fa-instagram-square";
+                iconStyle = disabled ? "" : "color:#E4405F";
+                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                break;
+
+            case SocialMediaType.Youtube:
+                link = String.Format(Constants.YoutubeVideo, Id);
+                icon = "fa-brands fa-youtube-square";
+                iconStyle = disabled ? "" : "color:#CD201F";
+                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                break;
+        }
+    }
+
+    private bool disabled = false;
+
+    private string link;
+
+    private string icon;
+
+    private string iconStyle;
+
+    private string borderStyle;
+
+}

@@ -1,0 +1,17 @@
+﻿@page "/genre/tv"
+
+<MudText Class="mb-4" Typo="Typo.h4">@Resources.TvShowGenres</MudText>
+
+<MudStack Row="true" Class="flex-wrap">
+    @foreach(Genre genre in GenreHelper.TvShowGenres)
+    {
+        <MudLink Underline="Underline.None" Color="Color.Default" Href="@($"discover/tv?with_genres={genre.Id}")" >
+            <MudCard Elevation="3">
+                <MudImage Class="rounded-t" Src="@($"genre/tv/{genre.Name}.jpg")" Width="300" Height="225" />
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">@genre</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudLink>
+    }
+</MudStack>

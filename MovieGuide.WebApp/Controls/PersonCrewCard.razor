@@ -1,0 +1,15 @@
+﻿<MudLink Underline="Underline.None" Href="@("person/" + Crew.Id)">
+    <MudCard Style="width:140px; height:100%" Elevation="3">
+        <MudImage Class="rounded-t" Src="@Crew.ProfileFullPath" Width="140" Height="180" ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Top" />
+        <MudCardContent Class="pt-1">
+            <MudText Typo="Typo.body1" Style="font-weight:bold">@Crew.Name</MudText>
+            <MudText Typo="Typo.body2">@Crew.Job</MudText>
+        </MudCardContent>
+    </MudCard>
+</MudLink>
+
+@code
+{
+    [Parameter]
+    public Crew Crew { get; set; }
+}

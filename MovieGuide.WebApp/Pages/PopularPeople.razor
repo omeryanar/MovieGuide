@@ -1,0 +1,20 @@
+﻿@page "/person/popular"
+
+<MudText Typo="Typo.h4">@Resources.PopularPeople</MudText>
+
+<MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
+
+<MudStack Row="true" Class="flex-wrap">
+    @if (People != null)
+    {
+        foreach (SearchPerson person in People.Results)
+        {
+            <MediaCard Media="person" />
+        }
+    }
+</MudStack>
+
+@code
+{
+    private int pageCount = 1;
+}

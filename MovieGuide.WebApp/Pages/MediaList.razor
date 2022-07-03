@@ -1,0 +1,20 @@
+﻿@page "/list/{Id:int}/{Title}"
+
+<MudText Typo="Typo.h4">@Title</MudText>
+
+<MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
+
+<MudStack Row="true" Class="flex-wrap">
+    @if (Items != null)
+    {
+        foreach (SearchMovieTvBase item in Items.Results)
+        {
+            <MediaCard Media="item" />
+        }
+    }
+</MudStack>
+
+@code
+{
+    private int pageCount = 1;
+}

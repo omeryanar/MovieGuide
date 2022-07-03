@@ -1,0 +1,33 @@
+﻿@inherits MudComponentBase
+@inject NavigationManager NavigationManager
+
+<MudChipSet Class="mx-n2">
+    @if(Companies != null)
+    {
+        foreach(ProductionCompany company in Companies)
+        {
+            <MudChip Text="@company.Name" Value="company.Id" OnClick="() => Navigate(company.Id)">@company</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code 
+{
+    [Parameter]
+    public IEnumerable<ProductionCompany> Companies { get; set; }
+
+    [Parameter]
+    public MediaType MediaType { get; set; } = MediaType.Movie;
+
+    protected override void OnParametersSet()
+    {
+        endpoint = "discover/" + (MediaType == MediaType.Movie ? "movie" : "tv");
+    }
+
+    private void Navigate(int companyId)
+    {
+        NavigationManager.NavigateTo($"{endpoint}?with_companies={companyId}");
+    }
+
+    private string endpoint;
+}

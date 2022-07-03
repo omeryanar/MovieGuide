@@ -1,0 +1,19 @@
+﻿@page "/search"
+
+<MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
+
+<MudStack Row="true" Class="flex-wrap gap-4">
+    @if (Search != null)
+    {
+        foreach (SearchBase result in Search.Results)
+        {
+            <MediaCard Media="result" />
+        }
+    }
+</MudStack>
+
+
+@code 
+{
+    private int pageCount = 1;
+}

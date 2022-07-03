@@ -1,0 +1,74 @@
+﻿@inject TmdbService TmdbService
+
+<MudAutocomplete Margin="Margin.Dense" @bind-Value="Person" SearchFunc="SearchPerson"></MudAutocomplete>
+<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+    @if (People != null)
+    {
+        foreach (SearchPerson person in People)
+        {
+            <MudChip Text="@person.Name" Value="person.Id" Tag="@person" Color="Color.Primary">@person</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code
+{
+    [Parameter]
+    public ICollection<object> SelectedPeople { get; set; }
+
+    [Parameter]
+    public EventCallback<ICollection<object>> SelectedPeopleChanged { get; set; }
+
+    public SearchPerson Person
+    {
+        get => person;
+        set
+        {
+            person = value;
+            if(person != null)
+            {
+                People.Add(person);
+
+                if (SelectedPeople == null)
+                    SelectedPeople = new List<object>() { person.Id };
+                else
+                    SelectedPeople.Add(person.Id);
+
+                SelectedPeopleChanged.InvokeAsync(SelectedPeople);
+                person = null;
+            }
+        }
+    }
+    private SearchPerson person;
+
+    private List<SearchPerson> People = new List<SearchPerson>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        if (SelectedPeople?.Count > People.Count)
+        {
+            foreach(object personId in SelectedPeople)
+            {
+                SearchPerson person = await TmdbService.GetPerson(personId.ToString());
+                if (person != null)
+                    People.Add(person);
+            }
+        }
+    }
+
+    private async Task<IEnumerable<SearchPerson>> SearchPerson(string query)
+    {
+        SearchContainer<SearchPerson> search = await TmdbService.SearchPerson(query);
+        return search.Results;
+    }
+
+    private void Remove(MudChip chip)
+    {
+        if (chip?.Tag is SearchPerson person)
+        {
+            People?.Remove(person);
+            SelectedPeople?.Remove(person.Id);
+            SelectedPeopleChanged.InvokeAsync(SelectedPeople);
+        }        
+    }
+}

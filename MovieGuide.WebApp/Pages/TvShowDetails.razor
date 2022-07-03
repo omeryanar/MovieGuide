@@ -1,0 +1,83 @@
+﻿@page "/tv/{Id:int}"
+
+@if (TvShow == null)
+{
+    <LoadingCircular />
+}
+else
+{
+    <MudStack Class="flex-wrap" Row="true">
+        <MudImage Class="rounded-lg" Width="300" Height="450" Src="@TvShow.PosterFullPath" />
+        <MudStack Style="max-width:800px">
+            <MudStack Row="true">
+                <MudText Typo="Typo.h4">@TvShow.Name</MudText>
+                <MudText Typo="Typo.h4" Style="opacity:0.6">@TvShow.FirstAirDate?.ToString("(yyyy)")</MudText>
+            </MudStack>
+            <GenreChipSet Genres="@TvShow.Genres" MediaType="MediaType.TvShow" />
+            <MudStack Row="true" AlignItems="AlignItems.Center">
+                <RatingCircular Value="@TvShow.VoteAverage" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Style="opacity:0.6; font-style:italic">@TvShow.LocalizedTagline</MudText>
+            </MudStack>
+            <LabeledItem Label="@Resources.Overview" Text="@TvShow.LocalizedOverview" />        
+            <MudGrid>
+                @if (TvShow.FeaturedCrew != null)
+                {
+                    foreach(Crew crew in TvShow.FeaturedCrew)
+                    {
+                        <MudItem xs="4">
+                            <FeaturedCrewLink Crew="crew" />
+                        </MudItem>
+                    }
+                }
+            </MudGrid>
+        </MudStack>
+    </MudStack>
+    <MudStack Class="flex-wrap mt-4" Row="true" Spacing="4">
+        <MudStack Style="width:100%; max-width:952px">
+            <ExpansionPanel Title="@Resources.Starring" ItemSize="140" Items="TvShow.Starring" Expanded="true">
+                <PersonCastCard Cast="context" />
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Crew" ItemSize="140" Items="TvShow.Crew">
+                <PersonCrewCard Crew="context" />
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Seasons" ItemSize="185" Items="TvShow.Seasons">
+                <TvSeasonCard TvShow="TvShow" Season="context" />
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Posters" ItemSize="185" Items="TvShow.Images?.Posters">
+                <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
+                </MudLink>
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Backdrops" ItemSize="300" Items="TvShow.Images?.Backdrops">
+                <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
+                </MudLink>
+            </ExpansionPanel>
+            <ExpansionPanel Title="@Resources.Videos" ItemSize="240" Items="TvShow.Videos?.Results">
+                <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                    <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
+                </MudLink>
+            </ExpansionPanel>
+        </MudStack>
+        <MudStack Style="width:280px">
+            <MudStack Row="true" Class="mx-n2" Spacing="0">
+                <SocialMediaLink SocialMedia="SocialMediaType.ImdbTitle" Id="@TvShow.ExternalIds?.ImdbId" />
+                <SocialMediaLink SocialMedia="SocialMediaType.Youtube" Id="@TvShow.TrailerLink" />
+            </MudStack>
+            <LabeledItem Label="@Resources.OriginalLanguage" Text="@LanguageName" />
+            <LabeledItem Label="@Resources.OriginalTitle" Text="@TvShow.OriginalName" />
+            <LabeledItem Label="@Resources.Status" Text="@TvShow.Status?.GetLocalizedText()" />
+            <LabeledItem Label="@Resources.Runtime" Text="@TvShow.EpisodeRunTime?.GetRuntimeDescription()" />
+            <LabeledItem Label="@Resources.Networks" ChildObject="TvShow.Networks.FirstOrDefault()">
+                <NetworkLinkSet Networks="TvShow.Networks" />
+            </LabeledItem>
+            <LabeledItem Label="@Resources.ProductionCountries" Text="@TvShow.Countries" />
+            <LabeledItem Label="@Resources.Keywords" ChildObject="TvShow.Keywords.Results.FirstOrDefault()">
+                <KeywordChipSet Keywords="TvShow.Keywords.Results" MediaType="MediaType.TvShow" />
+            </LabeledItem>
+            <LabeledItem Label="@Resources.ProductionCompanies" ChildObject="TvShow.ProductionCompanies.FirstOrDefault()">
+                <CompanyChipSet Companies="TvShow.ProductionCompanies" MediaType="MediaType.TvShow" />
+            </LabeledItem>
+        </MudStack>
+    </MudStack>
+}

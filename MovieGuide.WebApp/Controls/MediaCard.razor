@@ -1,0 +1,48 @@
+﻿@if (Media?.MediaType == MediaType.Movie && Media is SearchMovie movie)
+{
+    <MudLink Underline="Underline.None" Href="@("movie/" + movie.Id)">
+        <MudCard Style="width:185px; height:100%" Elevation="3">
+            <MudImage Class="rounded-t" Src="@movie.PosterFullPath" Width="185" Height="278" />
+            <MudCardContent Class="pt-0">
+                <MudStack Style="margin: -26px 0px 4px">
+                    <RatingCircular Value="@movie.VoteAverage"></RatingCircular>
+                </MudStack>
+                <MudText Typo="Typo.body1" Style="font-weight:bold">@movie.Title</MudText>
+                <MudText Typo="Typo.body2">@movie.ReleaseDate?.ToString("MMM d, yyyy")</MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudLink>
+}
+else if (Media?.MediaType == MediaType.TvShow && Media is SearchTvShow tvShow)
+{
+    <MudLink Underline="Underline.None" Href="@("tv/" + tvShow.Id)">
+        <MudCard Style="width:185px; height:100%" Elevation="3">
+            <MudImage Class="rounded-t" Src="@tvShow.PosterFullPath" Width="185" Height="278" />
+            <MudCardContent Class="pt-0">
+                <MudStack Style="margin: -26px 0px 4px">
+                    <RatingCircular Value="@tvShow.VoteAverage"></RatingCircular>
+                </MudStack>
+                <MudText Typo="Typo.body1" Style="font-weight:bold">@tvShow.Name</MudText>
+                <MudText Typo="Typo.body2">@tvShow.FirstAirDate?.ToString("MMM d, yyyy")</MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudLink>
+}
+else if (Media?.MediaType == MediaType.Person && Media is SearchPerson person)
+{
+    <MudLink Underline="Underline.None" Href="@("person/" + person.Id)">
+        <MudCard Style="width:185px; height:100%" Elevation="3">
+            <MudImage Class="rounded-t" Src="@person.ProfileFullPath" Width="185" Height="278" />
+            <MudCardContent Class="pt-0">
+                <MudText Typo="Typo.body1" Style="font-weight:bold">@person.Name</MudText>
+                <MediaLinkSet MediaItems="@person.KnownFor" />
+            </MudCardContent>
+        </MudCard>
+    </MudLink>
+}
+
+@code
+{
+    [Parameter]
+    public SearchBase Media { get; set; }
+}

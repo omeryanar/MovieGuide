@@ -1,0 +1,67 @@
+﻿@page "/tv/{Id:int}/season/{SeasonNumber:int}"
+
+@if (Season == null)
+{
+    <LoadingCircular />
+}
+else
+{
+    <MudStack Class="flex-wrap" Row="true">
+        <MudImage Class="rounded-lg" Width="300" Height="450" Src="@Season.PosterFullPath" />
+        <MudStack Style="max-width:800px">
+            <MudStack Row="true">
+                <MudText Typo="Typo.h4">@TvShow?.Name - @Season.Name</MudText>
+                <MudText Typo="Typo.h4" Style="opacity:0.6">@Season.AirDate?.ToString("(yyyy)")</MudText>
+            </MudStack>
+            <GenreChipSet Genres="@TvShow?.Genres" MediaType="MediaType.TvShow" />
+            <MudStack Row="true" AlignItems="AlignItems.Center">
+                <RatingCircular Value="@Season.VoteAverage" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Style="opacity:0.6; font-style:italic">@String.Format(Resources.SeasonEpisodes, Season.Episodes?.Count)</MudText>
+            </MudStack>
+            <LabeledItem Label="@Resources.Overview" Text="@Season.LocalizedOverview" />
+            <MudGrid>
+                @if (Season.FeaturedCrew != null)
+                {
+                    foreach(Crew crew in Season.FeaturedCrew)
+                    {
+                        <MudItem xs="4">
+                            <FeaturedCrewLink Crew="crew" />
+                        </MudItem>
+                    }
+                }
+            </MudGrid>
+        </MudStack>
+    </MudStack>
+    <MudStack Class="mt-4" Spacing="4" Style="width:100%; max-width:1080px">
+        <ExpansionPanel Title="@Resources.Starring" ItemSize="140" Items="Season.Starring" Expanded="true">
+            <PersonCastCard Cast="context" />
+        </ExpansionPanel>
+        <ExpansionPanel Title="@Resources.Crew" ItemSize="140" Items="Season.Crew">
+            <PersonCrewCard Crew="context" />
+        </ExpansionPanel>
+        <MudPaper Elevation="1">
+            <MudNavGroup Title="@Resources.Episodes">
+                <MudDivider />
+                <MudStack Spacing="4" Class="pa-4">
+                    @if (Season.Episodes != null)
+                    {
+                        foreach (TvEpisode episode in Season.Episodes)
+                        {
+                            <TvEpisodeCard TvShow="@TvShow" Episode="@episode" />
+                        }
+                    }
+                </MudStack>
+            </MudNavGroup>
+        </MudPaper>
+        <ExpansionPanel Title="@Resources.Posters" ItemSize="185" Items="Season.Images?.Posters">
+            <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
+            </MudLink>
+        </ExpansionPanel>
+        <ExpansionPanel Title="@Resources.Videos" ItemSize="240" Items="Season.Videos?.Results">
+            <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
+            </MudLink>
+        </ExpansionPanel>
+    </MudStack>   
+}

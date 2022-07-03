@@ -1,0 +1,100 @@
+﻿@page "/discover/tv"
+
+<MudDrawerContainer Style="position:relative;">    
+    <MudDrawer Class="pa-4 rounded" Height="auto" Width="320px" DisableOverlay="true" Breakpoint="Breakpoint.Sm" Variant="DrawerVariant.Mini" @bind-Open="@showFilters">
+        <MudStack Row="true" Spacing="0" Class="mb-2" Style="margin-left:-6px">
+            <MudIcon Size="Size.Large" Class="@(showFilters ? "d-none" : "cursor-pointer")" Icon="@Icons.Filled.ArrowCircleRight" @onclick="@(() => showFilters = true)" />
+            <MudSpacer />
+            <MudIcon Size="Size.Large" Class="@(showFilters ? "cursor-pointer" : "d-none")" Icon="@Icons.Filled.ArrowCircleLeft" @onclick="@(() => showFilters = false)" />
+        </MudStack>
+        <MudExpansionPanels Class="@(showFilters ? "" : "d-none")" MultiExpansion="true" Elevation="3">
+            <MudExpansionPanel IsExpanded="true">
+                <TitleContent>
+                    <MudText Typo="Typo.h6">@Resources.Sort</MudText>
+                </TitleContent>
+                <ChildContent>
+                    <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
+                        @foreach(SortType item in SortHelper.TvShowSortBy)
+                        {
+                            <MudSelectItem Value="item"></MudSelectItem>
+                        }
+                    </MudSelect>
+                </ChildContent>                
+            </MudExpansionPanel>
+            <MudExpansionPanel @bind-IsExpanded="isFilterActive">
+                <TitleContent>
+                    <MudText Typo="Typo.h6">@Resources.Filter</MudText>
+                </TitleContent>
+                <ChildContent>
+                    <MudText Class="mb-2">@Resources.Genres</MudText>
+                    <MudChipSet Class="mb-2" MultiSelection="true" Filter="true" @bind-SelectedValues="withGenres">
+                        @foreach(Genre genre in GenreHelper.TvShowGenres)
+                        {
+                            <MudChip Text="@genre.Name" Value="genre.Id" Variant="Variant.Text" Color="Color.Primary">@genre</MudChip>
+                        }
+                    </MudChipSet>
+                    <MudDivider Class="my-4" />
+                    <MudSlider Variant="Variant.Filled" Min="0" Max="10" Step="1" @bind-Value="voteAverage">@Resources.VoteAverage: @voteAverage</MudSlider>
+                    <MudDivider Class="my-4" />
+                    <MudSlider Variant="Variant.Filled" Min="0" Max="1000" Step="50" @bind-Value="voteCount">@Resources.MinimumVotes: @voteCount</MudSlider>
+                    <MudDivider Class="my-4" />
+                    <MudSlider Variant="Variant.Filled" Min="0" Max="360" Step="10" @bind-Value="runtime">@Resources.MinimumRuntime: @runtime @Resources.Minutes</MudSlider>
+                    <MudDivider Class="my-4" />
+                    <MudText Class="mt-4 mb-n4">@Resources.OriginalLanguage</MudText>
+                    <SearchLanguage @bind-SelectedLanguage="withLanguage"></SearchLanguage>
+                    <MudText Class="mt-8 mb-n4">@Resources.Networks</MudText>
+                    <SearchNetwork @bind-SelectedNetworks="withNetworks"></SearchNetwork>
+                    <MudText Class="mt-8 mb-n4">@Resources.Keywords</MudText>
+                    <SearchKeyword @bind-SelectedKeywords="withKeywords"></SearchKeyword>
+                    <MudText Class="mt-8 mb-n4">@Resources.ProductionCompanies</MudText>
+                    <SearchCompany @bind-SelectedCompanies="withCompanies"></SearchCompany>
+                    <MudText Class="mt-8 mb-n4">@Resources.ReleaseYear</MudText>
+                    <MudNumericField @bind-Value="year" Min="1850" Max="DateTime.Now.Year" />
+                </ChildContent>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+        <MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
+       <MudButton Class="my-4" Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="Refresh">
+            <MudIcon Class="@(showFilters ? "d-none" : "ml-n4")" Icon="@Icons.Filled.Search"></MudIcon>
+            <MudText Class="@(showFilters ? "" : "d-none")">@Resources.Search</MudText>
+        </MudButton>
+    </MudDrawer>
+    <MudStack Row="true" Class="flex-wrap pl-4">
+        @if (TvShows != null)
+        {
+            foreach (SearchTvShow tvShow in TvShows.Results)
+            {
+                <MediaCard Media="tvShow" />
+            }
+        }
+    </MudStack>
+</MudDrawerContainer>
+
+@code
+{
+    private int pageCount = 1;
+
+    private int voteAverage;
+
+    private int voteCount;
+
+    private int runtime;
+
+    private int? year;
+
+    private SortType sortBy = SortHelper.TvShowSortBy[0];
+
+    private string withLanguage;
+
+    private ICollection<object> withGenres;
+
+    private ICollection<object> withNetworks;
+
+    private ICollection<object> withKeywords;
+
+    private ICollection<object> withCompanies;
+
+    private bool isFilterActive;
+
+    private bool showFilters = true;
+}
