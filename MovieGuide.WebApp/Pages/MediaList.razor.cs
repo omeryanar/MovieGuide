@@ -47,7 +47,7 @@ namespace MovieGuide.WebApp.Pages
 
         private void Refresh()
         {
-            string uri = $"/list/{Id}/{Title}";
+            string uri = $"list/{Id}/{Title}";
             if (page > 1)
                 uri = uri.AddQueryString("page", page);
 
