@@ -185,11 +185,11 @@
       "url": "images\/tvshow.svg"
     },
     {
-      "hash": "sha256-0yfykw7DHOhNxLAhtSS+TsFw5zIEU23Yizej+PQ6tlY=",
+      "hash": "sha256-P6ptCArOJChhi4SyOQ3HHFJd9Al0gVpbqmE2sxJTg7Q=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-voNhg6KP7F1n8XlOPkN436W6\/hxLmCxHnMY7foAVkW0=",
+      "hash": "sha256-oTwaBANrfKxeStVlf5u0zVoM02XZcOSSO+bRm5CrIeE=",
       "url": "manifest.json"
     },
     {
@@ -225,7 +225,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-VFPfT1hVe\/oNVPmumXuskebVl7E8tv1x3PD6M+tgfDQ=",
+      "hash": "sha256-1TIyh7YC\/Yx1axtWQxUZdQ9XAIB1oCWGBHDfwsklkX0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -313,7 +313,7 @@
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-LcX0Fetwz9OBSDZcCyTCRyVMXGxfmEZcptPS4xj2fjc=",
+      "hash": "sha256-YuNxodbudvDn4DGlSNvYuVmtdmlhUraVKMb27JhKT8k=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
@@ -449,5 +449,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "jKzR\/8Yq"
+  "version": "xFN4Alop"
 };

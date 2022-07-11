@@ -1,10 +1,12 @@
 {
-  "name": "Movie & TV Guide",
+  "name": "Movie Guide",
   "short_name": "Movie Guide",
+  "description": "Movie & TV Guide",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#03173d",
+  "theme_color": "#282828",
+  "categories": [ "entertainment", "social" ],
   "prefer_related_applications": false,
   "icons": [
     {
@@ -16,6 +18,29 @@
       "src": "icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "icon-32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Discover Movies",
+      "url": "/discover/movie"
+    },
+    {
+      "name": "Movie Genres",
+      "url": "/genre/movie"
+    },
+    {
+      "name": "Discover TV Shows",
+      "url": "/discover/tv"
+    },
+    {
+      "name": "TV Show Genres",
+      "url": "/genre/tv"
     }
   ]
 }
