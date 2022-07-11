@@ -26,10 +26,6 @@ jobs:
     # changes the base-tag in index.html from '/' to 'MovieGuide' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to MovieGuide
       run: sed -i 's/<base href="\/" \/>/<base href="\/MovieGuide\/" \/>/g' release/wwwroot/index.html
-
-    # changes the server-worker.js index.html from '/' to 'MovieGuide' to match GitHub Pages repository subdirectory
-    - name: Change server-worker.js in index.html from / to MovieGuide
-      run: sed -i 's/service-worker.js/MovieGuide/service-worker.js/g' release/wwwroot/index.html
     
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
