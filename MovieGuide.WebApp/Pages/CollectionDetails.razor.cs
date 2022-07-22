@@ -20,7 +20,7 @@ namespace MovieGuide.WebApp.Pages
         {
             if (Id != 0)
             {
-                Collection = await TmdbService.GetCollectionetails(Id);
+                Collection = await TmdbService.GetCollectionDetails(Id);
             }
         }
 

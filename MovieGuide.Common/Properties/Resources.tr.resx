@@ -352,6 +352,9 @@
     <value>Planlandı</value>
     <comment>Status</comment>
   </data>
+  <data name="Popular" xml:space="preserve">
+    <value>Popüler</value>
+  </data>
   <data name="PopularityaAsc" xml:space="preserve">
     <value>Popülerlik 🠅</value>
     <comment>Sort</comment>
@@ -506,6 +509,9 @@
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videolar</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>Hepsini Göster</value>
   </data>
   <data name="VoteAverage" xml:space="preserve">
     <value>Oy Ortalaması</value>

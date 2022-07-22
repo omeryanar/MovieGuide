@@ -1,14 +1,24 @@
 ﻿@page "/discover/movie"
 
-<MudDrawerContainer Style="position:relative;">    
-    <MudDrawer Class="pa-4 rounded" Height="auto" Width="320px" DisableOverlay="true" Breakpoint="Breakpoint.Sm" Variant="DrawerVariant.Mini" @bind-Open="@showFilters">
-        <MudStack Row="true" Spacing="0" Class="mb-2" Style="margin-left:-6px">
-            <MudIcon Size="Size.Large" Class="@(showFilters ? "d-none" : "cursor-pointer")" Icon="@Icons.Filled.ArrowCircleRight" @onclick="@(() => showFilters = true)" />
-            <MudSpacer />
-            <MudIcon Size="Size.Large" Class="@(showFilters ? "cursor-pointer" : "d-none")" Icon="@Icons.Filled.ArrowCircleLeft" @onclick="@(() => showFilters = false)" />
-        </MudStack>
-        <MudExpansionPanels Class="@(showFilters ? "" : "d-none")" MultiExpansion="true" Elevation="3">
-            <MudExpansionPanel IsExpanded="true">
+<style>
+    .mud-drawer-content {
+        overflow:hidden;
+    }
+</style>
+
+<MudText Typo="Typo.h4">@Resources.Movies</MudText>
+
+<MudStack Class="my-4" Row="true">
+    <MudToggleIconButton Style="width:32px; height:32px" Class="rounded-circle" Variant="Variant.Filled" @bind-Toggled="@showFilters"
+        Size="Size.Small" Color="Color.Primary" Icon="@Icons.Filled.FilterAlt"
+        ToggledSize="Size.Small" ToggledColor="Color.Primary" ToggledIcon="@Icons.Filled.FilterAlt" />
+    <MudPagination Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
+</MudStack>
+
+<MudDrawerContainer Class="relative">
+    <MudDrawer Class="pl-1 pr-3 rounded" Color="Color.Transparent" Elevation="0" Height="auto" Width="280px" MiniWidth="0px" Variant="DrawerVariant.Mini" @bind-Open="@showFilters">
+        <MudExpansionPanels MultiExpansion="true" Elevation="3">
+            <MudExpansionPanel IsInitiallyExpanded="true">
                 <TitleContent>
                     <MudText Typo="Typo.h6">@Resources.Sort</MudText>
                 </TitleContent>
@@ -53,13 +63,11 @@
                 </ChildContent>
             </MudExpansionPanel>
         </MudExpansionPanels>
-        <MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
         <MudButton Class="my-4" Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="Refresh">
-            <MudIcon Class="@(showFilters ? "d-none" : "ml-n4")" Icon="@Icons.Filled.Search"></MudIcon>
-            <MudText Class="@(showFilters ? "" : "d-none")">@Resources.Search</MudText>
+            <MudText>@Resources.Search</MudText>
         </MudButton>
     </MudDrawer>
-    <MudStack Row="true" Class="flex-wrap pl-4">
+    <MudStack Row="true" Class="flex-wrap">
         @if (Movies != null)
         {
             foreach (SearchMovie movie in Movies.Results)
@@ -67,7 +75,7 @@
                 <MediaCard Media="movie" />
             }
         }
-    </MudStack>
+    </MudStack>    
 </MudDrawerContainer>
 
 @code

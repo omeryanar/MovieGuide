@@ -673,6 +673,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Popular.
+        /// </summary>
+        public static string Popular {
+            get {
+                return ResourceManager.GetString("Popular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Popularity 🠅.
         /// </summary>
         public static string PopularityaAsc {
@@ -1069,7 +1078,16 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VoteA verage.
+        ///   Looks up a localized string similar to View All.
+        /// </summary>
+        public static string ViewAll {
+            get {
+                return ResourceManager.GetString("ViewAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vote Average.
         /// </summary>
         public static string VoteAverage {
             get {

@@ -1,5 +1,7 @@
 ﻿@page "/search"
 
+<MudText Typo="Typo.h4">@Resources.Search: @Query</MudText>
+
 <MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
 
 <MudStack Row="true" Class="flex-wrap gap-4">

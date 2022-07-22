@@ -126,7 +126,7 @@ namespace MovieGuide.Common
             return await GetAsync<Movie>($"movie/{movieId}", "?append_to_response=credits,images,videos,keywords,translations");
         }
 
-        public async Task<Collection> GetCollectionetails(int collectionId)
+        public async Task<Collection> GetCollectionDetails(int collectionId)
         {
             return await GetAsync<Collection>($"collection/{collectionId}", "?append_to_response=images,translations");
         }
@@ -153,6 +153,25 @@ namespace MovieGuide.Common
 
         #endregion
 
+        #region Popular
+
+        public async Task<SearchContainer<SearchMovie>> GetPopularMovies(string query = null)
+        {
+            return await GetAsync<SearchContainer<SearchMovie>>("movie/popular", query);
+        }
+
+        public async Task<SearchContainer<SearchTvShow>> GetPopularTvShows(string query = null)
+        {
+            return await GetAsync<SearchContainer<SearchTvShow>>("tv/popular", query);
+        }
+
+        public async Task<SearchContainer<SearchPerson>> GetPopularPeople(string query = null)
+        {
+            return await GetAsync<SearchContainer<SearchPerson>>("person/popular", query);
+        }
+
+        #endregion
+
         #region List
 
         public async Task<SearchContainer<SearchBase>> GetList(int id, int page)
@@ -163,11 +182,6 @@ namespace MovieGuide.Common
         public async Task<List<Language>> GetLanguages()
         {
             return await GetAsync<List<Language>>("configuration/languages");
-        }        
-
-        public async Task<SearchContainer<SearchPerson>> GetPopularPeople(string query = null)
-        {
-            return await GetAsync<SearchContainer<SearchPerson>>("person/popular", query);
         }
 
         #endregion

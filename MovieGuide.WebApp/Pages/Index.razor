@@ -1,11 +1,83 @@
 ﻿@page "/"
+@inject TmdbService TmdbService;
 
 <PageTitle>Movie Guide</PageTitle>
 
-<MudStack Row="true">
-    
-
+<MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h4"> @Resources.Popular @Resources.Movies</MudText>
+    <MudTooltip Text="@Resources.ViewAll">
+        <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="discover/movie" />
+    </MudTooltip>
 </MudStack>
+<MudStack Row="true" Class="flex-wrap mb-8">    
+    @if (Movies == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" />
+    }
+    else
+    {
+        foreach (SearchMovie movie in Movies.Results.Take(6))
+        {
+            <MediaCard Media="movie" />
+        }
+    }
+</MudStack>
+
+<MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h4"> @Resources.Popular @Resources.TvShows</MudText>
+    <MudTooltip Text="@Resources.ViewAll">
+        <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="discover/tv" />
+    </MudTooltip>
+</MudStack>
+<MudStack Row="true" Class="flex-wrap mb-8">    
+    @if (TvShows == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" />
+    }
+    else
+    {
+        foreach (SearchTvShow tvShow in TvShows.Results.Take(6))
+        {
+            <MediaCard Media="tvShow" />
+        }
+    }
+</MudStack>
+
+<MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h4"> @Resources.Popular @Resources.People</MudText>
+    <MudTooltip Text="@Resources.ViewAll">
+        <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="person/popular" />
+    </MudTooltip>
+</MudStack>
+<MudStack Row="true" Class="flex-wrap mb-8">    
+    @if (People == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" />
+    }
+    else
+    {
+        foreach (SearchPerson person in People.Results.Take(6))
+        {
+            <MediaCard Media="person" />
+        }
+    }
+</MudStack>
+
+@code
+{
+    public SearchContainer<SearchMovie> Movies { get; private set; }
+
+    public SearchContainer<SearchTvShow> TvShows { get; private set; }
+
+    public SearchContainer<SearchPerson> People { get; private set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Movies = await TmdbService.GetPopularMovies();
+        TvShows = await TmdbService.GetPopularTvShows();
+        People = await TmdbService.GetPopularPeople();
+    }
+}
 
 
 
