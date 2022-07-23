@@ -1,0 +1,22 @@
+﻿<MudGrid>
+    @if (FeaturedCrew != null)
+    {
+        foreach(Crew crew in FeaturedCrew)
+        {
+            <MudItem xs="4">
+                <MudLink Underline="Underline.None" Color="Color.Default" Href="@("person/" + crew?.Id)">
+                    <MudStack Spacing="0">
+                        <MudText Typo="Typo.body1">@crew?.Name</MudText>
+                        <MudText Typo="Typo.body2" Style="opacity:0.6">@crew?.Job</MudText>
+                    </MudStack>
+                </MudLink>
+            </MudItem>
+        }
+    }
+</MudGrid>
+
+@code
+{
+    [Parameter]
+    public List<Crew> FeaturedCrew { get; set; }
+}

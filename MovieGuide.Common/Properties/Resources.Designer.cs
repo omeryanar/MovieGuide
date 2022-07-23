@@ -322,7 +322,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FirstAirDate.
+        ///   Looks up a localized string similar to First Air Date.
         /// </summary>
         public static string FirstAirDate {
             get {

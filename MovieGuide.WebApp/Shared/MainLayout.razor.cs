@@ -2,6 +2,7 @@
 using System.Globalization;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using MovieGuide.Common.Model.General;
 using MovieGuide.Common.Properties;
 
@@ -14,6 +15,9 @@ namespace MovieGuide.WebApp.Shared
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
+
+        [Inject]
+        public IJSRuntime JSRuntime { get; set; }
 
         public Language Language { get; private set; }
 
@@ -29,6 +33,16 @@ namespace MovieGuide.WebApp.Shared
             await LocalStorage.SetItemAsStringAsync("Language", Language.Iso_639_1);
             
             NavigationManager.NavigateTo(NavigationManager.Uri, true);
+        }
+
+        public async Task GoBackward()
+        {
+            await JSRuntime.InvokeVoidAsync("history.back");
+        }
+
+        public async Task GoForward()
+        {
+            await JSRuntime.InvokeVoidAsync("history.forward");
         }
 
         protected override void OnInitialized()

@@ -9,24 +9,14 @@ else
     <MudStack Class="flex-wrap" Row="true">
         <MudImage Class="rounded-lg" Width="300" Height="169" Src="@Episode.StillFullPath" />
         <MudStack Style="max-width:800px">
-            <MudText Typo="Typo.h4">@TvShow?.Name - @Episode.SeasonNumber. @Resources.Season - @Episode.EpisodeNumber. @Resources.Episode</MudText>
+            <MudText Typo="Typo.h4">@TvShow?.Name - @Resources.Season @Episode.SeasonNumber - @Resources.Episode @Episode.EpisodeNumber</MudText>
             <MudStack Row="true" AlignItems="AlignItems.Center">
                 <RatingCircular Value="@Episode.VoteAverage" Size="Size.Large" />
                 <MudText Typo="Typo.h6" Style="font-style:italic">@Episode.Name</MudText>
                 <MudText Typo="Typo.h6" Style="font-style:italic;opacity:0.6">@Episode.AirDate?.ToString("(MMM d, yyyy)")</MudText>
             </MudStack>  
             <LabeledItem Label="@Resources.Overview" Text="@Episode.LocalizedOverview" />
-            <MudGrid>
-                @if (Episode.FeaturedCrew != null)
-                {
-                    foreach(Crew crew in Episode.FeaturedCrew)
-                    {
-                        <MudItem xs="4">
-                            <FeaturedCrewLink Crew="crew" />
-                        </MudItem>
-                    }
-                }
-            </MudGrid>
+            <FeaturedCrewLinkSet FeaturedCrew="@Episode.FeaturedCrew" />
         </MudStack>
     </MudStack>
     <MudStack Class="mt-4" Spacing="4" Style="width:100%; max-width:1080px">

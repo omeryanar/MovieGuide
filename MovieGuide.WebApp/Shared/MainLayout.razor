@@ -15,6 +15,8 @@
 <MudLayout>
     <MudAppBar Elevation="0">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => drawerOpen = !drawerOpen)" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" />            
         <MudSpacer />
         <MudTextField AdornmentIcon="@Icons.Material.Filled.Search" Adornment="Adornment.End" Placeholder="@Resources.Search" Variant="Variant.Outlined" Class="search-bar" @bind-Value="searchText" OnKeyUp="Enter"></MudTextField>
         <MudSpacer />
@@ -48,7 +50,6 @@
 
 @code 
 {
-
     private bool drawerOpen = true;
 
     private bool darkMode = false;

@@ -18,18 +18,8 @@ else
                 <RatingCircular Value="@TvShow.VoteAverage" Size="Size.Large" />
                 <MudText Typo="Typo.h6" Style="opacity:0.6; font-style:italic">@TvShow.LocalizedTagline</MudText>
             </MudStack>
-            <LabeledItem Label="@Resources.Overview" Text="@TvShow.LocalizedOverview" />        
-            <MudGrid>
-                @if (TvShow.FeaturedCrew != null)
-                {
-                    foreach(Crew crew in TvShow.FeaturedCrew)
-                    {
-                        <MudItem xs="4">
-                            <FeaturedCrewLink Crew="crew" />
-                        </MudItem>
-                    }
-                }
-            </MudGrid>
+            <LabeledItem Label="@Resources.Overview" Text="@TvShow.LocalizedOverview" />
+            <FeaturedCrewLinkSet FeaturedCrew="@TvShow.FeaturedCrew" />
         </MudStack>
     </MudStack>
     <MudStack Class="flex-wrap mt-4" Row="true" Spacing="4">
