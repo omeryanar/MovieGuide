@@ -185,7 +185,7 @@
       "url": "images\/tvshow.svg"
     },
     {
-      "hash": "sha256-CUdm5VzJ4qOg4pVI58WtsdXWebK6bM5/AgGA1gEdVn0=",
+      "hash": "sha256-L9qGJhd3UsVXRe+ONWTMMymikyXyMUaEG64dfIT1KHo=",
       "url": "index.html"
     },
     {
@@ -225,7 +225,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-J2jeuF3\/7Ah\/wtmdZHzJJ8MHMnNfR2dvRQ7FvsdIEv8=",
+      "hash": "sha256-qW89PKmrgZC4ujpOP66+UJFwvmc0LXZZ1dBRRbwaITY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -313,7 +313,7 @@
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-eqZ8Z4UWNNOcK1u5ZiX3fvvf6MLfnCFr\/+mlCkzCNVo=",
+      "hash": "sha256-lu4MrnOdrTtBYq1u7d0A9saE\/gQT\/fiTMKN\/QVXFwp0=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
@@ -405,7 +405,7 @@
       "url": "_framework\/System.Runtime.CompilerServices.Unsafe.dll"
     },
     {
-      "hash": "sha256-YPFBm8hb8c9rqyxr7wmU08h9yR0aj+Clso0d9Lo5MwU=",
+      "hash": "sha256-nGg50tG4QjsW2abbZpV8KZ\/smMPII7hYfdBW8TajLGA=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -449,5 +449,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "F7UCASux"
+  "version": "+2YcKfSD"
 };
