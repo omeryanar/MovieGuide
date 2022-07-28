@@ -16,7 +16,7 @@
 </MudStack>
 
 <MudDrawerContainer Class="relative">
-    <MudDrawer Class="pl-1 pr-3 rounded" Color="Color.Transparent" Elevation="0" Height="auto" Width="280px" MiniWidth="0px" Variant="DrawerVariant.Mini" @bind-Open="@showFilters">
+    <MudDrawer Class="pl-1 pr-3 rounded" Style="z-index: 0 !important" DisableOverlay="true" Color="Color.Transparent" Elevation="0" Height="auto" Width="280px" MiniWidth="0px" Variant="DrawerVariant.Mini" @bind-Open="@showFilters">
         <MudExpansionPanels MultiExpansion="true" Elevation="3">
             <MudExpansionPanel IsInitiallyExpanded="true">
                 <TitleContent>
@@ -26,7 +26,7 @@
                     <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
                         @foreach(SortType item in SortHelper.TvShowSortBy)
                         {
-                            <MudSelectItem Value="item"></MudSelectItem>
+                            <MudSelectItem Value="item" Style="font-family: Noto Sans Symbols 2"></MudSelectItem>
                         }
                     </MudSelect>
                 </ChildContent>                

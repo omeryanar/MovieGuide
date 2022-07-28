@@ -3,12 +3,20 @@
 <MudPaper Elevation="1">
     <MudNavGroup Title="@Title" Expanded="@Expanded">
         <MudDivider />
-        <MudStack Class="overflow-auto py-4" Spacing="4" Row="true">            
+        <MudStack Class="overflow-auto pa-4" Spacing="4" Row="true">            
             @if(Items != null)
             {
-                <Virtualize Items="@Items" ItemSize="@ItemSize" Context="item">
+                foreach (T item in viewAll ? Items : Items.Take(8))
+                {
                     @ChildContent(item)
-                </Virtualize>
+                }
+
+                if (!viewAll && Items.Count > 8)
+                {
+                    <MudTooltip RootClass="align-self-center" Text="@Resources.ViewAll">
+                        <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" OnClick="ToggleViewAll" />
+                    </MudTooltip>
+                }
             }
         </MudStack>
     </MudNavGroup>
@@ -23,11 +31,16 @@
     public bool Expanded { get; set; }
 
     [Parameter]
-    public float ItemSize { get; set; }
-
-    [Parameter]
     public ICollection<T> Items{ get; set; }
 
     [Parameter]
     public RenderFragment<T> ChildContent { get; set; }
+
+    private bool viewAll;
+
+    private void ToggleViewAll()
+    {
+        viewAll = true;
+        Expanded = true;
+    }
 }

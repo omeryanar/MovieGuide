@@ -24,23 +24,23 @@ else
     </MudStack>
     <MudStack Class="flex-wrap mt-4" Row="true" Spacing="4">
         <MudStack Style="width:100%; max-width:952px">
-            <ExpansionPanel Title="@Resources.Starring" ItemSize="140" Items="Movie.Starring" Expanded="true">
+            <ExpansionPanel Title="@Resources.Starring" Items="Movie.Starring" Expanded="true">
                 <PersonCastCard Cast="context" />
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Crew" ItemSize="140" Items="Movie.Crew">
+            <ExpansionPanel Title="@Resources.Crew" Items="Movie.Crew">
                 <PersonCrewCard Crew="context" />
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Posters" ItemSize="185" Items="Movie.Images?.Posters">
+            <ExpansionPanel Title="@Resources.Posters" Items="Movie.Images?.Posters">
                 <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
                     <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
                 </MudLink>
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Backdrops" ItemSize="300" Items="Movie.Images?.Backdrops">
+            <ExpansionPanel Title="@Resources.Backdrops" Items="Movie.Images?.Backdrops">
                 <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
                     <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
                 </MudLink>
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Videos" ItemSize="240" Items="Movie.Videos?.Results">
+            <ExpansionPanel Title="@Resources.Videos" Items="Movie.Videos?.Results">
                 <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
                     <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
                 </MudLink>

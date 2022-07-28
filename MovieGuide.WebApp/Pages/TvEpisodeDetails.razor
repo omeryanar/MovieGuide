@@ -20,18 +20,18 @@ else
         </MudStack>
     </MudStack>
     <MudStack Class="mt-4" Spacing="4" Style="width:100%; max-width:1080px">
-        <ExpansionPanel Title="@Resources.GuestStars" ItemSize="140" Items="Episode.GuestStars" Expanded="true">
+        <ExpansionPanel Title="@Resources.GuestStars" Items="Episode.GuestStars" Expanded="true">
             <PersonCastCard Cast="context" />
         </ExpansionPanel>
-        <ExpansionPanel Title="@Resources.Crew" ItemSize="140" Items="Episode.Crew">
+        <ExpansionPanel Title="@Resources.Crew" Items="Episode.Crew">
             <PersonCrewCard Crew="context" />
         </ExpansionPanel>
-        <ExpansionPanel Title="@Resources.Backdrops" ItemSize="300" Items="Episode.Images?.Stills">
+        <ExpansionPanel Title="@Resources.Backdrops" Items="Episode.Images?.Stills">
             <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
                 <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
             </MudLink>
         </ExpansionPanel>
-        <ExpansionPanel Title="@Resources.Videos" ItemSize="240" Items="Episode.Videos?.Results">
+        <ExpansionPanel Title="@Resources.Videos" Items="Episode.Videos?.Results">
             <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
                 <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
             </MudLink>

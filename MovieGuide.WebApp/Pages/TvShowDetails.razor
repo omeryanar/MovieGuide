@@ -24,26 +24,26 @@ else
     </MudStack>
     <MudStack Class="flex-wrap mt-4" Row="true" Spacing="4">
         <MudStack Style="width:100%; max-width:952px">
-            <ExpansionPanel Title="@Resources.Starring" ItemSize="140" Items="TvShow.Starring" Expanded="true">
+            <ExpansionPanel Title="@Resources.Starring" Items="TvShow.Starring" Expanded="true">
                 <PersonCastCard Cast="context" />
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Crew" ItemSize="140" Items="TvShow.Crew">
+            <ExpansionPanel Title="@Resources.Crew" Items="TvShow.Crew">
                 <PersonCrewCard Crew="context" />
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Seasons" ItemSize="185" Items="TvShow.Seasons">
+            <ExpansionPanel Title="@Resources.Seasons" Items="TvShow.Seasons">
                 <TvSeasonCard TvShow="TvShow" Season="context" />
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Posters" ItemSize="185" Items="TvShow.Images?.Posters">
+            <ExpansionPanel Title="@Resources.Posters" Items="TvShow.Images?.Posters">
                 <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
                     <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
                 </MudLink>
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Backdrops" ItemSize="300" Items="TvShow.Images?.Backdrops">
+            <ExpansionPanel Title="@Resources.Backdrops" Items="TvShow.Images?.Backdrops">
                 <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
                     <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
                 </MudLink>
             </ExpansionPanel>
-            <ExpansionPanel Title="@Resources.Videos" ItemSize="240" Items="TvShow.Videos?.Results">
+            <ExpansionPanel Title="@Resources.Videos" Items="TvShow.Videos?.Results">
                 <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
                     <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
                 </MudLink>
