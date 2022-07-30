@@ -26,9 +26,7 @@
                     <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
                         @foreach(SortType item in SortHelper.TvShowSortBy)
                         {
-                            <MudSelectItem Value="item">
-                                <MudText Style="font-family: Noto Sans Symbols 2">@item.ToString()</MudText>
-                            </MudSelectItem>
+                            <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>
                         }
                     </MudSelect>
                 </ChildContent>                

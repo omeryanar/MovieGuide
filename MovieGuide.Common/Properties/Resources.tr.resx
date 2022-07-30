@@ -226,11 +226,11 @@
     <value>İlk Yayın Tarihi</value>
   </data>
   <data name="FirstAirDateAsc" xml:space="preserve">
-    <value>İlk Yayın Tarihi 🠅</value>
+    <value>İlk Yayın Tarihi &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="FirstAirDateDesc" xml:space="preserve">
-    <value>İlk Yayın Tarihi 🠇</value>
+    <value>İlk Yayın Tarihi &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="FirstMovie" xml:space="preserve">
@@ -356,11 +356,11 @@
     <value>Popüler</value>
   </data>
   <data name="PopularityaAsc" xml:space="preserve">
-    <value>Popülerlik 🠅</value>
+    <value>Popülerlik &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="PopularityDesc" xml:space="preserve">
-    <value>Popülerlik 🠇</value>
+    <value>Popülerlik &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="PopularPeople" xml:space="preserve">
@@ -394,11 +394,11 @@
     <value>Çıkış Tarihi</value>
   </data>
   <data name="ReleaseDateAsc" xml:space="preserve">
-    <value>Çıkış Tarihi 🠅</value>
+    <value>Çıkış Tarihi &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="ReleaseDateDesc" xml:space="preserve">
-    <value>Çıkış Tarihi 🠇</value>
+    <value>Çıkış Tarihi &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="ReleaseYear" xml:space="preserve">
@@ -412,11 +412,11 @@
     <value>Gelir</value>
   </data>
   <data name="RevenueAsc" xml:space="preserve">
-    <value>Gelir 🠅</value>
+    <value>Gelir &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="RevenueDesc" xml:space="preserve">
-    <value>Gelir 🠇</value>
+    <value>Gelir &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="Romance" xml:space="preserve">
@@ -517,19 +517,19 @@
     <value>Oy Ortalaması</value>
   </data>
   <data name="VoteAverageAsc" xml:space="preserve">
-    <value>Oy Ortalaması 🠅</value>
+    <value>Oy Ortalaması &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="VoteAverageDesc" xml:space="preserve">
-    <value>Oy Ortalaması 🠇</value>
+    <value>Oy Ortalaması &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="VoteCountAsc" xml:space="preserve">
-    <value>Oy Sayısı 🠅</value>
+    <value>Oy Sayısı &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="VoteCountDesc" xml:space="preserve">
-    <value>Oy Sayısı 🠇</value>
+    <value>Oy Sayısı &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="War" xml:space="preserve">

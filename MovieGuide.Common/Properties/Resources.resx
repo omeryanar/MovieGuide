@@ -226,11 +226,11 @@
     <value>First Air Date</value>
   </data>
   <data name="FirstAirDateAsc" xml:space="preserve">
-    <value>First Air Date 🠅</value>
+    <value>First Air Date &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="FirstAirDateDesc" xml:space="preserve">
-    <value>First Air Date 🠇</value>
+    <value>First Air Date &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="FirstMovie" xml:space="preserve">
@@ -356,11 +356,11 @@
     <value>Popular</value>
   </data>
   <data name="PopularityaAsc" xml:space="preserve">
-    <value>Popularity 🠅</value>
+    <value>Popularity &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="PopularityDesc" xml:space="preserve">
-    <value>Popularity 🠇</value>
+    <value>Popularity &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="PopularPeople" xml:space="preserve">
@@ -394,11 +394,11 @@
     <value>Release Date</value>
   </data>
   <data name="ReleaseDateAsc" xml:space="preserve">
-    <value>Release Date 🠅</value>
+    <value>Release Date &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="ReleaseDateDesc" xml:space="preserve">
-    <value>Release Date 🠇</value>
+    <value>Release Date &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="ReleaseYear" xml:space="preserve">
@@ -412,11 +412,11 @@
     <value>Revenue</value>
   </data>
   <data name="RevenueAsc" xml:space="preserve">
-    <value>Revenue 🠅</value>
+    <value>Revenue &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="RevenueDesc" xml:space="preserve">
-    <value>Revenue 🠇</value>
+    <value>Revenue &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="Romance" xml:space="preserve">
@@ -517,19 +517,19 @@
     <value>Vote Average</value>
   </data>
   <data name="VoteAverageAsc" xml:space="preserve">
-    <value>Vote Average 🠅</value>
+    <value>Vote Average &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="VoteAverageDesc" xml:space="preserve">
-    <value>Vote Average 🠇</value>
+    <value>Vote Average &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="VoteCountAsc" xml:space="preserve">
-    <value>Vote Count 🠅</value>
+    <value>Vote Count &lt;b&gt;&amp;#x2B61;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="VoteCountDesc" xml:space="preserve">
-    <value>Vote Count 🠇</value>
+    <value>Vote Count &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
   <data name="War" xml:space="preserve">

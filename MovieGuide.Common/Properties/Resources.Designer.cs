@@ -331,7 +331,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First Air Date 🠅.
+        ///   Looks up a localized string similar to First Air Date &lt;b&gt;&amp;#x2B61;&lt;/b&gt;.
         /// </summary>
         public static string FirstAirDateAsc {
             get {
@@ -340,7 +340,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First Air Date 🠇.
+        ///   Looks up a localized string similar to First Air Date &lt;b&gt;&amp;#x2B63;&lt;/b&gt;.
         /// </summary>
         public static string FirstAirDateDesc {
             get {
@@ -682,7 +682,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Popularity 🠅.
+        ///   Looks up a localized string similar to Popularity &lt;b&gt;&amp;#x2B61;&lt;/b&gt;.
         /// </summary>
         public static string PopularityaAsc {
             get {
@@ -691,7 +691,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Popularity 🠇.
+        ///   Looks up a localized string similar to Popularity &lt;b&gt;&amp;#x2B63;&lt;/b&gt;.
         /// </summary>
         public static string PopularityDesc {
             get {
@@ -781,7 +781,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Release Date 🠅.
+        ///   Looks up a localized string similar to Release Date &lt;b&gt;&amp;#x2B61;&lt;/b&gt;.
         /// </summary>
         public static string ReleaseDateAsc {
             get {
@@ -790,7 +790,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Release Date 🠇.
+        ///   Looks up a localized string similar to Release Date &lt;b&gt;&amp;#x2B63;&lt;/b&gt;.
         /// </summary>
         public static string ReleaseDateDesc {
             get {
@@ -826,7 +826,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revenue 🠅.
+        ///   Looks up a localized string similar to Revenue &lt;b&gt;&amp;#x2B61;&lt;/b&gt;.
         /// </summary>
         public static string RevenueAsc {
             get {
@@ -835,7 +835,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revenue 🠇.
+        ///   Looks up a localized string similar to Revenue &lt;b&gt;&amp;#x2B63;&lt;/b&gt;.
         /// </summary>
         public static string RevenueDesc {
             get {
@@ -1096,7 +1096,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vote Average 🠅.
+        ///   Looks up a localized string similar to Vote Average &lt;b&gt;&amp;#x2B61;&lt;/b&gt;.
         /// </summary>
         public static string VoteAverageAsc {
             get {
@@ -1105,7 +1105,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vote Average 🠇.
+        ///   Looks up a localized string similar to Vote Average &lt;b&gt;&amp;#x2B63;&lt;/b&gt;.
         /// </summary>
         public static string VoteAverageDesc {
             get {
@@ -1114,7 +1114,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vote Count 🠅.
+        ///   Looks up a localized string similar to Vote Count &lt;b&gt;&amp;#x2B61;&lt;/b&gt;.
         /// </summary>
         public static string VoteCountAsc {
             get {
@@ -1123,7 +1123,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vote Count 🠇.
+        ///   Looks up a localized string similar to Vote Count &lt;b&gt;&amp;#x2B63;&lt;/b&gt;.
         /// </summary>
         public static string VoteCountDesc {
             get {
