@@ -165,6 +165,10 @@
       "url": "icon-512.png"
     },
     {
+      "hash": "sha256-+w97tpTtqQQJw+NmRuWzwu8gTVznryRCVDhWfYPPV7Y=",
+      "url": "icon-apple.png"
+    },
+    {
       "hash": "sha256-XmB97Ey7djjNfuNP\/tyyu4me6b9OuTG7OAVLmD3GlXs=",
       "url": "images\/female.svg"
     },
@@ -185,7 +189,7 @@
       "url": "images\/tvshow.svg"
     },
     {
-      "hash": "sha256-L9qGJhd3UsVXRe+ONWTMMymikyXyMUaEG64dfIT1KHo=",
+      "hash": "sha256-vlFEr03ypwwnAcGdIrkycq09ljftPPjYuewOQXEyHkg=",
       "url": "index.html"
     },
     {
@@ -225,7 +229,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-+7ctkGQzAMSl+Waqs8TexkHNMICuJA3CcJrBZk0IT0g=",
+      "hash": "sha256-uC6\/a8SNzr5Mp89Eyy3hV7YMmqGHo9qf6vNDRoe4NaU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -309,11 +313,11 @@
       "url": "_framework\/Microsoft.Net.Http.Headers.dll"
     },
     {
-      "hash": "sha256-JLrpXBC6rlByUEzdzldpIEDxK6037MqFznULBePLTEU=",
+      "hash": "sha256-VBtN4IYH5cxXfB6o3R2ZAT0jm\/HwtkG5TPCCObCeA38=",
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-ep0q2SUfYYMiLLzqtjIe3lSWJlHLoERMMTqVk2am9vk=",
+      "hash": "sha256-ms3sToIaZHUtVC0\/XB2OgANbHDPlHwAR6Qxe3jMP31w=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
@@ -449,5 +453,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "9s9Br+l2"
+  "version": "ZNrbD8St"
 };
