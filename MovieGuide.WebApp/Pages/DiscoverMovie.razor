@@ -26,7 +26,9 @@
                     <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
                         @foreach(SortType item in SortHelper.MovieSortBy)
                         {
-                            <MudSelectItem Value="item" Style="font-family: Noto Sans Symbols 2"></MudSelectItem>
+                            <MudSelectItem Value="item">
+                                <MudText Style="font-family: Noto Sans Symbols 2">@item.ToString()</MudText>
+                            </MudSelectItem>
                         }
                     </MudSelect>
                 </ChildContent>                

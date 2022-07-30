@@ -9,15 +9,9 @@ namespace MovieGuide.WebApp.Controls
     {
         protected string DivClassname =>
             new CssBuilder("mud-progress-circular")
-                .AddClass($"{valueColor}-text")
                 .AddClass($"mud-progress-{Size.ToDescriptionString()}")
                 .AddClass("mud-progress-static")
                 .AddClass(Class)
-                .Build();
-
-        protected string SvgClassname =>
-            new CssBuilder("mud-progress-circular-circle")
-                .AddClass("mud-progress-static")                
                 .Build();
 
         [Parameter]
@@ -42,15 +36,17 @@ namespace MovieGuide.WebApp.Controls
                 if (rating != value && value != null)
                 {
                     fraction = (value.Value - Min) / (Max - Min);
-                    rating = (int)(fraction * 100);                    
-                    valueColor = rating < 40 ? "red" : (rating < 70 ? "darken-2 yellow" : "darken-2 green");
+                    rating = (int)(fraction * 100);
+                    dashOffset = (int) (600 - (6 * rating));
+                    valueColor = rating < 40 ? "#F44336" : (rating < 70 ? "#FFEB3B" : "#4CAF50");
                     StateHasChanged();
                 }
             }
         }
         private double rating;
 
-        private double fraction;       
+        private int dashOffset;
+        private double fraction;        
         private string valueColor;        
     }
 }
