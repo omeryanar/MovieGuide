@@ -4,13 +4,13 @@
     {
         public const string ListSeparator = " & ";
 
-        public const string W185 = "http://image.tmdb.org/t/p/w185{0}";
+        public const string W185 = "https://image.tmdb.org/t/p/w185{0}";
 
-        public const string W300 = "http://image.tmdb.org/t/p/w300{0}";
+        public const string W300 = "https://image.tmdb.org/t/p/w300{0}";
 
-        public const string Original = "http://image.tmdb.org/t/p/original{0}";
+        public const string Original = "https://image.tmdb.org/t/p/original{0}";
 
-        public const string YouTubeImage = "http://img.youtube.com/vi/{0}/0.jpg";
+        public const string YouTubeImage = "https://img.youtube.com/vi/{0}/0.jpg";
 
         public const string YoutubeVideo = "https://www.youtube.com/embed/{0}?autoplay=1";
 
