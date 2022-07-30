@@ -27,8 +27,8 @@
       "Microsoft.JSInterop.dll": "sha256-kmBxus89BTZwio6bPRY6OgioLfNQuYPg3Jp\/NVgOncg=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-s2xsgdYKLwwiBtdxUf7w3xifWex\/saizGRq96DOIMF8=",
       "Microsoft.Net.Http.Headers.dll": "sha256-P66ftDrXwc6ayND8uYzIk0CPQy1GjNZAPHx9RMhi3V4=",
-      "MovieGuide.Common.dll": "sha256-VBtN4IYH5cxXfB6o3R2ZAT0jm\/HwtkG5TPCCObCeA38=",
-      "MovieGuide.WebApp.dll": "sha256-ms3sToIaZHUtVC0\/XB2OgANbHDPlHwAR6Qxe3jMP31w=",
+      "MovieGuide.Common.dll": "sha256-NxnA+aDRud8hKfXJYYDbfmN03xv6c4JVXiCY8ToaPiM=",
+      "MovieGuide.WebApp.dll": "sha256-FegsTznPXv51JqAmoYxw1fnua7A3w+l3rsek9Fm\/UL0=",
       "MudBlazor.dll": "sha256-u\/nlr+51oJ3kisE0YMVkQgiRSy6MhvY8u80tKF0jsl4=",
       "netstandard.dll": "sha256-5YQ+VQD6Rq383XGz81NTf5VpBnmZwuU1VtQHGLGDtsI=",
       "System.Buffers.dll": "sha256-QNtSMBeHqzzZcsMEo31uFJojeTygua3vNcKAQLv4Wwk=",
@@ -75,7 +75,7 @@
     },
     "satelliteResources": {
       "tr": {
-        "tr\/MovieGuide.Common.resources.dll": "sha256-2sFKcW3pfln7Gl3LaDVetu9XhezbC0LI2x2SJLhGhDk="
+        "tr\/MovieGuide.Common.resources.dll": "sha256-rLteYkMqEOMt0MMDFfBb6jwVjFWbLiLAh1m2rGNgzWc="
       }
     }
   }
