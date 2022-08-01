@@ -1,13 +1,5 @@
 ﻿@inherits LayoutComponentBase
 
-<style>
-    .search-bar .mud-input{height:42px;}
-    .search-bar.mud-input-control{background-color:rgba(255,255,255,.15);margin-bottom:5px;height:42px;border-radius:var(--mud-default-borderradius);}
-    .search-bar.mud-input-control .mud-input-root,.search-bar.mud-input-control .mud-icon-default{color:#fafafa;}
-    .search-bar .mud-input.mud-input-outlined .mud-input-outlined-border{border:none;border-radius:var(--mud-default-borderradius);}
-    .add-button {position:fixed;bottom:16px;right:16px;z-index:100}
-</style>
-
 <ThemeProvider @bind-IsDarkMode="darkMode" />
 <MudDialogProvider />
 <MudSnackbarProvider />
@@ -18,18 +10,20 @@
         <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" />
         <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" />            
         <MudSpacer />
-        <MudTextField AdornmentIcon="@Icons.Material.Filled.Search" Adornment="Adornment.End" Placeholder="@Resources.Search" Variant="Variant.Outlined" Class="search-bar" @bind-Value="searchText" OnKeyUp="Enter"></MudTextField>
+        <SearchBar />
         <MudSpacer />
         <MudMenu AnchorOrigin="Origin.BottomCenter">
             <ActivatorContent>
-                <MudButton StartIcon="@Icons.Material.Filled.Translate" Color="Color.Inherit">@Language</MudButton>
+                <MudIconButton Icon="@Icons.Material.Filled.Translate" Color="Color.Inherit" />
             </ActivatorContent>
             <ChildContent>
                 @foreach(Language language in SupportedLanguages)
                 {
-                    <MudMenuItem Disabled="@(CultureInfo.DefaultThreadCurrentCulture.Name == language.Iso_639_1)" OnClick="@((e) => ChangeLanguage(language.Iso_639_1))">@language</MudMenuItem>
+                    <MudMenuItem Disabled="@(CultureInfo.DefaultThreadCurrentCulture.Name == language.Iso_639_1)"
+                        OnClick="@((e) => ChangeLanguage(language.Iso_639_1))" OnTouch="@((e) => ChangeLanguage(language.Iso_639_1))">@language
+                    </MudMenuItem>
                 }
-            </ChildContent>            
+            </ChildContent>
         </MudMenu>
         <MudToggleIconButton @bind-Toggled="darkMode" Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" Title="@Resources.Dark"
             ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit" ToggledTitle="@Resources.Light">
@@ -53,17 +47,4 @@
     private bool drawerOpen = true;
 
     private bool darkMode = false;
-
-    private string searchText;
-
-    private void Enter(KeyboardEventArgs e)
-    {
-        if (e.Code == "Enter" || e.Code == "NumpadEnter")
-        {
-            string endpoint = "search";
-            string uri = endpoint.AddQueryString("query", searchText);
-
-            NavigationManager.NavigateTo(uri);
-        }
-    }
 }
