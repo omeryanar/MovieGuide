@@ -229,7 +229,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-\/JODXYRdCAAsOHYea6c8zMReaDIt8kmyQD6Z7KcU2zc=",
+      "hash": "sha256-\/3IsY9V3CHJuxwR91CNDwgYMlxH6yZtisUbH+WjWShs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -313,7 +313,7 @@
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-cwG+ZMes9gEUXvYlVMFPa8FV\/0KXAE75QvgV2wdVl7s=",
+      "hash": "sha256-7K69S7eyMWOouDOwTtGVMxhgNQJDkorYZAV+gc8fti8=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
@@ -441,5 +441,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "bqCguRAX"
+  "version": "zEntTpc4"
 };
