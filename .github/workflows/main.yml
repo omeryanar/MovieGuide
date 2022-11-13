@@ -13,7 +13,7 @@ jobs:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v2
     
-    # sets up .NET SDK 6.0
+    # sets up .NET SDK 7.0
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:

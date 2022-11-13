@@ -1,6 +1,8 @@
 ﻿@page "/discover/movie"
 @inherits BaseResponsivePage
 
+<PageTitle>Movie Guide - @Resources.Movies</PageTitle>
+
 <LoadingContent LoadingObject="Movies">
     <MudStack Justify="Justify.Center">
         <MudText Class="ma-auto" Typo="Typo.h1">@Resources.Movies</MudText>

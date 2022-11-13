@@ -1,6 +1,8 @@
 ﻿@page "/person/popular"
 @inherits BasePaginatedPage
 
+<PageTitle>Movie Guide - @Resources.PopularPeople</PageTitle>
+
 <LoadingContent LoadingObject="@People">
     <MudStack Justify="Justify.Center">
         <MudText Class="ma-auto" Typo="Typo.h1">@Resources.PopularPeople</MudText>

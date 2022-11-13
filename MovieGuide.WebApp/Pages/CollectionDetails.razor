@@ -1,6 +1,7 @@
 ﻿@page "/collection/{Id:int}"
 
 <LoadingContent LoadingObject="Collection">
+    <PageTitle>Movie Guide - @Collection.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
         <MudImage Class="rounded-lg detail-img" Src="@Collection.PosterFullPath" />
         <MudStack Class="detail-info">

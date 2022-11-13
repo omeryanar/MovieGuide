@@ -3,13 +3,13 @@
 
 <PageTitle>Movie Guide</PageTitle>
 
-<MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
-    <MudText Typo="Typo.h1"> @Resources.Popular @Resources.Movies</MudText>
+<MudStack Row="true" Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h1">@Resources.Popular @Resources.Movies</MudText>
     <MudTooltip Text="@Resources.ViewAll">
         <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="discover/movie" />
     </MudTooltip>
 </MudStack>
-<MudStack Row="true" Class="flex-wrap mb-8">    
+<MudStack Class="flex-wrap mb-4" Row="true" Justify="Justify.Center">
     @if (Movies == null)
     {
         <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" />
@@ -23,13 +23,13 @@
     }
 </MudStack>
 
-<MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
-    <MudText Typo="Typo.h1"> @Resources.Popular @Resources.TvShows</MudText>
+<MudStack Row="true" Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h1">@Resources.Popular @Resources.TvShows</MudText>
     <MudTooltip Text="@Resources.ViewAll">
         <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="discover/tv" />
     </MudTooltip>
 </MudStack>
-<MudStack Row="true" Class="flex-wrap mb-8">    
+<MudStack Class="flex-wrap mb-4" Row="true" Justify="Justify.Center">
     @if (TvShows == null)
     {
         <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" />
@@ -43,13 +43,13 @@
     }
 </MudStack>
 
-<MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
-    <MudText Typo="Typo.h1"> @Resources.Popular @Resources.People</MudText>
+<MudStack Row="true" Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h1">@Resources.Popular @Resources.People</MudText>
     <MudTooltip Text="@Resources.ViewAll">
         <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="person/popular" />
     </MudTooltip>
 </MudStack>
-<MudStack Row="true" Class="flex-wrap mb-8">    
+<MudStack Class="flex-wrap mb-4" Row="true" Justify="Justify.Center">
     @if (People == null)
     {
         <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" />

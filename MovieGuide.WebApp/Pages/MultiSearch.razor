@@ -1,6 +1,8 @@
 ﻿@page "/search"
 @inherits BasePaginatedPage
 
+<PageTitle>Movie Guide - @Resources.Search: @Query</PageTitle>
+
 <LoadingContent LoadingObject="@Search">
     <MudStack Justify="Justify.Center">
         <MudText Class="ma-auto" Typo="Typo.h1">@Resources.Search: @Query</MudText>

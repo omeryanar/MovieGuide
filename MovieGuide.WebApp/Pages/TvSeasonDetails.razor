@@ -1,6 +1,7 @@
 ﻿@page "/tv/{Id:int}/season/{SeasonNumber:int}"
 
 <LoadingContent LoadingObject="Season">
+    <PageTitle>Movie Guide - @TvShow?.Name - @Season.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
         <MudImage Class="rounded-lg detail-img" Src="@Season.PosterFullPath" />
         <MudStack Class="detail-info">

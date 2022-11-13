@@ -1,6 +1,7 @@
 ﻿@page "/person/{Id:int}"
 
 <LoadingContent LoadingObject="Person">
+    <PageTitle>Movie Guide - @Person.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
         <MudImage Class="rounded-lg detail-img" Src="@Person.ProfileFullPath" />
         <MudStack Class="detail-info">

@@ -1,6 +1,8 @@
 ﻿@page "/list/{Id:int}/{Title}"
 @inherits BasePaginatedPage
 
+<PageTitle>Movie Guide - @Title</PageTitle>
+
 <LoadingContent LoadingObject="@Items">
     <MudStack Justify="Justify.Center">
         <MudText Class="ma-auto" Typo="Typo.h1">@Title</MudText>
