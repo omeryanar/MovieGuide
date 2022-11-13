@@ -73,9 +73,9 @@
 
     protected async override Task OnInitializedAsync()
     {
-        //Movies = await TmdbService.GetPopularMovies();
-        //TvShows = await TmdbService.GetPopularTvShows();
-        //People = await TmdbService.GetPopularPeople();
+        Movies = await TmdbService.GetPopularMovies();
+        TvShows = await TmdbService.GetPopularTvShows();
+        People = await TmdbService.GetPopularPeople();
     }
 }
 
