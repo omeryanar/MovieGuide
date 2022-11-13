@@ -14,5 +14,8 @@ namespace MovieGuide.Common.Model.Search
 
         [JsonPropertyName("popularity")]
         public double Popularity { get; set; }
+
+        [JsonIgnore]
+        public string Link => (MediaType == MediaType.Movie ? "movie/" : MediaType == MediaType.TvShow ? "tv/" : "person/") + Id;
     }
 }

@@ -4,7 +4,7 @@
 <PageTitle>Movie Guide</PageTitle>
 
 <MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
-    <MudText Typo="Typo.h4"> @Resources.Popular @Resources.Movies</MudText>
+    <MudText Typo="Typo.h1"> @Resources.Popular @Resources.Movies</MudText>
     <MudTooltip Text="@Resources.ViewAll">
         <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="discover/movie" />
     </MudTooltip>
@@ -24,7 +24,7 @@
 </MudStack>
 
 <MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
-    <MudText Typo="Typo.h4"> @Resources.Popular @Resources.TvShows</MudText>
+    <MudText Typo="Typo.h1"> @Resources.Popular @Resources.TvShows</MudText>
     <MudTooltip Text="@Resources.ViewAll">
         <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="discover/tv" />
     </MudTooltip>
@@ -44,7 +44,7 @@
 </MudStack>
 
 <MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
-    <MudText Typo="Typo.h4"> @Resources.Popular @Resources.People</MudText>
+    <MudText Typo="Typo.h1"> @Resources.Popular @Resources.People</MudText>
     <MudTooltip Text="@Resources.ViewAll">
         <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" Link="person/popular" />
     </MudTooltip>
@@ -73,9 +73,9 @@
 
     protected async override Task OnInitializedAsync()
     {
-        Movies = await TmdbService.GetPopularMovies();
-        TvShows = await TmdbService.GetPopularTvShows();
-        People = await TmdbService.GetPopularPeople();
+        //Movies = await TmdbService.GetPopularMovies();
+        //TvShows = await TmdbService.GetPopularTvShows();
+        //People = await TmdbService.GetPopularPeople();
     }
 }
 

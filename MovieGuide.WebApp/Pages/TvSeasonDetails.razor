@@ -1,28 +1,29 @@
 ﻿@page "/tv/{Id:int}/season/{SeasonNumber:int}"
 
-@if (Season == null)
-{
-    <LoadingCircular />
-}
-else
-{
+<LoadingContent LoadingObject="Season">
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg" Width="300" Height="450" Src="@Season.PosterFullPath" />
-        <MudStack Style="max-width:800px">
-            <MudStack Row="true">
-                <MudText Typo="Typo.h4">@TvShow?.Name - @Season.Name</MudText>
-                <MudText Typo="Typo.h4" Style="opacity:0.6">@Season.AirDate?.ToString("(yyyy)")</MudText>
+        <MudImage Class="rounded-lg detail-img" Src="@Season.PosterFullPath" />
+        <MudStack Class="detail-info">
+            <MudStack Class="flex-wrap" Row="true">
+                <MudText Typo="Typo.h1">@TvShow?.Name - @Season.Name</MudText>
+                <MudText Typo="Typo.h2">@Season.AirDate?.ToString("(yyyy)")</MudText>
             </MudStack>
             <GenreChipSet Genres="@TvShow?.Genres" MediaType="MediaType.TvShow" />
             <MudStack Row="true" AlignItems="AlignItems.Center">
                 <RatingCircular Value="@Season.VoteAverage" Size="Size.Large" />
-                <MudText Typo="Typo.h6" Style="opacity:0.6; font-style:italic">@String.Format(Resources.SeasonEpisodes, Season.Episodes?.Count)</MudText>
+                <MudText Typo="Typo.h4" Style="font-weight:500; font-style:italic">@String.Format(Resources.SeasonEpisodes, Season.Episodes?.Count)</MudText>
             </MudStack>
+             <MudElement Class="d-none d-sm-flex flex-column gap-3">
+                <LabeledItem Label="@Resources.Overview" Text="@Season.LocalizedOverview" />
+                <FeaturedCrewLinkSet FeaturedCrew="@Season.FeaturedCrew" />
+            </MudElement>
+        </MudStack>
+        <MudStack Class="d-sm-none">
             <LabeledItem Label="@Resources.Overview" Text="@Season.LocalizedOverview" />
             <FeaturedCrewLinkSet FeaturedCrew="@Season.FeaturedCrew" />
         </MudStack>
     </MudStack>
-    <MudStack Class="mt-4" Spacing="4" Style="width:100%; max-width:1080px">
+    <MudStack Class="mt-4">
         <ExpansionPanel Title="@Resources.Starring" Items="Season.Starring" Expanded="true">
             <PersonCastCard Cast="context" />
         </ExpansionPanel>
@@ -42,5 +43,5 @@ else
                 <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
             </MudLink>
         </ExpansionPanel>
-    </MudStack>   
-}
+    </MudStack>
+</LoadingContent>

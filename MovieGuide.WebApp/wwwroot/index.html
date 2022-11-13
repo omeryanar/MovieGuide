@@ -10,6 +10,7 @@
     <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
+    <link href="app.css" rel="stylesheet" />
     <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png" />
@@ -18,13 +19,12 @@
 
 <body>
     <div id="app">
-        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow:auto; background: #303030">
-            <div style="position:fixed; top: 50%; left: 50%; margin-left: -32px; margin-top: -32px">
-                <img src="images/loading.svg" width="64" height="64" />
-            </div>
-        </div>
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
     </div>
-
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>

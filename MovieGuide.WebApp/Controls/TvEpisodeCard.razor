@@ -1,12 +1,10 @@
 ﻿<MudLink Underline="Underline.None" Href="@($"tv/{TvShow.Id}/season/{Episode.SeasonNumber}/episode/{Episode.EpisodeNumber}")">
-    <MudCard Style="width:300px; height:100%" Elevation="3">
-        <MudImage Class="rounded-t" Src="@Episode.StillFullPath" Width="300" Height="169" />
-        <MudCardContent Class="pt-0">
-            <MudStack Style="margin: -26px 0px 4px">
-                <RatingCircular Value="@Episode.VoteAverage"></RatingCircular>
-            </MudStack>
-            <MudText Style="font-weight:bold">@Episode</MudText>
-            <MudText Style="opacity:0.6">@Episode.LocalizedOverview</MudText>
+    <MudCard Class="episode-card" Elevation="3">
+        <MudImage Class="rounded-t episode-card-img" Src="@Episode.StillFullPath" />
+        <MudCardContent Class="media-card-content media-card-rating">
+            <RatingCircular Value="@Episode.VoteAverage"></RatingCircular>
+            <MudText Typo="Typo.h5" >@Episode</MudText>
+            <MudText Typo="Typo.h6" >@Episode.LocalizedOverview</MudText>
         </MudCardContent>
     </MudCard>
 </MudLink>

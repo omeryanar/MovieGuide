@@ -276,6 +276,9 @@
   <data name="KnownFor" xml:space="preserve">
     <value>Bilinen İşleri</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Dil</value>
+  </data>
   <data name="LastMovie" xml:space="preserve">
     <value>Son Film</value>
   </data>
@@ -318,6 +321,9 @@
   <data name="News" xml:space="preserve">
     <value>Haber</value>
     <comment>Genre</comment>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Sonraki Sayfa</value>
   </data>
   <data name="Novel" xml:space="preserve">
     <value>Roman</value>
@@ -372,6 +378,9 @@
   </data>
   <data name="Posters" xml:space="preserve">
     <value>Posterler</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Önceki Sayfa</value>
   </data>
   <data name="ProductionCompanies" xml:space="preserve">
     <value>Yapımcı Şirketler</value>

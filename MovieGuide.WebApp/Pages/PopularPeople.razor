@@ -1,20 +1,20 @@
 ﻿@page "/person/popular"
+@inherits BasePaginatedPage
 
-<MudText Typo="Typo.h4">@Resources.PopularPeople</MudText>
+<LoadingContent LoadingObject="@People">
+    <MudStack Justify="Justify.Center">
+        <MudText Class="ma-auto" Typo="Typo.h1">@Resources.PopularPeople</MudText>
+        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
+            @if (People != null)
+            {
+                foreach (SearchPerson person in People.Results)
+                {
+                    <MediaCard Media="person" />
+                }
+            }
+        </MudStack>
+    </MudStack>
+</LoadingContent>
 
-<MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
 
-<MudStack Row="true" Class="flex-wrap">
-    @if (People != null)
-    {
-        foreach (SearchPerson person in People.Results)
-        {
-            <MediaCard Media="person" />
-        }
-    }
-</MudStack>
-
-@code
-{
-    private int pageCount = 1;
-}

@@ -1,12 +1,11 @@
-﻿@inherits MudComponentBase
-@inject NavigationManager NavigationManager
+﻿@inject NavigationManager NavigationManager
 
-<MudChipSet Class="mx-n2">
+<MudChipSet>
     @if(Companies != null)
     {
         foreach(ProductionCompany company in Companies)
         {
-            <MudChip Text="@company.Name" Value="company.Id" OnClick="() => Navigate(company.Id)">@company</MudChip>
+            <MudChip Class="chip" Text="@company.Name" Value="company.Id" OnClick="() => Navigate(company.Id)">@company</MudChip>
         }
     }
 </MudChipSet>

@@ -12,9 +12,6 @@ namespace MovieGuide.WebApp.Pages
         public ISnackbar Snackbar { get; set; }
 
         [Inject]
-        public NavigationManager NavigationManager { get; set; }
-
-        [Inject]
         public TmdbService TmdbService { get; set; }
 
         [Parameter]
@@ -57,24 +54,6 @@ namespace MovieGuide.WebApp.Pages
         [SupplyParameterFromQuery(Name = "year")]
         public int? Year { get; set; }
 
-        [Parameter]
-        [SupplyParameterFromQuery(Name = "page")]
-        public int Page
-        {
-            get => page;
-            set
-            {
-                int newValue = value > 0 ? value : 1;
-                if (page != newValue)
-                {
-                    page = newValue;
-                    pageCount = newValue;
-                    Refresh();
-                }
-            }
-        }
-        private int page = 1;
-
         public SearchContainer<SearchTvShow> TvShows { get; private set; }
 
         protected async override Task OnParametersSetAsync()
@@ -93,23 +72,25 @@ namespace MovieGuide.WebApp.Pages
             runtime = Runtime;
             year = Year;
 
-            Uri uri = new Uri(NavigationManager.Uri);
-            isFilterActive = uri.Query.ParseQuery().Any(x => x.Key != "sort_by" && x.Key != "page");
-
-            TvShows = await TmdbService.DiscoverTvShow(uri.Query);
-            pageCount = TvShows.TotalPages;
+            try
+            {
+                isSearching = true;
+                Uri uri = new Uri(NavigationManager.Uri);
+                TvShows = await TmdbService.DiscoverTvShow(uri.Query);
+                if (TvShows!= null)
+                    PageCount = TvShows.TotalPages;
+            }
+            finally
+            {
+                isSearching = false;
+                showFilters = CurrentBreakpoint != Breakpoint.Xs;
+            }
         }
 
-        private void Refresh()
+        protected override string GetUriWithQueryString()
         {
-            string uri = GetUriWithQueryString();
-            NavigationManager.NavigateTo(uri);
-        }
-
-        private string GetUriWithQueryString()
-        {
-            string endpoint = "discover/tv";
-            string uri = endpoint.AddQueryString("sort_by", sortBy.Id);
+            string uri = "discover/tv";
+            uri = uri.AddQueryString("sort_by", sortBy.Id);
 
             if (withGenres?.Count > 0)
                 withGenres.ToList().ForEach(x => uri = uri.AddQueryString("with_genres", x.ToString()));
@@ -130,8 +111,6 @@ namespace MovieGuide.WebApp.Pages
                 uri = uri.AddQueryString("with_runtime.gte", runtime);
             if (year != null)
                 uri = uri.AddQueryString("year", year);
-            if (page > 1)
-                uri = uri.AddQueryString("page", page);
 
             return uri;
         }

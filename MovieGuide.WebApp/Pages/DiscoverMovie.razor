@@ -1,87 +1,80 @@
 ﻿@page "/discover/movie"
+@inherits BaseResponsivePage
 
-<style>
-    .mud-drawer-content {
-        overflow:hidden;
-    }
-</style>
-
-<MudText Typo="Typo.h4">@Resources.Movies</MudText>
-
-<MudStack Class="my-4" Row="true">
-    <MudToggleIconButton Style="width:32px; height:32px" Class="rounded-circle" Variant="Variant.Filled" @bind-Toggled="@showFilters"
-        Size="Size.Small" Color="Color.Primary" Icon="@Icons.Filled.FilterAlt"
-        ToggledSize="Size.Small" ToggledColor="Color.Primary" ToggledIcon="@Icons.Filled.FilterAlt" />
-    <MudPagination Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
-</MudStack>
-
-<MudDrawerContainer Class="relative">
-    <MudDrawer Class="pl-1 pr-3 rounded" Style="z-index: 0 !important" DisableOverlay="true" Color="Color.Transparent" Elevation="0" Height="auto" Width="280px" MiniWidth="0px" Variant="DrawerVariant.Mini" @bind-Open="@showFilters">
-        <MudExpansionPanels MultiExpansion="true" Elevation="3">
-            <MudExpansionPanel IsInitiallyExpanded="true">
-                <TitleContent>
-                    <MudText Typo="Typo.h6">@Resources.Sort</MudText>
-                </TitleContent>
-                <ChildContent>
-                    <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
-                        @foreach(SortType item in SortHelper.MovieSortBy)
-                        {
-                            <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>
-                        }
-                    </MudSelect>
-                </ChildContent>                
-            </MudExpansionPanel>
-            <MudExpansionPanel @bind-IsExpanded="isFilterActive">
-                <TitleContent>
-                    <MudText Typo="Typo.h6">@Resources.Filter</MudText>
-                </TitleContent>
-                <ChildContent>
-                    <MudText Class="mb-2">@Resources.Genres</MudText>
-                    <MudChipSet Class="mb-2" MultiSelection="true" Filter="true" @bind-SelectedValues="withGenres">
-                        @foreach(Genre genre in GenreHelper.MovieGenres)
-                        {
-                            <MudChip Text="@genre.Name" Value="genre.Id" Variant="Variant.Text" Color="Color.Primary">@genre</MudChip>
-                        }
-                    </MudChipSet>
-                    <MudDivider Class="my-4" />
-                    <MudSlider Variant="Variant.Filled" Min="0" Max="10" Step="1" @bind-Value="voteAverage">@Resources.VoteAverage: @voteAverage</MudSlider>
-                    <MudDivider Class="my-4" />
-                    <MudSlider Variant="Variant.Filled" Min="0" Max="1000" Step="50" @bind-Value="voteCount">@Resources.MinimumVotes: @voteCount</MudSlider>
-                    <MudDivider Class="my-4" />
-                    <MudSlider Variant="Variant.Filled" Min="0" Max="360" Step="10" @bind-Value="runtime">@Resources.MinimumRuntime: @runtime @Resources.Minutes</MudSlider>
-                    <MudDivider Class="my-4" />
-                    <MudText Class="mt-4 mb-n4">@Resources.OriginalLanguage</MudText>
-                    <SearchLanguage @bind-SelectedLanguage="withLanguage"></SearchLanguage>
-                    <MudText Class="mt-8 mb-n4">@Resources.People</MudText>
-                    <SearchPeople @bind-SelectedPeople="withPeople"></SearchPeople>
-                    <MudText Class="mt-8 mb-n4">@Resources.Keywords</MudText>
-                    <SearchKeyword @bind-SelectedKeywords="withKeywords"></SearchKeyword>
-                    <MudText Class="mt-8 mb-n4">@Resources.ProductionCompanies</MudText>
-                    <SearchCompany @bind-SelectedCompanies="withCompanies"></SearchCompany>
-                    <MudText Class="mt-8 mb-n4">@Resources.ReleaseYear</MudText>
-                    <MudNumericField @bind-Value="year" Min="1850" Max="DateTime.Now.Year" />
-                </ChildContent>
-            </MudExpansionPanel>
-        </MudExpansionPanels>
-        <MudButton Class="my-4" Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="Refresh">
-            <MudText>@Resources.Search</MudText>
-        </MudButton>
-    </MudDrawer>
-    <MudStack Row="true" Class="flex-wrap">
-        @if (Movies != null)
-        {
-            foreach (SearchMovie movie in Movies.Results)
-            {
-                <MediaCard Media="movie" />
-            }
-        }
+<LoadingContent LoadingObject="Movies">
+    <MudStack Justify="Justify.Center">
+        <MudText Class="ma-auto" Typo="Typo.h1">@Resources.Movies</MudText>
+        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudGrid>
+            <MudItem xs="12" sm="4">
+                <MudButton Class="mb-4" Disabled="isSearching" Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="Refresh">
+                    @if(isSearching)
+                    {
+                        <MudProgressCircular Class="mr-2" Size="Size.Small" Indeterminate="true" />
+                    }
+                    <MudText>@Resources.Search</MudText>
+                </MudButton>
+                <MudExpansionPanels MultiExpansion="true" Elevation="3">
+                    <MudExpansionPanel IsInitiallyExpanded="true">
+                        <TitleContent>
+                            <MudText Typo="Typo.h3">@Resources.Sort</MudText>
+                        </TitleContent>
+                        <ChildContent>
+                            <MudSelect Class="sort-select" AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
+                                @foreach (SortType item in SortHelper.MovieSortBy)
+                                {
+                                    <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>
+                                }
+                            </MudSelect>
+                        </ChildContent>
+                    </MudExpansionPanel>
+                    <MudExpansionPanel @bind-IsExpanded="showFilters">
+                        <TitleContent>
+                            <MudText Typo="Typo.h3">@Resources.Filter</MudText>
+                        </TitleContent>
+                        <ChildContent>
+                            <MudText Class="mb-2">@Resources.Genres</MudText>
+                            <MudChipSet Class="mb-2" MultiSelection="true" Filter="true" @bind-SelectedValues="withGenres">
+                                @foreach (Genre genre in GenreHelper.MovieGenres)
+                                {
+                                    <MudChip Class="chip" Text="@genre.Name" Value="genre.Id" Variant="Variant.Text" Color="Color.Primary">@genre</MudChip>
+                                }
+                            </MudChipSet>
+                            <MudDivider Class="my-4" />
+                            <MudSlider Variant="Variant.Filled" Min="0" Max="10" Step="1" @bind-Value="voteAverage">@Resources.VoteAverage: @voteAverage</MudSlider>
+                            <MudDivider Class="my-4" />
+                            <MudSlider Variant="Variant.Filled" Min="0" Max="1000" Step="50" @bind-Value="voteCount">@Resources.MinimumVotes: @voteCount</MudSlider>
+                            <MudDivider Class="my-4" />
+                            <MudSlider Variant="Variant.Filled" Min="0" Max="360" Step="10" @bind-Value="runtime">@Resources.MinimumRuntime: @runtime @Resources.Minutes</MudSlider>
+                            <MudDivider Class="my-4" />
+                            <MudText Class="mt-4 mb-n4">@Resources.OriginalLanguage</MudText>
+                            <SearchLanguage @bind-SelectedLanguage="withLanguage"></SearchLanguage>
+                            <MudText Class="mt-8 mb-n4">@Resources.People</MudText>
+                            <SearchPeople @bind-SelectedPeople="withPeople"></SearchPeople>
+                            <MudText Class="mt-8 mb-n4">@Resources.Keywords</MudText>
+                            <SearchKeyword @bind-SelectedKeywords="withKeywords"></SearchKeyword>
+                            <MudText Class="mt-8 mb-n4">@Resources.ProductionCompanies</MudText>
+                            <SearchCompany @bind-SelectedCompanies="withCompanies"></SearchCompany>
+                            <MudText Class="mt-8 mb-n4">@Resources.ReleaseYear</MudText>
+                            <MudNumericField @bind-Value="year" Min="1850" Max="DateTime.Now.Year" />
+                        </ChildContent>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
+            </MudItem>
+            <MudItem xs="12" sm="8">
+                <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
+                    @foreach (SearchMovie movie in Movies.Results)
+                    {
+                        <MediaCard Media="movie" />
+                    }
+                </MudStack>
+            </MudItem>
+        </MudGrid>
     </MudStack>    
-</MudDrawerContainer>
+</LoadingContent>
 
 @code
 {
-    private int pageCount = 1;
-
     private int voteAverage;
 
     private int voteCount;
@@ -102,7 +95,7 @@
 
     private ICollection<object> withCompanies;
 
-    private bool isFilterActive;
+    private bool isSearching = false;
 
     private bool showFilters = true;
 }

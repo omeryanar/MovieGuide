@@ -8,50 +8,25 @@ namespace MovieGuide.WebApp.Pages
     public partial class MediaList
     {
         [Inject]
-        public NavigationManager NavigationManager { get; set; }
-
-        [Inject]
         public TmdbService TmdbService { get; set; }
 
         [Parameter]
         public int Id { get; set; }
 
         [Parameter]
-        public string Title { get; set; }        
-
-        [Parameter]
-        [SupplyParameterFromQuery(Name = "page")]
-        public int Page
-        {
-            get => page;
-            set
-            {
-                int newValue = value > 0 ? value : 1;
-                if (page != newValue)
-                {
-                    page = newValue;
-                    pageCount = newValue;
-                    Refresh();
-                }
-            }
-        }
-        private int page = 1;
+        public string Title { get; set; }
 
         public SearchContainer<SearchBase> Items { get; private set; }
 
         protected async override Task OnParametersSetAsync()
         {
             Items = await TmdbService.GetList(Id, Page);
-            pageCount = Items.TotalPages;
+            PageCount = Items.TotalPages;
         }
 
-        private void Refresh()
+        protected override string GetUriWithQueryString()
         {
-            string uri = $"list/{Id}/{Title}";
-            if (page > 1)
-                uri = uri.AddQueryString("page", page);
-
-            NavigationManager.NavigateTo(uri);
+            return $"/list/{Id}/{Title}";
         }
     }
 }

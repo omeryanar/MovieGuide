@@ -8,9 +8,9 @@ namespace MovieGuide.WebApp.Controls
     public partial class RatingCircular : MudComponentBase
     {
         protected string DivClassname =>
-            new CssBuilder("mud-progress-circular")
-                .AddClass($"mud-progress-{Size.ToDescriptionString()}")
+            new CssBuilder("mud-progress-circular")                
                 .AddClass("mud-progress-static")
+                .AddClass($"rating-{Size.ToDescriptionString()}")
                 .AddClass(Class)
                 .Build();
 

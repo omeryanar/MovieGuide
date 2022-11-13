@@ -1,0 +1,17 @@
+﻿@if (LoadingObject == null)
+{
+    <MudProgressCircular Style="position:fixed; top: 50%; left: 50%;" Class="ml-n8 mt-n8" Color="Color.Info" Size="Size.Large" Indeterminate="true" />
+}
+else
+{
+    @ChildContent
+}
+
+@code 
+{
+    [Parameter]
+    public object LoadingObject { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

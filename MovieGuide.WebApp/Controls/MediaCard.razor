@@ -1,48 +1,50 @@
-﻿@if (Media?.MediaType == MediaType.Movie && Media is SearchMovie movie)
-{
-    <MudLink Underline="Underline.None" Href="@("movie/" + movie.Id)">
-        <MudCard Style="width:185px; height:100%" Elevation="3">
-            <MudImage Class="rounded-t" Src="@movie.PosterFullPath" Width="185" Height="278" />
-            <MudCardContent Class="pt-0">
-                <MudStack Style="margin: -26px 0px 4px">
-                    <RatingCircular Value="@movie.VoteAverage"></RatingCircular>
-                </MudStack>
-                <MudText Typo="Typo.body1" Style="font-weight:bold">@movie.Title</MudText>
-                <MudText Typo="Typo.body2">@movie.ReleaseDate?.ToString("MMM d, yyyy")</MudText>
+﻿<MudLink Underline="Underline.None" Href="@Media.Link">
+    <MudCard Class="media-card" Elevation="3">
+        <MudImage Class="rounded-t media-card-img" Src="@image" />
+        @if (Media is SearchMovieTvBase movieTv)
+        {
+            <MudCardContent Class="media-card-content media-card-rating">
+                <RatingCircular Value="@movieTv.VoteAverage"></RatingCircular>
+                <MudText Typo="Typo.h5">@Media</MudText>
+                <MudText Typo="Typo.h6">@date</MudText>
             </MudCardContent>
-        </MudCard>
-    </MudLink>
-}
-else if (Media?.MediaType == MediaType.TvShow && Media is SearchTvShow tvShow)
-{
-    <MudLink Underline="Underline.None" Href="@("tv/" + tvShow.Id)">
-        <MudCard Style="width:185px; height:100%" Elevation="3">
-            <MudImage Class="rounded-t" Src="@tvShow.PosterFullPath" Width="185" Height="278" />
-            <MudCardContent Class="pt-0">
-                <MudStack Style="margin: -26px 0px 4px">
-                    <RatingCircular Value="@tvShow.VoteAverage"></RatingCircular>
-                </MudStack>
-                <MudText Typo="Typo.body1" Style="font-weight:bold">@tvShow.Name</MudText>
-                <MudText Typo="Typo.body2">@tvShow.FirstAirDate?.ToString("MMM d, yyyy")</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudLink>
-}
-else if (Media?.MediaType == MediaType.Person && Media is SearchPerson person)
-{
-    <MudLink Underline="Underline.None" Href="@("person/" + person.Id)">
-        <MudCard Style="width:185px; height:100%" Elevation="3">
-            <MudImage Class="rounded-t" Src="@person.ProfileFullPath" Width="185" Height="278" />
-            <MudCardContent Class="pt-0">
-                <MudText Typo="Typo.body1" Style="font-weight:bold">@person.Name</MudText>
+        }
+        @if (Media is SearchPerson person)
+        {
+            <MudCardContent Class="media-card-content">
+                <MudText Class="my-2" Typo="Typo.h5">@Media</MudText>
                 <MediaLinkSet MediaItems="@person.KnownFor" />
             </MudCardContent>
-        </MudCard>
-    </MudLink>
-}
+        }
+    </MudCard>
+</MudLink>
 
 @code
 {
     [Parameter]
     public SearchBase Media { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        switch (Media)
+        {
+            case SearchMovie movie:
+                image = movie.PosterFullPath;
+                date = movie.ReleaseDate?.ToString("MMM d, yyyy");
+                break;
+
+            case SearchTvShow tv:
+                image = tv.PosterFullPath;
+                date = tv.FirstAirDate?.ToString("MMM d, yyyy");
+                break;
+
+            case SearchPerson person:
+                image = person.ProfileFullPath;
+                break;
+        }
+    }
+
+    private string image;
+
+    private string date;    
 }

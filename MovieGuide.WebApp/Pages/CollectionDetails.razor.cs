@@ -16,6 +16,21 @@ namespace MovieGuide.WebApp.Pages
 
         public Collection Collection { get; set; }
 
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            SortFunctions = new List<SortFunction>
+            {
+                new SortFunction { DisplayText = Resources.ReleaseDateDesc, SortFunc = x => x.ReleaseDate, IsDescending = true },
+                new SortFunction { DisplayText = Resources.ReleaseDateAsc, SortFunc = x => x.ReleaseDate },
+                new SortFunction { DisplayText = Resources.VoteAverageDesc, SortFunc = x => x.VoteAverage, IsDescending = true },
+                new SortFunction { DisplayText = Resources.VoteAverageAsc, SortFunc = x => x.VoteAverage }                
+            };
+
+            selectedSortFunction = SortFunctions[0];
+        }
+
         protected override async Task OnParametersSetAsync()
         {
             if (Id != 0)
@@ -24,15 +39,9 @@ namespace MovieGuide.WebApp.Pages
             }
         }
 
-        private List<SortFunction> SortFunctions = new List<SortFunction>
-        {
-            new SortFunction { DisplayText = Resources.ReleaseDateAsc, SortFunc = x => x.ReleaseDate },
-            new SortFunction { DisplayText = Resources.ReleaseDateDesc, SortFunc = x => x.ReleaseDate, IsDescending = true },
-            new SortFunction { DisplayText = Resources.VoteAverageAsc, SortFunc = x => x.VoteAverage },
-            new SortFunction { DisplayText = Resources.VoteAverageDesc, SortFunc = x => x.VoteAverage, IsDescending = true },
-        };
+        private List<SortFunction> SortFunctions;
 
-        private SortFunction selectedSortFunction = new SortFunction { DisplayText = Resources.ReleaseDateAsc, SortFunc = x => x.ReleaseDate };
+        private SortFunction selectedSortFunction;
     }
 
     public class SortFunction

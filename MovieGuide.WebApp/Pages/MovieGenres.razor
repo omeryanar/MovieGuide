@@ -1,17 +1,18 @@
 ﻿@page "/genre/movie"
 
-<MudText Class="mb-4" Typo="Typo.h4">@Resources.MovieGenres</MudText>
-
-<MudStack Row="true" Class="flex-wrap">
-    @foreach(Genre genre in GenreHelper.MovieGenres)
-    {
-        <MudLink Underline="Underline.None" Color="Color.Default" Href="@($"discover/movie?with_genres={genre.Id}")" >
-            <MudCard Elevation="3">
-                <MudImage Class="rounded-t" Src="@($"genre/movie/{genre.Name}.jpg")" Width="300" Height="225" />
-                <MudCardContent>
-                    <MudText Typo="Typo.h6">@genre</MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudLink>
-    }
+<MudStack Justify="Justify.Center">
+    <MudText Class="ma-auto" Typo="Typo.h1">@Resources.MovieGenres</MudText>
+    <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
+        @foreach(Genre genre in GenreHelper.MovieGenres)
+        {
+            <MudLink Underline="Underline.None" Color="Color.Default" Href="@($"discover/movie?with_genres={genre.Id}")" >
+                <MudCard Class="genre-card" Elevation="3">
+                    <MudImage Class="rounded-t genre-card-img" Src="@($"genre/movie/{genre.Name}.jpg")" />
+                    <MudCardContent>
+                        <MudText Typo="Typo.h3">@genre</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudLink>
+        }
+    </MudStack>
 </MudStack>

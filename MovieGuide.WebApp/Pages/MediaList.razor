@@ -1,20 +1,18 @@
 ﻿@page "/list/{Id:int}/{Title}"
+@inherits BasePaginatedPage
 
-<MudText Typo="Typo.h4">@Title</MudText>
-
-<MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
-
-<MudStack Row="true" Class="flex-wrap">
-    @if (Items != null)
-    {
-        foreach (SearchMovieTvBase item in Items.Results)
-        {
-            <MediaCard Media="item" />
-        }
-    }
-</MudStack>
-
-@code
-{
-    private int pageCount = 1;
-}
+<LoadingContent LoadingObject="@Items">
+    <MudStack Justify="Justify.Center">
+        <MudText Class="ma-auto" Typo="Typo.h1">@Title</MudText>
+        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
+            @if (Items != null)
+            {
+                foreach (SearchMovieTvBase item in Items.Results)
+                {
+                    <MediaCard Media="item" />
+                }
+            }
+        </MudStack>
+    </MudStack>
+</LoadingContent>

@@ -1,47 +1,47 @@
 ﻿@page "/collection/{Id:int}"
 
-@if (Collection == null)
-{
-    <LoadingCircular />
-}
-else
-{
+<LoadingContent LoadingObject="Collection">
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg" Width="300" Height="450" Src="@Collection.PosterFullPath" />
-        <MudStack Style="max-width:800px">
-            <MudText Typo="Typo.h4">@Collection.Name</MudText>
+        <MudImage Class="rounded-lg detail-img" Src="@Collection.PosterFullPath" />
+        <MudStack Class="detail-info">
+            <MudText Typo="Typo.h1">@Collection.Name</MudText>
             <GenreChipSet Genres="@Collection.Genres" />
             <RatingCircular Value="@Collection.VoteAverage" Size="Size.Large" />
-            <LabeledItem Label="@Resources.Overview" Text="@Collection.LocalizedOverview" />
             <MudStack Row="true">
-                <MudText Typo="Typo.h6">@Resources.MovieCount:</MudText>
-                <MudText Typo="Typo.h6" Style="opacity:0.6">@Collection.MovieCount.ToString()</MudText>
+                <MudText Typo="Typo.h3">@Resources.MovieCount:</MudText>
+                <MudText Typo="Typo.h4">@Collection.MovieCount.ToString()</MudText>
             </MudStack>
             <MudStack Row="true">
-                <MudText Typo="Typo.h6">@Resources.FirstMovie:</MudText>
-                <MudLink Typo="Typo.h6" Style="opacity:0.6" Underline="Underline.Hover" Color="Color.Default" Href="@("movie/" + @Collection.FirstMovie?.Id)">@Collection.FirstMovie?.Title</MudLink>
+                <MudText Typo="Typo.h3">@Resources.FirstMovie:</MudText>
+                <MudLink Typo="Typo.h4" Underline="Underline.Hover" Color="Color.Default" Href="@("movie/" + @Collection.FirstMovie?.Id)">@Collection.FirstMovie?.Title</MudLink>
             </MudStack>
             <MudStack Row="true">
-                <MudText Typo="Typo.h6">@Resources.LastMovie:</MudText>
-                <MudLink Typo="Typo.h6" Style="opacity:0.6" Underline="Underline.Hover" Color="Color.Default" Href="@("movie/" + @Collection.LastMovie?.Id)">@Collection.LastMovie?.Title</MudLink>
+                <MudText Typo="Typo.h3">@Resources.LastMovie:</MudText>
+                <MudLink Typo="Typo.h4" Underline="Underline.Hover" Color="Color.Default" Href="@("movie/" + @Collection.LastMovie?.Id)">@Collection.LastMovie?.Title</MudLink>
             </MudStack>
+            <MudElement Class="d-none d-sm-flex">
+                <LabeledItem Label="@Resources.Overview" Text="@Collection.LocalizedOverview" />
+            </MudElement>
         </MudStack>
+        <MudElement Class="d-sm-none">
+            <LabeledItem Label="@Resources.Overview" Text="@Collection.LocalizedOverview" />
+        </MudElement>
     </MudStack>
 
     @if (Collection.MovieCount > 6)
     {
-        <MudPaper MaxWidth="300px" Class="d-flex flex-row px-4 pb-4 mt-4 gap-4 align-end" Elevation="1">
-            <MudText Typo="Typo.h6">@Resources.Sort:</MudText>
-            <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="@selectedSortFunction">
+        <MudPaper MaxWidth="320px" Class="d-flex flex-row mt-4 pa-3 align-end" Elevation="1">
+            <MudText Typo="Typo.h3" Class="mr-3">@Resources.Sort:</MudText>
+            <MudSelect Class="sort-select" AnchorOrigin="Origin.BottomCenter" @bind-Value="selectedSortFunction">
                 @foreach(SortFunction item in SortFunctions)
                 {
-                    <MudSelectItem Value="item"></MudSelectItem>
+                    <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>
                 }
             </MudSelect>
         </MudPaper>
     }
 
-    <MudStack Row="true" Class="flex-wrap gap-4 mt-4">
+    <MudStack Class="flex-wrap mt-4" Row="true">
         @if (Collection.Parts != null)
         {
             if (selectedSortFunction.IsDescending)
@@ -60,4 +60,4 @@ else
             }
         }
     </MudStack>
-}
+</LoadingContent>

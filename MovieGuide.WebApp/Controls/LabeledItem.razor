@@ -1,15 +1,15 @@
 ﻿@if (ChildContent != null && ChildObject != null)
 {
-    <MudStack Spacing="0">
-        <MudText Typo="Typo.h6">@Label</MudText>
+    <MudStack Spacing="1">
+        <MudText Typo="Typo.h3">@Label</MudText>
         @ChildContent
     </MudStack>
 }
 else if (!String.IsNullOrEmpty(Text))
 {
-    <MudStack Spacing="0">
-        <MudText Typo="Typo.h6">@Label</MudText>
-        <MudText Style="opacity:0.6">@Text</MudText>
+    <MudStack Spacing="1">
+        <MudText Typo="Typo.h3">@Label</MudText>
+        <MudText Typo="Typo.h6">@Text</MudText>
     </MudStack>
 }
 

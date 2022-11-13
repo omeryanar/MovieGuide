@@ -1,21 +1,18 @@
 ﻿@page "/search"
+@inherits BasePaginatedPage
 
-<MudText Typo="Typo.h4">@Resources.Search: @Query</MudText>
-
-<MudPagination Class="my-4" Color="Color.Primary" Count="pageCount" @bind-Selected="Page" />
-
-<MudStack Row="true" Class="flex-wrap gap-4">
-    @if (Search != null)
-    {
-        foreach (SearchBase result in Search.Results)
-        {
-            <MediaCard Media="result" />
-        }
-    }
-</MudStack>
-
-
-@code 
-{
-    private int pageCount = 1;
-}
+<LoadingContent LoadingObject="@Search">
+    <MudStack Justify="Justify.Center">
+        <MudText Class="ma-auto" Typo="Typo.h1">@Resources.Search: @Query</MudText>
+        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
+            @if (Search != null)
+            {
+                foreach (SearchBase result in Search.Results)
+                {
+                    <MediaCard Media="result" />
+                }
+            }
+        </MudStack>
+    </MudStack>
+</LoadingContent>

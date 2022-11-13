@@ -1,30 +1,30 @@
 ﻿@page "/person/{Id:int}"
 
-@if (Person == null)
-{
-    <LoadingCircular />
-}
-else
-{
+<LoadingContent LoadingObject="Person">
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg" Width="300" Height="450" Src="@Person.ProfileFullPath" />
-        <MudStack Style="max-width:800px">
-            <MudText Typo="Typo.h4">@Person.Name</MudText>
-            <MudStack Row="true" Spacing="8">
+        <MudImage Class="rounded-lg detail-img" Src="@Person.ProfileFullPath" />
+        <MudStack Class="detail-info">
+            <MudText Typo="Typo.h1">@Person.Name</MudText>
+            <MudStack Row="true" Spacing="4">
                 <LabeledItem Label="@Resources.PlaceOfBirth" Text="@Person.PlaceOfBirth" />
                 <LabeledItem Label="@Resources.Birthday" Text="@Person.Birthday?.ToString("MMM d, yyyy")" />
                 <LabeledItem Label="@Resources.Deathday" Text="@Person.Deathday?.ToString("MMM d, yyyy")" />
             </MudStack>
-            <MudStack Row="true">
+            <MudStack Row="true" Spacing="0">
                 <SocialMediaLink SocialMedia="SocialMediaType.ImdbName" Id="@Person.ImdbId" />
                 <SocialMediaLink SocialMedia="SocialMediaType.Twitter" Id="@Person.ExternalIds?.TwitterId" />
                 <SocialMediaLink SocialMedia="SocialMediaType.Facebook" Id="@Person.ExternalIds?.FacebookId" />
                 <SocialMediaLink SocialMedia="SocialMediaType.Instagram" Id="@Person.ExternalIds?.InstagramId" />
             </MudStack>
-            <LabeledItem Label="@Resources.Biography" Text="@Person.LocalizedBiography" />
+            <MudElement Class="d-none d-sm-flex">
+                <LabeledItem Label="@Resources.Biography" Text="@Person.LocalizedBiography" />
+            </MudElement>
         </MudStack>
+        <MudElement Class="d-sm-none">
+            <LabeledItem Label="@Resources.Biography" Text="@Person.LocalizedBiography" />
+        </MudElement>
     </MudStack>
-    <MudStack Class="mt-4" Spacing="4" Style="width:100%; max-width:1080px">
+    <MudStack Class="mt-4">
         <ExpansionPanel Title="@Resources.KnownFor" Items="Person.KnownFor" Expanded="true">
             <MediaCard Media="context" />
         </ExpansionPanel>
@@ -44,17 +44,17 @@ else
                                 </MudLink>
                             </CellTemplate>
                         </Column>
-                        <Column T="MovieCrew" Field="Department" Title="@Resources.Department">
-                            <CellTemplate>
-                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
-                            </CellTemplate>
-                        </Column>
                         <Column T="MovieCrew" Field="Job" Title="@Resources.JobRole">
                             <CellTemplate>
                                 <MudHighlighter Text="@context.Item.Job" HighlightedText="@movieSearchString" />
                             </CellTemplate>
                         </Column>
-                        <Column T="MovieCrew" Field="ReleaseDate" Title="@Resources.ReleaseDate">
+                        <Column T="MovieCrew" Field="Department" Title="@Resources.Department" HideSmall="true">
+                            <CellTemplate>
+                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
+                            </CellTemplate>
+                        </Column>                        
+                        <Column T="MovieCrew" Field="ReleaseDate" Title="@Resources.ReleaseDate" HideSmall="true">
                             <CellTemplate>
                                 <MudText Typo="Typo.body2">@context.Item.ReleaseDate?.ToString("MMM d, yyyy")</MudText>
                             </CellTemplate>
@@ -79,17 +79,18 @@ else
                                 </MudLink>
                             </CellTemplate>
                         </Column>
-                        <Column T="TvCrew" Field="Department" Title="@Resources.Department">
-                            <CellTemplate>
-                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
-                            </CellTemplate>
-                        </Column>
                         <Column T="TvCrew" Field="Job" Title="@Resources.JobRole">
                             <CellTemplate>
                                 <MudHighlighter Text="@context.Item.Job" HighlightedText="@tvShowSearchString" />
                             </CellTemplate>
                         </Column>
-                        <Column T="TvCrew" Field="FirstAirDate" Title="@Resources.FirstAirDate">
+                        <Column T="TvCrew" Field="Department" Title="@Resources.Department" HideSmall="true">
+                            <CellTemplate>
+                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
+                            </CellTemplate>
+                        </Column>
+                        
+                        <Column T="TvCrew" Field="FirstAirDate" Title="@Resources.FirstAirDate" HideSmall="true">
                             <CellTemplate>
                                 <MudText Typo="Typo.body2">@context.Item.FirstAirDate?.ToString("MMM d, yyyy")</MudText>
                             </CellTemplate>
@@ -103,5 +104,5 @@ else
                 <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
             </MudLink>
         </ExpansionPanel>
-    </MudStack>   
-}
+    </MudStack>
+</LoadingContent>

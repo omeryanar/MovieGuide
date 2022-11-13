@@ -276,6 +276,9 @@
   <data name="KnownFor" xml:space="preserve">
     <value>Known For</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="LastMovie" xml:space="preserve">
     <value>Last Movie</value>
   </data>
@@ -318,6 +321,9 @@
   <data name="News" xml:space="preserve">
     <value>News</value>
     <comment>Genre</comment>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Next Page</value>
   </data>
   <data name="Novel" xml:space="preserve">
     <value>Novel</value>
@@ -372,6 +378,9 @@
   </data>
   <data name="Posters" xml:space="preserve">
     <value>Posters</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Previous Page</value>
   </data>
   <data name="ProductionCompanies" xml:space="preserve">
     <value>Production Companies</value>

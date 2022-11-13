@@ -7,14 +7,14 @@
 <MudLayout>
     <MudAppBar Elevation="0">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => drawerOpen = !drawerOpen)" />
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" />
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" />            
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" Title="@Resources.PreviousPage" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" Title="@Resources.NextPage" />
         <MudSpacer />
         <SearchBar />
         <MudSpacer />
         <MudMenu AnchorOrigin="Origin.BottomCenter">
             <ActivatorContent>
-                <MudIconButton Icon="@Icons.Material.Filled.Translate" Color="Color.Inherit" />
+                <MudIconButton Icon="@Icons.Material.Filled.Translate" Color="Color.Inherit" Title="@Resources.Language" />
             </ActivatorContent>
             <ChildContent>
                 @foreach(Language language in SupportedLanguages)
@@ -31,7 +31,7 @@
     </MudAppBar>
     <MudDrawer @bind-Open="drawerOpen" Elevation="1" Anchor="Anchor.Left" ClipMode="DrawerClipMode.Always">
         <MudDrawerHeader>
-            <MudText Typo="Typo.h6">Movie Guide</MudText>
+            <MudText Typo="Typo.h3" Class="mt-4">Movie Guide</MudText>
         </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
