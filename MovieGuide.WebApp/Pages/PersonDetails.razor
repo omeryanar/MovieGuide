@@ -11,7 +11,7 @@
                 <LabeledItem Label="@Resources.Birthday" Text="@Person.Birthday?.ToString("MMM d, yyyy")" />
                 <LabeledItem Label="@Resources.Deathday" Text="@Person.Deathday?.ToString("MMM d, yyyy")" />
             </MudStack>
-            <MudStack Row="true" Spacing="0">
+            <MudStack Row="true">
                 <SocialMediaLink SocialMedia="SocialMediaType.ImdbName" Id="@Person.ImdbId" />
                 <SocialMediaLink SocialMedia="SocialMediaType.Twitter" Id="@Person.ExternalIds?.TwitterId" />
                 <SocialMediaLink SocialMedia="SocialMediaType.Facebook" Id="@Person.ExternalIds?.FacebookId" />

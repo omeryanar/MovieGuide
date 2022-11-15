@@ -25,7 +25,7 @@
         </MudStack>
     </MudStack>
     <MudGrid Class="mt-4">
-        <MudItem sm="12" md="9">
+        <MudItem xs=12 sm="12" md="9">
             <MudStack>
                 <ExpansionPanel Title="@Resources.Starring" Items="TvShow.Starring" Expanded="true">
                     <PersonCastCard Cast="context" />
@@ -53,9 +53,9 @@
                 </ExpansionPanel>
             </MudStack>
         </MudItem>
-        <MudItem sm="12" md="3">
+        <MudItem xs="12" sm="12" md="3">
             <MudStack Spacing="4">
-                <MudStack Row="true" Class="mx-n2" Spacing="0">
+                <MudStack Row="true">
                     <SocialMediaLink SocialMedia="SocialMediaType.ImdbTitle" Id="@TvShow.ExternalIds?.ImdbId" />
                     <SocialMediaLink SocialMedia="SocialMediaType.Youtube" Id="@TvShow.TrailerLink" />
                 </MudStack>

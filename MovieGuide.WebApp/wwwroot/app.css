@@ -188,13 +188,13 @@
 }
 
 .genre-card {
-    width: 200px;
+    width: 176px;
     height: 100%;
 }
 
 .genre-card-img {
-    width: 200px;
-    height: 150px;
+    width: 176px;
+    height: 132px;
 }
 
 @media only screen and (min-width: 960px) {
