@@ -25,8 +25,8 @@
                 }
             </ChildContent>
         </MudMenu>
-        <MudToggleIconButton @bind-Toggled="darkMode" Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" Title="@Resources.Dark"
-            ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit" ToggledTitle="@Resources.Light">
+        <MudToggleIconButton Edge="Edge.End" Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" Title="@Resources.Dark"
+            @bind-Toggled="darkMode" ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit" ToggledTitle="@Resources.Light">
         </MudToggleIconButton>
     </MudAppBar>
     <MudDrawer @bind-Open="drawerOpen" Elevation="1" Anchor="Anchor.Left" ClipMode="DrawerClipMode.Always">

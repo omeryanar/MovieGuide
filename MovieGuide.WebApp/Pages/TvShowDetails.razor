@@ -10,7 +10,7 @@
                 <MudText Typo="Typo.h2">@TvShow.FirstAirDate?.ToString("(yyyy)")</MudText>
             </MudStack>
             <GenreChipSet Genres="@TvShow.Genres" MediaType="MediaType.TvShow" />
-            <MudStack Row="true" AlignItems="AlignItems.Center">
+            <MudStack Class="flex-wrap" Row="true" AlignItems="AlignItems.Center">
                 <RatingCircular Value="@TvShow.VoteAverage" Size="Size.Large" />
                 <MudText Typo="Typo.h4" Style="font-weight:500; font-style:italic">@TvShow.LocalizedTagline</MudText>
             </MudStack>
@@ -24,7 +24,7 @@
             <FeaturedCrewLinkSet FeaturedCrew="@TvShow.FeaturedCrew" />
         </MudStack>
     </MudStack>
-    <MudGrid Class="mt-4">
+    <MudGrid Class="mt-4" Spacing="2">
         <MudItem xs=12 sm="12" md="9">
             <MudStack>
                 <ExpansionPanel Title="@Resources.Starring" Items="TvShow.Starring" Expanded="true">

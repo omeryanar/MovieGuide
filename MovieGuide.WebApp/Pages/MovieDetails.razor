@@ -10,7 +10,7 @@
                 <MudText Typo="Typo.h2">@Movie.ReleaseDate?.ToString("(yyyy)")</MudText>
             </MudStack>
             <GenreChipSet Genres="@Movie.Genres" />
-            <MudStack Row="true" AlignItems="AlignItems.Center">
+            <MudStack Class="flex-wrap" Row="true" AlignItems="AlignItems.Center">
                 <RatingCircular Value="@Movie.VoteAverage" Size="Size.Large" />
                 <MudText Typo="Typo.h4" Style="font-weight:500; font-style:italic">@Movie.LocalizedTagline</MudText>
             </MudStack>
@@ -24,7 +24,7 @@
             <FeaturedCrewLinkSet FeaturedCrew="@Movie.FeaturedCrew" />
         </MudStack>
     </MudStack>
-    <MudGrid Class="mt-4">
+    <MudGrid Class="mt-4" Spacing="2">
         <MudItem xs="12" sm="12" md="9">
             <MudStack>
                 <ExpansionPanel Title="@Resources.Starring" Items="Movie.Starring" Expanded="true">
@@ -52,7 +52,7 @@
         </MudItem>
         <MudItem xs="12" sm="12" md="3">
             <MudStack Spacing="4">
-                <MudStack Row="true">
+                <MudStack Row="true" Spacing="2">
                     <SocialMediaLink SocialMedia="SocialMediaType.ImdbTitle" Id="@Movie.ImdbId" />
                     <SocialMediaLink SocialMedia="SocialMediaType.Youtube" Id="@Movie.TrailerLink" />
                 </MudStack>

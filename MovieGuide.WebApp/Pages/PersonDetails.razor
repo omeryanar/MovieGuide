@@ -6,12 +6,12 @@
         <MudImage Class="rounded-lg detail-img" Src="@Person.ProfileFullPath" />
         <MudStack Class="detail-info">
             <MudText Typo="Typo.h1">@Person.Name</MudText>
-            <MudStack Row="true" Spacing="4">
+            <MudStack Class="flex-wrap" Row="true" Spacing="4">
                 <LabeledItem Label="@Resources.PlaceOfBirth" Text="@Person.PlaceOfBirth" />
                 <LabeledItem Label="@Resources.Birthday" Text="@Person.Birthday?.ToString("MMM d, yyyy")" />
                 <LabeledItem Label="@Resources.Deathday" Text="@Person.Deathday?.ToString("MMM d, yyyy")" />
             </MudStack>
-            <MudStack Row="true">
+            <MudStack Class="ml-n1" Row="true" Spacing="1">
                 <SocialMediaLink SocialMedia="SocialMediaType.ImdbName" Id="@Person.ImdbId" />
                 <SocialMediaLink SocialMedia="SocialMediaType.Twitter" Id="@Person.ExternalIds?.TwitterId" />
                 <SocialMediaLink SocialMedia="SocialMediaType.Facebook" Id="@Person.ExternalIds?.FacebookId" />

@@ -1,8 +1,5 @@
-﻿<MudLink Class="mx-n2" Disabled="@disabled" Underline="Underline.None" Target="_blank" Href="@link">
-    <span class="fa-stack fa-xl">
-        <i class="fa-solid fa-square fa-stack-2x" style="@borderStyle"></i>
-        <i class="@icon fa-stack-2x" style="@iconStyle"></i>
-    </span>
+﻿<MudLink Disabled="@disabled" Underline="Underline.None" Target="_blank" Href="@link">
+    <MudImage Class="@(disabled ? "social-icon disabled-icon" : "social-icon")" Src="@icon" Alt="" />
 </MudLink>
 
 @code {
@@ -21,44 +18,38 @@
         {
             case SocialMediaType.ImdbName:
                 link = $"{Constants.ImdbName}{Id}";
-                icon = "fa-brands fa-imdb";
-                iconStyle = disabled ? "" : "color:#E6B91E";
-                borderStyle = disabled ? "visibility: hidden;" : "color:#000000;";
+                icon = "images/imdb.svg";
+                alt = "IMDb";
                 break;
 
             case SocialMediaType.ImdbTitle:
                 link = $"{Constants.ImdbTitle}{Id}";
-                icon = "fa-brands fa-imdb";
-                iconStyle = disabled ? "" : "color:#E6B91E";
-                borderStyle = disabled ? "visibility: hidden;" : "color:#000000;";
+                icon = "images/imdb.svg";
+                alt = "IMDb";
                 break;
 
             case SocialMediaType.Twitter:
                 link = $"{Constants.Twitter}{Id}";
-                icon = "fa-brands fa-twitter-square";
-                iconStyle = disabled ? "" : "color:#1DA1F2";
-                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                icon = "images/twitter.svg";
+                alt = "Twitter";
                 break;
 
             case SocialMediaType.Facebook:
                 link = $"{Constants.FaceBook}{Id}";
-                icon = "fa-brands fa-facebook-square";
-                iconStyle = disabled ? "" : "color:#3B5998";
-                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                icon = "images/facebook.svg";
+                alt = "Facebook";
                 break;
 
             case SocialMediaType.Instagram:
                 link = $"{Constants.Instagram}{Id}";
-                icon = "fa-brands fa-instagram-square";
-                iconStyle = disabled ? "" : "color:#E4405F";
-                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                icon = "images/instagram.svg";
+                alt = "Instagram";
                 break;
 
             case SocialMediaType.Youtube:
                 link = String.Format(Constants.YoutubeVideo, Id);
-                icon = "fa-brands fa-youtube-square";
-                iconStyle = disabled ? "" : "color:#CD201F";
-                borderStyle = disabled ? "visibility: hidden;" : "color:#FAFAFA;";
+                icon = "images/youtube.svg";
+                alt = "YouTube";
                 break;
         }
     }
@@ -69,8 +60,6 @@
 
     private string icon;
 
-    private string iconStyle;
-
-    private string borderStyle;
+    private string alt;
 
 }
