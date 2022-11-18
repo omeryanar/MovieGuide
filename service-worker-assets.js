@@ -1,7 +1,7 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-DLE4NfPJsL7YFZeU5CyNlfbw9tEUaDWusc4oZqdRrHU=",
+      "hash": "sha256-AmA\/AgTNlgcxh5VKwl29yeeNpyHK2rANr+rhy7rFgX8=",
       "url": "app.css"
     },
     {
@@ -173,8 +173,20 @@
       "url": "icon-apple.png"
     },
     {
+      "hash": "sha256-Q7e+w1S6Rn6IiMbYNUyvJHwcbhM8+IR2GH8xI036NcU=",
+      "url": "images\/facebook.svg"
+    },
+    {
       "hash": "sha256-XmB97Ey7djjNfuNP\/tyyu4me6b9OuTG7OAVLmD3GlXs=",
       "url": "images\/female.svg"
+    },
+    {
+      "hash": "sha256-ybRpCzsfghl5a9uvH8WdasD+k8JLcw4sL9opDOHRMa4=",
+      "url": "images\/imdb.svg"
+    },
+    {
+      "hash": "sha256-ff\/QP+aYDJGoQxFegG6XTbqexr1rLTvmhuU0xtrwhAQ=",
+      "url": "images\/instagram.svg"
     },
     {
       "hash": "sha256-RiR4Ve\/5oK\/Lt+bri6hk+63YvSZhyOoTxtLCG0Q4CEA=",
@@ -189,7 +201,15 @@
       "url": "images\/tvshow.svg"
     },
     {
-      "hash": "sha256-4ICJqn05xhqp8wj0XpJ7snWcvufVrNZLOIHSMbTsMDk=",
+      "hash": "sha256-tTDQiw1C9N+PhDluliYBorqYw1YatE+ZS5lYDbwyFjA=",
+      "url": "images\/twitter.svg"
+    },
+    {
+      "hash": "sha256-nLdfawkqcknjZ0zBfV7GOpcJwYMyZwA0bQQGvgrLCMo=",
+      "url": "images\/youtube.svg"
+    },
+    {
+      "hash": "sha256-NMwYJGwkXviqVcUbT2t+FaqJmG8PDLBWHREHQa+NKYg=",
       "url": "index.html"
     },
     {
@@ -229,7 +249,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-C59kKpaBdwqYwBe3hzChNrL2cuePVcze0H\/xlE9i6+A=",
+      "hash": "sha256-Q76w\/IRg5upRphE4NwtQMtbYpqAnH55IaRKPyDTb5HA=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -313,7 +333,7 @@
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-GnJ9DQIqZu\/IRS\/JbRKuysDOKVhBRFyotw6UmoUYcLY=",
+      "hash": "sha256-LoOLMC0rR9Z37RGxU9iitCs\/4JjYqt00XQ4B4RYGg4Y=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
@@ -441,5 +461,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "QjdX7FVP"
+  "version": "VK+SH0nU"
 };
