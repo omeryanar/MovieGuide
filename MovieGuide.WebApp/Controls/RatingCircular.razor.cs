@@ -33,12 +33,18 @@ namespace MovieGuide.WebApp.Controls
             get => rating;
             set
             {
-                if (rating != value && value != null)
+                if (value == null || value == 0) 
+                {
+                    rating = 0;
+                    dashOffset = 0;
+                    valueColor = "#757575";
+                }
+                else if (rating != value)
                 {
                     fraction = (value.Value - Min) / (Max - Min);
                     rating = (int)(fraction * 100);
                     dashOffset = (int) (600 - (6 * rating));
-                    valueColor = rating < 40 ? "#F44336" : (rating < 70 ? "#FFEB3B" : "#4CAF50");
+                    valueColor = rating < 40 ? "#F44336" : rating < 70 ? "#FFEB3B" : "#4CAF50";
                     StateHasChanged();
                 }
             }
@@ -47,6 +53,6 @@ namespace MovieGuide.WebApp.Controls
 
         private int dashOffset;
         private double fraction;        
-        private string valueColor;        
+        private string valueColor;
     }
 }
