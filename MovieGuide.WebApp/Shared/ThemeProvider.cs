@@ -16,14 +16,16 @@ namespace MovieGuide.WebApp.Shared
             Theme.Palette.Secondary = Colors.Orange.Default;
             Theme.Palette.AppbarBackground = Colors.Blue.Darken2;
             Theme.Palette.Background = Colors.Grey.Lighten5;
-            Theme.Palette.DrawerBackground = Colors.Grey.Lighten4;
-
+            Theme.Palette.BackgroundGrey = Colors.Grey.Lighten5;
+            Theme.Palette.DrawerBackground = Colors.Grey.Lighten4;            
+            
             Theme.PaletteDark.Primary = Colors.Blue.Default;
             Theme.PaletteDark.Secondary = Colors.Orange.Default;
             Theme.PaletteDark.AppbarBackground = Colors.Blue.Darken2;
             Theme.PaletteDark.Surface = "#383838";
             Theme.PaletteDark.Background = "#303030";
-            Theme.PaletteDark.DrawerBackground = "#282828";
+            Theme.PaletteDark.BackgroundGrey = "#282828";
+            Theme.PaletteDark.DrawerBackground = "#282828";            
         }
 
         protected async override Task OnAfterRenderAsync(bool firstRender)

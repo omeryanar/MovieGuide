@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using MovieGuide.Common.Helper;
 
 namespace MovieGuide.WebApp.Pages
@@ -19,7 +20,10 @@ namespace MovieGuide.WebApp.Pages
                 if (page != newValue)
                 {
                     page = newValue;
-                    pageCount = newValue;
+
+                    if (pageCount < newValue)
+                        pageCount = newValue;
+
                     Refresh();
                 }
             }
@@ -33,18 +37,19 @@ namespace MovieGuide.WebApp.Pages
         }
         private int pageCount = 1;
 
+        protected string BuildQueryString(string uri = "")
+        {
+            if (page > 1)
+                uri = uri.AddQueryString("page", page);
+
+            return uri;
+        }
+
         protected virtual void Refresh()
         {
-            string uri = GetUriWithQueryString();
-            if (Page > 1)
-                uri = uri.AddQueryString("page", Page);
-
-            NavigationManager.NavigateTo(uri);
+            ShouldRefresh = true;            
         }
 
-        protected virtual string GetUriWithQueryString()
-        {
-            return String.Empty;
-        }
+        protected bool ShouldRefresh;
     }
 }

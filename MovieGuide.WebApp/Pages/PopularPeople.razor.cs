@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using MovieGuide.Common;
 using MovieGuide.Common.Model.Search;
 
@@ -11,17 +12,24 @@ namespace MovieGuide.WebApp.Pages
 
         public SearchContainer<SearchPerson> People { get; private set; }
 
-        protected async override Task OnParametersSetAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            Uri uri = new Uri(NavigationManager.Uri);
+            await base.OnAfterRenderAsync(firstRender);
 
-            People = await TmdbService.GetPopularPeople(uri.Query);
-            PageCount = People.TotalPages;
+            if (firstRender || ShouldRefresh)
+            {
+                ShouldRefresh = false;
+
+                string queryString = BuildQueryString();
+                NavigationManager.NavigateTo(baseUri + queryString);
+
+                People = await TmdbService.GetPopularPeople(queryString);
+                PageCount = People.TotalPages;
+
+                StateHasChanged();
+            }
         }
 
-        protected override string GetUriWithQueryString()
-        {
-            return "person/popular";
-        }
+        private const string baseUri = "person/popular";
     }
 }

@@ -16,22 +16,40 @@ namespace MovieGuide.WebApp.Pages
 
         public SearchContainer<SearchBase> Search { get; private set; }
 
-        protected async override Task OnParametersSetAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (!String.IsNullOrEmpty(Query))
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (firstRender || ShouldRefresh)
             {
-                Uri uri = new Uri(NavigationManager.Uri);
-                Search = await TmdbService.SearchMulti(uri.Query);
-                PageCount = Search.TotalPages;
+                ShouldRefresh = false;
+
+                if (!String.IsNullOrEmpty(Query))
+                {
+                    string queryString = GetQueryString();
+                    NavigationManager.NavigateTo(baseUri + queryString);
+
+                    Search = await TmdbService.SearchMulti(queryString);
+                    PageCount = Search.TotalPages;
+
+                    StateHasChanged();
+                }
             }
         }
 
-        protected override string GetUriWithQueryString()
+        protected override void OnParametersSet()
         {
-            string uri = "search";
+            ShouldRefresh = true;
+        }
+
+        private string GetQueryString()
+        {
+            string uri = String.Empty;
             uri = uri.AddQueryString("query", Query);
 
-            return uri;
+            return BuildQueryString(uri);
         }
+
+        private const string baseUri = "search";
     }
 }

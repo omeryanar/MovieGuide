@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MovieGuide.Common;
 using MovieGuide.Common.Helper;
+using MovieGuide.Common.Model.Movies;
 using MovieGuide.Common.Model.Search;
 using MudBlazor;
 
@@ -51,12 +52,40 @@ namespace MovieGuide.WebApp.Pages
         public string OriginalLanguage { get; set; }
 
         [Parameter]
-        [SupplyParameterFromQuery(Name = "year")]
+        [SupplyParameterFromQuery(Name = "first_air_date_year")]
         public int? Year { get; set; }
 
         public SearchContainer<SearchTvShow> TvShows { get; private set; }
 
-        protected async override Task OnParametersSetAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (firstRender || ShouldRefresh)
+            {
+                try
+                {
+                    ShouldRefresh = false;
+                    isSearching = true;
+
+                    string queryString = GetQueryString();
+                    NavigationManager.NavigateTo(baseUri + queryString);
+
+                    TvShows = await TmdbService.DiscoverTvShow(queryString);
+                    if (TvShows != null)
+                        PageCount = TvShows.TotalPages;
+                }
+                finally
+                {
+                    isSearching = false;
+                    showFilters = CurrentBreakpoint != Breakpoint.Xs;
+
+                    StateHasChanged();
+                }
+            }
+        }
+
+        protected override void OnParametersSet()
         {
             if (!String.IsNullOrEmpty(SortBy))
                 sortBy = SortHelper.TvShowSortBy.FirstOrDefault(x => x.Id == SortBy);
@@ -71,26 +100,14 @@ namespace MovieGuide.WebApp.Pages
             voteCount = VoteCount;
             runtime = Runtime;
             year = Year;
-
-            try
-            {
-                isSearching = true;
-                Uri uri = new Uri(NavigationManager.Uri);
-                TvShows = await TmdbService.DiscoverTvShow(uri.Query);
-                if (TvShows!= null)
-                    PageCount = TvShows.TotalPages;
-            }
-            finally
-            {
-                isSearching = false;
-                showFilters = CurrentBreakpoint != Breakpoint.Xs;
-            }
         }
 
-        protected override string GetUriWithQueryString()
+        private string GetQueryString()
         {
-            string uri = "discover/tv";
-            uri = uri.AddQueryString("sort_by", sortBy.Id);
+            string uri = String.Empty;
+
+            if (sortBy != SortHelper.TvShowSortBy[0])
+                uri = uri.AddQueryString("sort_by", sortBy.Id);
 
             if (withGenres?.Count > 0)
                 withGenres.ToList().ForEach(x => uri = uri.AddQueryString("with_genres", x.ToString()));
@@ -110,9 +127,11 @@ namespace MovieGuide.WebApp.Pages
             if (runtime != 0)
                 uri = uri.AddQueryString("with_runtime.gte", runtime);
             if (year != null)
-                uri = uri.AddQueryString("year", year);
+                uri = uri.AddQueryString("first_air_date_year", year);
 
-            return uri;
+            return BuildQueryString(uri);
         }
+
+        private const string baseUri = "discover/tv";
     }
 }

@@ -1060,6 +1060,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Türkçe.
         /// </summary>
         public static string Turkish {

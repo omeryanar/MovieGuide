@@ -174,9 +174,9 @@ namespace MovieGuide.Common
 
         #region List
 
-        public async Task<SearchContainer<SearchBase>> GetList(int id, int page)
+        public async Task<SearchList<SearchBase>> GetList(int id, int page)
         {
-            return await GetAsync<SearchContainer<SearchBase>>($"list/{id}", $"?page={page}", true);
+            return await GetAsync<SearchList<SearchBase>>($"list/{id}", $"?page={page}", true);
         }
 
         public async Task<List<Language>> GetLanguages()

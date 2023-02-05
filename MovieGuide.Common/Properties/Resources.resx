@@ -502,6 +502,9 @@
   <data name="Title" xml:space="preserve">
     <value>Title</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="Turkish" xml:space="preserve">
     <value>Türkçe</value>
     <comment>Language</comment>

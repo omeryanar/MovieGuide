@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MovieGuide.Common;
-using MovieGuide.Common.Helper;
 using MovieGuide.Common.Model.Search;
 
 namespace MovieGuide.WebApp.Pages
@@ -13,20 +12,34 @@ namespace MovieGuide.WebApp.Pages
         [Parameter]
         public int Id { get; set; }
 
-        [Parameter]
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
-        public SearchContainer<SearchBase> Items { get; private set; }
+        public SearchList<SearchBase> Items { get; private set; }
 
-        protected async override Task OnParametersSetAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            Items = await TmdbService.GetList(Id, Page);
-            PageCount = Items.TotalPages;
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (firstRender || ShouldRefresh)
+            {
+                ShouldRefresh = false;
+
+                string queryString = BuildQueryString();
+                NavigationManager.NavigateTo(baseUri + queryString);
+
+                Items = await TmdbService.GetList(Id, Page);
+                Title = Items.Name;
+                PageCount = Items.TotalPages;
+
+                StateHasChanged();
+            }
         }
 
-        protected override string GetUriWithQueryString()
+        protected override void OnParametersSet()
         {
-            return $"/list/{Id}/{Title}";
+            ShouldRefresh = true;
         }
+
+        private string baseUri => $"/list/{Id}";
     }
 }
