@@ -98,7 +98,19 @@ namespace MovieGuide.Common.Model.Movies
         public string Countries => String.Join(" & ", ProductionCountries);
 
         [JsonIgnore]
-        public string TrailerLink => Videos?.Results?.FirstOrDefault()?.Key;
+        public string TrailerLink
+        {
+            get
+            {
+                IEnumerable<Video> videos = Videos?.Results?.Where(x => x.Type == "Trailer");
+                if (videos?.Any(x => x.Official) == true)
+                    return videos?.FirstOrDefault(x => x.Official).Key;
+                else if (videos?.Any() == true)
+                    return videos?.FirstOrDefault().Key;
+                else
+                    return Videos?.Results?.FirstOrDefault()?.Key;
+            }
+        }
 
         [JsonIgnore]
         public string LocalizedTagline

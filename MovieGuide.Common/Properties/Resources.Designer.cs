@@ -106,6 +106,24 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aquarius.
+        /// </summary>
+        public static string Aquarius {
+            get {
+                return ResourceManager.GetString("Aquarius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aries.
+        /// </summary>
+        public static string Aries {
+            get {
+                return ResourceManager.GetString("Aries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backdrops.
         /// </summary>
         public static string Backdrops {
@@ -147,6 +165,24 @@ namespace MovieGuide.Common.Properties {
         public static string Canceled {
             get {
                 return ResourceManager.GetString("Canceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancer.
+        /// </summary>
+        public static string Cancer {
+            get {
+                return ResourceManager.GetString("Cancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capricorn.
+        /// </summary>
+        public static string Capricorn {
+            get {
+                return ResourceManager.GetString("Capricorn", resourceCulture);
             }
         }
         
@@ -358,6 +394,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gemini.
+        /// </summary>
+        public static string Gemini {
+            get {
+                return ResourceManager.GetString("Gemini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Genres.
         /// </summary>
         public static string Genres {
@@ -480,6 +525,24 @@ namespace MovieGuide.Common.Properties {
         public static string LastMovie {
             get {
                 return ResourceManager.GetString("LastMovie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leo.
+        /// </summary>
+        public static string Leo {
+            get {
+                return ResourceManager.GetString("Leo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Libra.
+        /// </summary>
+        public static string Libra {
+            get {
+                return ResourceManager.GetString("Libra", resourceCulture);
             }
         }
         
@@ -669,6 +732,15 @@ namespace MovieGuide.Common.Properties {
         public static string Pilot {
             get {
                 return ResourceManager.GetString("Pilot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pisces.
+        /// </summary>
+        public static string Pisces {
+            get {
+                return ResourceManager.GetString("Pisces", resourceCulture);
             }
         }
         
@@ -898,6 +970,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sagittarius.
+        /// </summary>
+        public static string Sagittarius {
+            get {
+                return ResourceManager.GetString("Sagittarius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sci-Fi &amp; Fantasy.
         /// </summary>
         public static string Sci_Fi_Fantasy {
@@ -912,6 +993,15 @@ namespace MovieGuide.Common.Properties {
         public static string Science_Fiction {
             get {
                 return ResourceManager.GetString("Science_Fiction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scorpio.
+        /// </summary>
+        public static string Scorpio {
+            get {
+                return ResourceManager.GetString("Scorpio", resourceCulture);
             }
         }
         
@@ -1042,6 +1132,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Taurus.
+        /// </summary>
+        public static string Taurus {
+            get {
+                return ResourceManager.GetString("Taurus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thriller.
         /// </summary>
         public static string Thriller {
@@ -1119,6 +1218,15 @@ namespace MovieGuide.Common.Properties {
         public static string ViewAll {
             get {
                 return ResourceManager.GetString("ViewAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virgo.
+        /// </summary>
+        public static string Virgo {
+            get {
+                return ResourceManager.GetString("Virgo", resourceCulture);
             }
         }
         

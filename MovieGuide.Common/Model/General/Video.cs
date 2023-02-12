@@ -13,5 +13,8 @@
 
         [JsonPropertyName("type")]
         public string Type { get; set; }
+
+        [JsonPropertyName("official")]
+        public bool Official { get; set; }
     }
 }

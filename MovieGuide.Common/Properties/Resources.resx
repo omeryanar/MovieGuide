@@ -137,6 +137,14 @@
     <value>Animation</value>
     <comment>Genre</comment>
   </data>
+  <data name="Aquarius" xml:space="preserve">
+    <value>Aquarius</value>
+    <comment>Signs</comment>
+  </data>
+  <data name="Aries" xml:space="preserve">
+    <value>Aries</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Backdrops" xml:space="preserve">
     <value>Backdrops</value>
   </data>
@@ -152,6 +160,14 @@
   <data name="Canceled" xml:space="preserve">
     <value>Canceled</value>
     <comment>Status</comment>
+  </data>
+  <data name="Cancer" xml:space="preserve">
+    <value>Cancer</value>
+    <comment>Signs</comment>
+  </data>
+  <data name="Capricorn" xml:space="preserve">
+    <value>Capricorn</value>
+    <comment>Signs</comment>
   </data>
   <data name="Characters" xml:space="preserve">
     <value>Characters</value>
@@ -236,6 +252,10 @@
   <data name="FirstMovie" xml:space="preserve">
     <value>First Movie</value>
   </data>
+  <data name="Gemini" xml:space="preserve">
+    <value>Gemini</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Genres" xml:space="preserve">
     <value>Genres</value>
   </data>
@@ -281,6 +301,14 @@
   </data>
   <data name="LastMovie" xml:space="preserve">
     <value>Last Movie</value>
+  </data>
+  <data name="Leo" xml:space="preserve">
+    <value>Leo</value>
+    <comment>Signs</comment>
+  </data>
+  <data name="Libra" xml:space="preserve">
+    <value>Libra</value>
+    <comment>Signs</comment>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Light</value>
@@ -350,6 +378,10 @@
   <data name="Pilot" xml:space="preserve">
     <value>Pilot</value>
     <comment>Status</comment>
+  </data>
+  <data name="Pisces" xml:space="preserve">
+    <value>Pisces</value>
+    <comment>Signs</comment>
   </data>
   <data name="PlaceOfBirth" xml:space="preserve">
     <value>Place of Birth</value>
@@ -439,6 +471,10 @@
   <data name="Runtime" xml:space="preserve">
     <value>Runtime</value>
   </data>
+  <data name="Sagittarius" xml:space="preserve">
+    <value>Sagittarius</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Science_Fiction" xml:space="preserve">
     <value>Science Fiction</value>
     <comment>Genre</comment>
@@ -446,6 +482,10 @@
   <data name="Sci_Fi_Fantasy" xml:space="preserve">
     <value>Sci-Fi &amp; Fantasy</value>
     <comment>Genre</comment>
+  </data>
+  <data name="Scorpio" xml:space="preserve">
+    <value>Scorpio</value>
+    <comment>Signs</comment>
   </data>
   <data name="Screenplay" xml:space="preserve">
     <value>Screenplay</value>
@@ -495,6 +535,10 @@
     <value>Talk</value>
     <comment>Genre</comment>
   </data>
+  <data name="Taurus" xml:space="preserve">
+    <value>Taurus</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Thriller" xml:space="preserve">
     <value>Thriller</value>
     <comment>Genre</comment>
@@ -524,6 +568,10 @@
   </data>
   <data name="ViewAll" xml:space="preserve">
     <value>View All</value>
+  </data>
+  <data name="Virgo" xml:space="preserve">
+    <value>Virgo</value>
+    <comment>Signs</comment>
   </data>
   <data name="VoteAverage" xml:space="preserve">
     <value>Vote Average</value>

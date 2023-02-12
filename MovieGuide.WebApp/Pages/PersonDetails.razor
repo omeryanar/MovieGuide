@@ -3,12 +3,14 @@
 <LoadingContent LoadingObject="Person">
     <PageTitle>Movie Guide - @Person.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg detail-img" Src="@Person.ProfileFullPath" />
+        <MediaViewer Title="@Person.Name" MediaUrl="@(String.Format(Constants.Original, Person.ProfilePath))">
+            <MudImage Class="rounded-lg detail-img" Src="@Person.ProfileFullPath" />
+        </MediaViewer>
         <MudStack Class="detail-info">
             <MudText Typo="Typo.h1">@Person.Name</MudText>
             <MudStack Class="flex-wrap" Row="true" Spacing="4">
                 <LabeledItem Label="@Resources.PlaceOfBirth" Text="@Person.PlaceOfBirth" />
-                <LabeledItem Label="@Resources.Birthday" Text="@Person.Birthday?.ToString("MMM d, yyyy")" />
+                <LabeledItem Label="@Resources.Birthday" Text="@(Person.Birthday == null ? "" : $"{Person.Birthday?.ToString("MMM d, yyyy")} ({Person.Sign})")" />
                 <LabeledItem Label="@Resources.Deathday" Text="@Person.Deathday?.ToString("MMM d, yyyy")" />
             </MudStack>
             <MudStack Class="ml-n1" Row="true" Spacing="1">
@@ -100,9 +102,9 @@
             </MudNavGroup>
         </MudPaper>
         <ExpansionPanel Title="@Resources.Profiles" Items="Person.Images?.Profiles">
-            <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+            <MediaViewer Title="@Person.Name" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
                 <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
-            </MudLink>
+            </MediaViewer>
         </ExpansionPanel>
     </MudStack>
 </LoadingContent>

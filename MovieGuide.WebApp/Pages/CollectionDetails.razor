@@ -3,7 +3,9 @@
 <LoadingContent LoadingObject="Collection">
     <PageTitle>Movie Guide - @Collection.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg detail-img" Src="@Collection.PosterFullPath" />
+        <MediaViewer Title="@Collection.Name" MediaUrl="@(String.Format(Constants.Original, Collection.PosterPath))">
+            <MudImage Class="rounded-lg detail-img" Src="@Collection.PosterFullPath" />
+        </MediaViewer>
         <MudStack Class="detail-info">
             <MudText Typo="Typo.h1">@Collection.Name</MudText>
             <GenreChipSet Genres="@Collection.Genres" />

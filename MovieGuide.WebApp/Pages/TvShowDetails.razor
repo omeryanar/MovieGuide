@@ -3,7 +3,9 @@
 <LoadingContent LoadingObject="TvShow">
     <PageTitle>Movie Guide - @TvShow.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg detail-img" Src="@TvShow.PosterFullPath" />
+        <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.Original, TvShow.PosterPath))">
+            <MudImage Class="rounded-lg detail-img" Src="@TvShow.PosterFullPath" />
+        </MediaViewer>
         <MudStack Class="detail-info">
             <MudStack Class="flex-wrap" Row="true">
                 <MudText Typo="Typo.h1">@TvShow.Name</MudText>
@@ -37,19 +39,19 @@
                     <TvSeasonCard TvShow="TvShow" Season="context" />
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Posters" Items="TvShow.Images?.Posters">
-                    <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
                         <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
-                    </MudLink>
+                    </MediaViewer>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Backdrops" Items="TvShow.Images?.Backdrops">
-                    <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
                         <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
-                    </MudLink>
+                    </MediaViewer>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Videos" Items="TvShow.Videos?.Results">
-                    <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                    <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
                         <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
-                    </MudLink>
+                    </MediaViewer>
                 </ExpansionPanel>
             </MudStack>
         </MudItem>
@@ -57,7 +59,9 @@
             <MudStack Spacing="4">
                 <MudStack Row="true">
                     <SocialMediaLink SocialMedia="SocialMediaType.ImdbTitle" Id="@TvShow.ExternalIds?.ImdbId" />
-                    <SocialMediaLink SocialMedia="SocialMediaType.Youtube" Id="@TvShow.TrailerLink" />
+                    <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, TvShow.TrailerLink))">
+                        <MudImage Class="@("social-icon" + (String.IsNullOrEmpty(TvShow.TrailerLink) ? " disabled-icon" : ""))" Src="images/youtube.svg" Alt="YouTube" />
+                    </MediaViewer>
                 </MudStack>
                 <LabeledItem Label="@Resources.OriginalLanguage" Text="@LanguageName" />
                 <LabeledItem Label="@Resources.OriginalTitle" Text="@TvShow.OriginalName" />

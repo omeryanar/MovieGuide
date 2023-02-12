@@ -40,6 +40,6 @@ namespace MovieGuide.WebApp.Pages
             ShouldRefresh = true;
         }
 
-        private string baseUri => $"/list/{Id}";
+        private string baseUri => $"list/{Id}";
     }
 }

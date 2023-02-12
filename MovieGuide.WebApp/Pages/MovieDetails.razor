@@ -3,7 +3,9 @@
 <LoadingContent LoadingObject="Movie">
     <PageTitle>Movie Guide - @Movie.Title</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg detail-img" Src="@Movie.PosterFullPath" />
+        <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.Original, Movie.PosterPath))">
+            <MudImage Class="rounded-lg detail-img" Src="@Movie.PosterFullPath" />
+        </MediaViewer>
         <MudStack Class="detail-info">
             <MudStack Class="flex-wrap" Row="true">
                 <MudText Typo="Typo.h1">@Movie.Title</MudText>
@@ -34,19 +36,19 @@
                     <PersonCrewCard Crew="context" />
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Posters" Items="Movie.Images?.Posters">
-                    <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
                         <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
-                    </MudLink>
+                    </MediaViewer>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Backdrops" Items="Movie.Images?.Backdrops">
-                    <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+                    <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
                         <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
-                    </MudLink>
+                    </MediaViewer>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Videos" Items="Movie.Videos?.Results">
-                    <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                    <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
                         <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
-                    </MudLink>
+                    </MediaViewer>
                 </ExpansionPanel>
             </MudStack>
         </MudItem>
@@ -54,7 +56,9 @@
             <MudStack Spacing="4">
                 <MudStack Row="true" Spacing="2">
                     <SocialMediaLink SocialMedia="SocialMediaType.ImdbTitle" Id="@Movie.ImdbId" />
-                    <SocialMediaLink SocialMedia="SocialMediaType.Youtube" Id="@Movie.TrailerLink" />
+                    <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.YoutubeVideo, Movie.TrailerLink))">
+                        <MudImage Class="@("social-icon" + (String.IsNullOrEmpty(Movie.TrailerLink) ? " disabled-icon" : ""))" Src="images/youtube.svg" Alt="YouTube" />
+                    </MediaViewer>
                 </MudStack>
                 <LabeledItem Label="@Resources.PartOf" ChildObject="@Movie.BelongsToCollection">
                     <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("collection/" + Movie.BelongsToCollection?.Id)">

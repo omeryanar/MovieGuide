@@ -1,0 +1,57 @@
+﻿<style>
+    .image-container {
+        display: grid;
+        height: 100%;
+    }
+
+    .center-fit {
+        max-width: 100%;
+        max-height: 90vh;
+        margin: auto;
+    }
+
+    .video-frame {
+        width: 80vw;
+        height: 45vw;
+    }
+</style>
+
+<MudElement HtmlTag="div" Style="cursor: pointer" @onclick="() => showPopup = true">
+    @ChildContent
+</MudElement>
+
+<MudDialog @bind-IsVisible="showPopup" Options="dialogOptions" ClassContent="pa-0">
+    <TitleContent>
+        <MudText>@Title</MudText>
+    </TitleContent>
+    <DialogContent>
+        @if (MediaUrl?.Contains("image") == true)
+        {
+            <MudElement HtmlTag="div" Class="image-container">
+                <MudImage Class="center-fit" Src="@MediaUrl" />
+            </MudElement>
+        }
+        else
+        {
+            <MudElement HtmlTag="div" Class="container">
+                <MudElement HtmlTag="iframe" Class="video-frame" allowfullscreen src="@MediaUrl" />
+            </MudElement>
+        }
+    </DialogContent>
+</MudDialog>
+
+@code
+{
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string MediaUrl { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private bool showPopup;
+
+    private DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.ExtraLarge, CloseButton = true, CloseOnEscapeKey = true };
+}

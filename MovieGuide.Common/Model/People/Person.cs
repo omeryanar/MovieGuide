@@ -1,4 +1,5 @@
-﻿using MovieGuide.Common.Model.General;
+﻿using MovieGuide.Common.Helper;
+using MovieGuide.Common.Model.General;
 using MovieGuide.Common.Model.Search;
 using MovieGuide.Common.Model.Translations;
 
@@ -56,6 +57,9 @@ namespace MovieGuide.Common.Model.People
 
         [JsonIgnore]
         public string ProfileFullPath => Constants.GetProfileFullPath(ProfilePath, Gender, Constants.W300);
+
+        [JsonIgnore]
+        public string Sign => SignHelper.GetSignByBirthday(Birthday);
 
         [JsonIgnore]
         public string LocalizedBiography

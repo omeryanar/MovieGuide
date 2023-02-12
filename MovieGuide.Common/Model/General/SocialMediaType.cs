@@ -6,7 +6,6 @@
         ImdbTitle,
         Twitter,
         Facebook,
-        Instagram,
-        Youtube
+        Instagram
     }
 }

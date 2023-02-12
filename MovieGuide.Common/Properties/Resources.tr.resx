@@ -137,6 +137,14 @@
     <value>Animasyon</value>
     <comment>Genre</comment>
   </data>
+  <data name="Aquarius" xml:space="preserve">
+    <value>Kova</value>
+    <comment>Signs</comment>
+  </data>
+  <data name="Aries" xml:space="preserve">
+    <value>Koç</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Backdrops" xml:space="preserve">
     <value>Sahneler</value>
   </data>
@@ -152,6 +160,14 @@
   <data name="Canceled" xml:space="preserve">
     <value>İptal Edildi</value>
     <comment>Status</comment>
+  </data>
+  <data name="Cancer" xml:space="preserve">
+    <value>Yengeç</value>
+    <comment>Signs</comment>
+  </data>
+  <data name="Capricorn" xml:space="preserve">
+    <value>Oğlak</value>
+    <comment>Signs</comment>
   </data>
   <data name="Characters" xml:space="preserve">
     <value>Karakterler</value>
@@ -236,6 +252,10 @@
   <data name="FirstMovie" xml:space="preserve">
     <value>İlk Film</value>
   </data>
+  <data name="Gemini" xml:space="preserve">
+    <value>İkizler</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Genres" xml:space="preserve">
     <value>Türler</value>
   </data>
@@ -281,6 +301,14 @@
   </data>
   <data name="LastMovie" xml:space="preserve">
     <value>Son Film</value>
+  </data>
+  <data name="Leo" xml:space="preserve">
+    <value>Aslan</value>
+    <comment>Signs</comment>
+  </data>
+  <data name="Libra" xml:space="preserve">
+    <value>Terazi</value>
+    <comment>Signs</comment>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Açık</value>
@@ -350,6 +378,10 @@
   <data name="Pilot" xml:space="preserve">
     <value>Pilot</value>
     <comment>Status</comment>
+  </data>
+  <data name="Pisces" xml:space="preserve">
+    <value>Balık</value>
+    <comment>Signs</comment>
   </data>
   <data name="PlaceOfBirth" xml:space="preserve">
     <value>Doğum Yeri</value>
@@ -439,6 +471,10 @@
   <data name="Runtime" xml:space="preserve">
     <value>Süre</value>
   </data>
+  <data name="Sagittarius" xml:space="preserve">
+    <value>Yay</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Science_Fiction" xml:space="preserve">
     <value>Bilim-Kurgu</value>
     <comment>Genre</comment>
@@ -446,6 +482,10 @@
   <data name="Sci_Fi_Fantasy" xml:space="preserve">
     <value>Bilim Kurgu &amp; Fantastik</value>
     <comment>Genre</comment>
+  </data>
+  <data name="Scorpio" xml:space="preserve">
+    <value>Akrep</value>
+    <comment>Signs</comment>
   </data>
   <data name="Screenplay" xml:space="preserve">
     <value>Senarist</value>
@@ -495,6 +535,10 @@
     <value>Talk Şov</value>
     <comment>Genre</comment>
   </data>
+  <data name="Taurus" xml:space="preserve">
+    <value>Boğa</value>
+    <comment>Signs</comment>
+  </data>
   <data name="Thriller" xml:space="preserve">
     <value>Gerilim</value>
     <comment>Genre</comment>
@@ -524,6 +568,10 @@
   </data>
   <data name="ViewAll" xml:space="preserve">
     <value>Hepsini Göster</value>
+  </data>
+  <data name="Virgo" xml:space="preserve">
+    <value>Başak</value>
+    <comment>Signs</comment>
   </data>
   <data name="VoteAverage" xml:space="preserve">
     <value>Oy Ortalaması</value>

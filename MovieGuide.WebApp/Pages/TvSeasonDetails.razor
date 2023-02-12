@@ -3,7 +3,9 @@
 <LoadingContent LoadingObject="Season">
     <PageTitle>Movie Guide - @TvShow?.Name - @Season.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MudImage Class="rounded-lg detail-img" Src="@Season.PosterFullPath" />
+        <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.Original, Season.PosterPath))">
+            <MudImage Class="rounded-lg detail-img" Src="@Season.PosterFullPath" />
+        </MediaViewer>
         <MudStack Class="detail-info">
             <MudStack Class="flex-wrap" Row="true">
                 <MudText Typo="Typo.h1">@TvShow?.Name - @Season.Name</MudText>
@@ -35,14 +37,14 @@
             <TvEpisodeCard TvShow="@TvShow" Episode="@context" />
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Posters" Items="Season.Images?.Posters">
-            <MudLink Target="_blank" Href="@(String.Format(Constants.Original, context.FilePath))">
+            <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
                 <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
-            </MudLink>
+            </MediaViewer>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Videos" Items="Season.Videos?.Results">
-            <MudLink Target="_blank" Href="@(String.Format(Constants.YoutubeVideo, context.Key))">
+            <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
                 <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
-            </MudLink>
+            </MediaViewer>
         </ExpansionPanel>
     </MudStack>
 </LoadingContent>
