@@ -42,6 +42,12 @@ namespace MovieGuide.Common
                     requestUri = requestUri.AddQueryString("include_video_language", "en,null");
             }
 
+            if (requestUri.Contains("discover/tv"))
+            {
+                requestUri = requestUri.AddQueryString("watch_region", "US");
+                requestUri = requestUri.AddQueryString("with_watch_monetization_types", "flatrate|free|ads|rent|buy");
+            }
+
             string apiVersion = version4 ? "4/" : "3/";
             HttpResponseMessage response = await HttpClient.GetAsync(apiVersion + requestUri);
             if (response.IsSuccessStatusCode)
@@ -157,12 +163,12 @@ namespace MovieGuide.Common
 
         public async Task<SearchContainer<SearchMovie>> GetPopularMovies(string query = null)
         {
-            return await GetAsync<SearchContainer<SearchMovie>>("movie/popular", query);
+            return await GetAsync<SearchContainer<SearchMovie>>("discover/movie", query);
         }
 
         public async Task<SearchContainer<SearchTvShow>> GetPopularTvShows(string query = null)
         {
-            return await GetAsync<SearchContainer<SearchTvShow>>("tv/popular", query);
+            return await GetAsync<SearchContainer<SearchTvShow>>("discover/tv", query);
         }
 
         public async Task<SearchContainer<SearchPerson>> GetPopularPeople(string query = null)

@@ -3,7 +3,7 @@
 <LoadingContent LoadingObject="Episode">
     <PageTitle>Movie Guide - @TvShow?.Name - @Resources.Season @Episode.SeasonNumber - @Resources.Episode @Episode.EpisodeNumber</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.Original, Episode.StillPath))">
+        <MediaViewer MediaUrl="@(String.Format(Constants.Original, Episode.StillPath))">
             <MudImage Class="rounded-lg" Width="300" Height="169" Src="@Episode.StillFullPath" />
         </MediaViewer>
         <MudStack Style="max-width:800px">
@@ -24,10 +24,15 @@
         <ExpansionPanel Title="@Resources.Crew" Items="Episode.Crew">
             <PersonCrewCard Crew="context" />
         </ExpansionPanel>
-        <ExpansionPanel Title="@Resources.Backdrops" Items="Episode.Images?.Stills">
-            <MediaViewer Title="@TvShow.Name" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
+        <ExpansionPanel Title="@Resources.Backdrops" Items="Episode.Images?.Stills" OverlayClass="wide-window">
+            <ChildContent>
                 <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
-            </MediaViewer>
+            </ChildContent>
+            <OverlayContent>
+                <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+                    <MudImage Class="fullscreen" Src="@(String.Format(Constants.Original, context.FilePath))" />
+                </MudStack>
+            </OverlayContent>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Videos" Items="Episode.Videos?.Results">
             <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">

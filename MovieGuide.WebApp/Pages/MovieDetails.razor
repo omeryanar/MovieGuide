@@ -3,7 +3,7 @@
 <LoadingContent LoadingObject="Movie">
     <PageTitle>Movie Guide - @Movie.Title</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.Original, Movie.PosterPath))">
+        <MediaViewer MediaUrl="@(String.Format(Constants.Original, Movie.PosterPath))">
             <MudImage Class="rounded-lg detail-img" Src="@Movie.PosterFullPath" />
         </MediaViewer>
         <MudStack Class="detail-info">
@@ -35,15 +35,25 @@
                 <ExpansionPanel Title="@Resources.Crew" Items="Movie.Crew">
                     <PersonCrewCard Crew="context" />
                 </ExpansionPanel>
-                <ExpansionPanel Title="@Resources.Posters" Items="Movie.Images?.Posters">
-                    <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
+                <ExpansionPanel Title="@Resources.Posters" Items="Movie.Images?.Posters" OverlayClass="narrow-window">
+                    <ChildContent>
                         <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
-                    </MediaViewer>
+                    </ChildContent>
+                    <OverlayContent>
+                        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+                            <MudImage Class="fullscreen" Src="@(String.Format(Constants.Original, context.FilePath))" />
+                        </MudStack>
+                    </OverlayContent>
                 </ExpansionPanel>
-                <ExpansionPanel Title="@Resources.Backdrops" Items="Movie.Images?.Backdrops">
-                    <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.Original, context.FilePath))">
+                <ExpansionPanel Title="@Resources.Backdrops" Items="Movie.Images?.Backdrops" OverlayClass="wide-window">
+                    <ChildContent>
                         <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
-                    </MediaViewer>
+                    </ChildContent>
+                    <OverlayContent>
+                        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+                            <MudImage Class="fullscreen" Src="@(String.Format(Constants.Original, context.FilePath))" />
+                        </MudStack>
+                    </OverlayContent>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Videos" Items="Movie.Videos?.Results">
                     <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
@@ -56,7 +66,7 @@
             <MudStack Spacing="4">
                 <MudStack Row="true" Spacing="2">
                     <SocialMediaLink SocialMedia="SocialMediaType.ImdbTitle" Id="@Movie.ImdbId" />
-                    <MediaViewer Title="@Movie.Title" MediaUrl="@(String.Format(Constants.YoutubeVideo, Movie.TrailerLink))">
+                    <MediaViewer MediaUrl="@(String.Format(Constants.YoutubeVideo, Movie.TrailerLink))">
                         <MudImage Class="@("social-icon" + (String.IsNullOrEmpty(Movie.TrailerLink) ? " disabled-icon" : ""))" Src="images/youtube.svg" Alt="YouTube" />
                     </MediaViewer>
                 </MudStack>

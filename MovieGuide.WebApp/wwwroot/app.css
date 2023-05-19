@@ -385,3 +385,17 @@
     }
 }
 
+.narrow-window {
+    width: 60vh;
+    height: 90vh;
+}
+
+.wide-window {
+    width: 80vw;
+    height: 45vw;
+}
+
+.fullscreen {
+    width: 100%;
+    height: 100%;
+}

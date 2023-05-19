@@ -1,26 +1,47 @@
 ﻿@typeparam T
 
 <MudPaper Elevation="1">
-    <MudNavGroup Title="@Title" Expanded="@Expanded">
+    <MudNavGroup Title="@Title" @bind-Expanded="Expanded">
         <MudDivider />
         <MudStack Class="overflow-auto pa-4" Spacing="4" Row="true">            
             @if(Items != null)
             {
                 foreach (T item in viewAll ? Items : Items.Take(8))
                 {
-                    @ChildContent(item)
+                    <MudLink Underline="Underline.None" OnClick="() => ShowOverlay(item)">
+                        @ChildContent(item)
+                    </MudLink>
                 }
 
                 if (!viewAll && Items.Count > 8)
                 {
                     <MudTooltip RootClass="align-self-center" Text="@Resources.ViewAll">
-                        <MudIconButton Size="Size.Large" Icon="@Icons.Filled.ArrowCircleRight" OnClick="ToggleViewAll" />
+                        <MudIconButton Size="Size.Large" Icon="@Icons.Material.Filled.ArrowCircleRight" OnClick="ToggleViewAll" />
                     </MudTooltip>
                 }
             }
         </MudStack>
     </MudNavGroup>
 </MudPaper>
+
+@if (OverlayContent != null)
+{
+    <MudOverlay @bind-Visible="overlayVisible" DarkBackground="true" AutoClose="true" ZIndex="9999">
+        <div @onclick:stopPropagation="true" @onclick:preventDefault="true">
+            <MudCarousel Class="@OverlayClass" ItemsSource="Items" @bind-SelectedIndex="selectedItemIndex" AutoCycle="false" ShowBullets="false">
+                <ItemTemplate>
+                    @OverlayContent(Items[selectedItemIndex])
+                </ItemTemplate>
+                <PreviousButtonTemplate>
+                    <MudIconButton Class="rounded-circle ma-0 white-text" Icon="@Icons.Material.Filled.ArrowBackIosNew" OnClick="Back" />
+                </PreviousButtonTemplate>
+                <NextButtonTemplate>
+                    <MudIconButton Class="rounded-circle ma-0 white-text" Icon="@Icons.Material.Filled.ArrowForwardIos" OnClick="Next" />
+                </NextButtonTemplate>
+            </MudCarousel>
+        </div>
+    </MudOverlay>
+}
 
 @code {
 
@@ -31,16 +52,44 @@
     public bool Expanded { get; set; }
 
     [Parameter]
-    public ICollection<T> Items{ get; set; }
+    public IList<T> Items{ get; set; }
 
     [Parameter]
     public RenderFragment<T> ChildContent { get; set; }
 
+    [Parameter]
+    public RenderFragment<T> OverlayContent { get; set; }
+
+    [Parameter]
+    public string OverlayClass { get; set; }
+
     private bool viewAll;
+
+    private bool overlayVisible;
+
+    private int selectedItemIndex = 1;
 
     private void ToggleViewAll()
     {
         viewAll = true;
         Expanded = true;
+    }
+
+    private void ShowOverlay(T item)
+    {
+        selectedItemIndex = Items.IndexOf(item);
+        overlayVisible = true;
+    }
+
+    private void Back()
+    {
+        if (selectedItemIndex > 0)
+            selectedItemIndex--;
+    }
+
+    private void Next()
+    {
+        if (selectedItemIndex < Items.Count - 1)
+            selectedItemIndex++;
     }
 }

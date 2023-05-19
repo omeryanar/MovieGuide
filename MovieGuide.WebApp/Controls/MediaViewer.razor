@@ -17,13 +17,12 @@
 </style>
 
 <MudElement HtmlTag="div" Style="cursor: pointer" @onclick="() => showPopup = true">
-    @ChildContent
+    <MudTooltip Text="@Title">
+        @ChildContent
+    </MudTooltip>
 </MudElement>
 
-<MudDialog @bind-IsVisible="showPopup" Options="dialogOptions" ClassContent="pa-0">
-    <TitleContent>
-        <MudText>@Title</MudText>
-    </TitleContent>
+<MudDialog @bind-IsVisible="showPopup" Options="dialogOptions" ClassContent="pa-0" DefaultFocus="DefaultFocus.Element">
     <DialogContent>
         @if (MediaUrl?.Contains("image") == true)
         {
@@ -53,5 +52,5 @@
 
     private bool showPopup;
 
-    private DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.ExtraLarge, CloseButton = true, CloseOnEscapeKey = true };
+    private DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.ExtraLarge, NoHeader = true , CloseOnEscapeKey = true };
 }
