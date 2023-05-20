@@ -27,7 +27,7 @@
 @if (OverlayContent != null)
 {
     <MudOverlay @bind-Visible="overlayVisible" DarkBackground="true" AutoClose="true" ZIndex="9999">
-        <div @onclick:stopPropagation="true" @onclick:preventDefault="true">
+        <MudSwipeArea PreventDefault="true" @onclick:stopPropagation="true">
             <MudCarousel Class="@OverlayClass" ItemsSource="Items" @bind-SelectedIndex="selectedItemIndex" AutoCycle="false" ShowBullets="false">
                 <ItemTemplate>
                     @OverlayContent(Items[selectedItemIndex])
@@ -39,7 +39,7 @@
                     <MudIconButton Class="rounded-circle ma-0 white-text" Icon="@Icons.Material.Filled.ArrowForwardIos" OnClick="Next" />
                 </NextButtonTemplate>
             </MudCarousel>
-        </div>
+        </MudSwipeArea>
     </MudOverlay>
 }
 

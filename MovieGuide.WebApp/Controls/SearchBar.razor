@@ -5,10 +5,9 @@
     .search-bar.mud-input-control{background-color:rgba(255,255,255,.15);margin-bottom:5px;height:42px;border-radius:var(--mud-default-borderradius);}
     .search-bar.mud-input-control .mud-input-root,.search-bar.mud-input-control .mud-icon-default{color:#fafafa;}
     .search-bar .mud-input.mud-input-outlined .mud-input-outlined-border{border:none;border-radius:var(--mud-default-borderradius);}
-    .add-button {position:fixed;bottom:16px;right:16px;z-index:100}
 </style>
 
-<form class="mx-2" style="width:100%; max-width:600px" @onsubmit="Search">
+<form class="mx-2" style="width:50%; max-width:600px" @onsubmit="Search">
     <MudTextField AdornmentIcon="@Icons.Material.Filled.Search" Adornment="Adornment.End" Placeholder="@Resources.Search" Variant="Variant.Outlined" Class="search-bar" @bind-Value="searchText"></MudTextField>
 </form>
 

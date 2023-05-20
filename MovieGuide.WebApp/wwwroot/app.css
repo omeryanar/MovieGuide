@@ -385,17 +385,29 @@
     }
 }
 
-.narrow-window {
-    width: 60vh;
-    height: 90vh;
-}
-
-.wide-window {
-    width: 80vw;
-    height: 45vw;
-}
-
 .fullscreen {
     width: 100%;
     height: 100%;
+}
+
+.narrow-window {
+    width: 96vw;
+    height: 144vw;
+}
+
+.wide-window {
+    width: 96vw;
+    height: 54vw;
+}
+
+@media (min-aspect-ratio: 4/3) {
+    .narrow-window {
+        width: 64vh;
+        height: 96vh;
+    }
+
+    .wide-window {
+        width: 176vh;
+        height: 99vh;
+    }
 }
