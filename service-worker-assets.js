@@ -1,7 +1,7 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-9N7arewL1SSxftRqC5A3RKtz0fBVhMMO+S2FDIgKwTU=",
+      "hash": "sha256-C+C+CBM59GxC\/1llTSTgnbO4fy89y7PpZ4zlVHiXIE4=",
       "url": "app.css"
     },
     {
@@ -209,7 +209,7 @@
       "url": "images\/youtube.svg"
     },
     {
-      "hash": "sha256-nikZshGO6aa+q1uUmR4Uj/RqZiw7rAPOGHvqZcd676g=",
+      "hash": "sha256-TNu8hs9ANxCvr0HTDxkuiKjUsNuBGOnEbr5vvbY9XTQ=",
       "url": "index.html"
     },
     {
@@ -249,7 +249,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-69ah4inr\/pPaiSg5FB2JYQUgDvrUsKzVQJ+BapQG2xs=",
+      "hash": "sha256-BvRcF2Ka+xsTZfM7hnhBPc91CQvWJg9yo3HK6LiRB5I=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -333,7 +333,7 @@
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-Ir4XeEDMGHm4pyldmRo4IbTdn+EAPlPM0EgJu4q\/1Dw=",
+      "hash": "sha256-\/djKJeV70xEOZymgw2u6ZSWyDup3x0+iH5rOWPmwJsg=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
@@ -461,5 +461,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "3mEuQ7Kz"
+  "version": "U1PKxxoQ"
 };
