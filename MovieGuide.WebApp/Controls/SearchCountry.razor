@@ -1,0 +1,44 @@
+﻿@inject TmdbService TmdbService
+
+<MudAutocomplete @bind-Value="Country" SearchFunc="SearchCountries"></MudAutocomplete>
+
+@code
+{
+    [Parameter]
+    public string SelectedCountry { get; set; }
+
+    [Parameter]
+    public EventCallback<string> SelectedCountryChanged { get; set; }
+
+    public ProductionCountry Country
+    {
+        get => country;
+        set
+        {
+            if (country != value)
+            {
+                country = value;
+                SelectedCountry = country.Iso_3166_1;
+                SelectedCountryChanged.InvokeAsync(SelectedCountry);
+            }
+        }
+    }
+    private ProductionCountry country;
+
+    private Task<IEnumerable<ProductionCountry>> SearchCountries(string query)
+    {
+        if (String.IsNullOrWhiteSpace(query))
+            return Task.FromResult(countries?.AsEnumerable());
+
+        return Task.FromResult(countries?.FindAll(x => x.ToString().StartsWith(query, StringComparison.OrdinalIgnoreCase)).AsEnumerable());
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        countries = await TmdbService.GetCountries();
+        if (SelectedCountry != null)
+            Country = countries.Find(x => x.Iso_3166_1 == SelectedCountry);
+    }
+
+    private List<ProductionCountry> countries;
+}

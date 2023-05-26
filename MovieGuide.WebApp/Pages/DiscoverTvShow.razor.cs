@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MovieGuide.Common;
 using MovieGuide.Common.Helper;
-using MovieGuide.Common.Model.Movies;
 using MovieGuide.Common.Model.Search;
 using MudBlazor;
 
@@ -45,11 +44,15 @@ namespace MovieGuide.WebApp.Pages
 
         [Parameter]
         [SupplyParameterFromQuery(Name = "with_runtime.gte")]
-        public int Runtime { get; set; }
+        public int Runtime { get; set; }        
 
         [Parameter]
         [SupplyParameterFromQuery(Name = "with_original_language")]
         public string OriginalLanguage { get; set; }
+
+        [Parameter]
+        [SupplyParameterFromQuery(Name = "with_origin_country")]
+        public string OriginCountry { get; set; }
 
         [Parameter]
         [SupplyParameterFromQuery(Name = "first_air_date_year")]
@@ -96,6 +99,7 @@ namespace MovieGuide.WebApp.Pages
             withCompanies = WithCompanies?.Select(x => (object)x).ToList();
 
             withLanguage = OriginalLanguage;
+            withCountry = OriginCountry;
             voteAverage = VoteAverage;
             voteCount = VoteCount;
             runtime = Runtime;
@@ -120,6 +124,8 @@ namespace MovieGuide.WebApp.Pages
 
             if (withLanguage != null)
                 uri = uri.AddQueryString("with_original_language", withLanguage);
+            if (withCountry != null)
+                uri = uri.AddQueryString("with_origin_country", withCountry);
             if (voteAverage != 0)
                 uri = uri.AddQueryString("vote_average.gte", voteAverage);
             if (voteCount != 0)

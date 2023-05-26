@@ -80,9 +80,11 @@
                 <LabeledItem Label="@Resources.Networks" ChildObject="TvShow.Networks.FirstOrDefault()">
                     <NetworkLinkSet Networks="TvShow.Networks" />
                 </LabeledItem>
-                <LabeledItem Label="@Resources.ProductionCountries" Text="@TvShow.Countries" />
                 <LabeledItem Label="@Resources.Keywords" ChildObject="TvShow.Keywords.Results.FirstOrDefault()">
                     <KeywordChipSet Keywords="TvShow.Keywords.Results" MediaType="MediaType.TvShow" />
+                </LabeledItem>
+                <LabeledItem Label="@Resources.ProductionCountries" ChildObject="@TvShow.ProductionCountries.FirstOrDefault()">
+                    <CountryChipset Countries="TvShow.ProductionCountries" MediaType="MediaType.TvShow" />
                 </LabeledItem>
                 <LabeledItem Label="@Resources.ProductionCompanies" ChildObject="TvShow.ProductionCompanies.FirstOrDefault()">
                     <CompanyChipSet Companies="TvShow.ProductionCompanies" MediaType="MediaType.TvShow" />

@@ -98,9 +98,6 @@ namespace MovieGuide.Common.Model.TvShows
         public string PosterFullPath => Constants.GetPosterFullPath(PosterPath, MediaType.TvShow, Constants.W300);
 
         [JsonIgnore]
-        public string Countries => String.Join(" & ", ProductionCountries);
-
-        [JsonIgnore]
         public string TrailerLink
         {
             get

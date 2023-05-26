@@ -25,7 +25,7 @@
         set
         {
             person = value;
-            if(person != null)
+            if (person != null && SelectedPeople?.Contains(person.Id) == false)
             {
                 People.Add(person);
 

@@ -1,0 +1,32 @@
+﻿@inject NavigationManager NavigationManager
+
+<MudChipSet>
+    @if (Countries != null)
+    {
+        foreach (ProductionCountry country in Countries)
+        {
+            <MudChip Class="chip" Text="@country.Name" Value="country.Iso_3166_1" OnClick="() => Navigate(country.Iso_3166_1)">@country</MudChip>
+        }
+    }
+</MudChipSet>
+
+@code
+{
+    [Parameter]
+    public IEnumerable<ProductionCountry> Countries { get; set; }
+
+    [Parameter]
+    public MediaType MediaType { get; set; } = MediaType.Movie;
+
+    protected override void OnParametersSet()
+    {
+        endpoint = "discover/" + (MediaType == MediaType.Movie ? "movie" : "tv");
+    }
+
+    private void Navigate(string countryId)
+    {
+        NavigationManager.NavigateTo($"{endpoint}?with_origin_country={countryId}");
+    }
+
+    private string endpoint;
+}

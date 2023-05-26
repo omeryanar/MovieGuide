@@ -95,9 +95,6 @@ namespace MovieGuide.Common.Model.Movies
         public string PosterFullPath => Constants.GetPosterFullPath(PosterPath, MediaType.Movie, Constants.W300);
 
         [JsonIgnore]
-        public string Countries => String.Join(" & ", ProductionCountries);
-
-        [JsonIgnore]
         public string TrailerLink
         {
             get

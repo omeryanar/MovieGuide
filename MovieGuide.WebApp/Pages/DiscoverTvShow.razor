@@ -55,6 +55,8 @@
                             <SearchNetwork @bind-SelectedNetworks="withNetworks"></SearchNetwork>
                             <MudText Class="mt-8 mb-n4">@Resources.Keywords</MudText>
                             <SearchKeyword @bind-SelectedKeywords="withKeywords"></SearchKeyword>
+                            <MudText Class="mt-8 mb-n4">@Resources.ProductionCountries</MudText>
+                            <SearchCountry @bind-SelectedCountry="withCountry"></SearchCountry>
                             <MudText Class="mt-8 mb-n4">@Resources.ProductionCompanies</MudText>
                             <SearchCompany @bind-SelectedCompanies="withCompanies"></SearchCompany>
                             <MudText Class="mt-8 mb-n4">@Resources.ReleaseYear</MudText>
@@ -88,6 +90,8 @@
     private SortType sortBy = SortHelper.TvShowSortBy[0];
 
     private string withLanguage;
+
+    private string withCountry;
 
     private ICollection<object> withGenres;
 

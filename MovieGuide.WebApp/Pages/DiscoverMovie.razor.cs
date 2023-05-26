@@ -28,7 +28,7 @@ namespace MovieGuide.WebApp.Pages
 
         [Parameter]
         [SupplyParameterFromQuery(Name = "with_keywords")]
-        public int[] WithKeywords { get; set; }
+        public int[] WithKeywords { get; set; }        
 
         [Parameter]
         [SupplyParameterFromQuery(Name = "with_companies")]
@@ -49,6 +49,10 @@ namespace MovieGuide.WebApp.Pages
         [Parameter]
         [SupplyParameterFromQuery(Name = "with_original_language")]
         public string OriginalLanguage { get; set; }
+
+        [Parameter]
+        [SupplyParameterFromQuery(Name = "with_origin_country")]
+        public string OriginCountry { get; set; }
 
         [Parameter]
         [SupplyParameterFromQuery(Name = "primary_release_year")]
@@ -95,6 +99,7 @@ namespace MovieGuide.WebApp.Pages
             withCompanies = WithCompanies?.Select(x => (object)x).ToList();
 
             withLanguage = OriginalLanguage;
+            withCountry = OriginCountry;
             voteAverage = VoteAverage;
             voteCount = VoteCount;
             runtime = Runtime;
@@ -119,6 +124,8 @@ namespace MovieGuide.WebApp.Pages
 
             if (withLanguage != null)
                 uri = uri.AddQueryString("with_original_language", withLanguage);
+            if (withCountry != null)
+                uri = uri.AddQueryString("with_origin_country", withCountry);
             if (voteAverage != 0)
                 uri = uri.AddQueryString("vote_average.gte", voteAverage);
             if (voteCount != 0)

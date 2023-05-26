@@ -81,9 +81,11 @@
                 <LabeledItem Label="@Resources.Runtime" Text="@Movie.Runtime.GetRuntimeDescription()" />
                 <LabeledItem Label="@Resources.Budget" Text="@(Movie.Budget == 0 ? "" : $"$ {Movie.Budget:#,#}")" />
                 <LabeledItem Label="@Resources.Revenue" Text="@(Movie.Revenue == 0 ? "" : $"$ {Movie.Revenue:#,#}")" />
-                <LabeledItem Label="@Resources.ProductionCountries" Text="@Movie.Countries" />
                 <LabeledItem Label="@Resources.Keywords" ChildObject="@Movie.Keywords.Keywords.FirstOrDefault()">
                     <KeywordChipSet Keywords="Movie.Keywords.Keywords" />
+                </LabeledItem>
+                <LabeledItem Label="@Resources.ProductionCountries" ChildObject="@Movie.ProductionCountries.FirstOrDefault()">
+                    <CountryChipset Countries="Movie.ProductionCountries" />
                 </LabeledItem>
                 <LabeledItem Label="@Resources.ProductionCompanies" ChildObject="@Movie.ProductionCompanies.FirstOrDefault()">
                     <CompanyChipSet Companies="Movie.ProductionCompanies" />

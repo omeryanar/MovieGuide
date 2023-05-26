@@ -8,9 +8,12 @@
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
+        [JsonPropertyName("native_name")]
+        public string NativeName { get; set; }
+
         public override string ToString()
         {
-            return Name;
+            return String.IsNullOrEmpty(Name) ? NativeName : Name;
         }
     }
 }
