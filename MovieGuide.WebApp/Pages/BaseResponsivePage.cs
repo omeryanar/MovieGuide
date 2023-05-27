@@ -9,7 +9,7 @@ namespace MovieGuide.WebApp.Pages
         [Inject]
         public IBreakpointService BreakpointService { get; set; }
 
-        public async ValueTask DisposeAsync() => await BreakpointService.Unsubscribe(breakpointSubscriptionId);
+        public async ValueTask DisposeAsync() => await BreakpointService.UnsubscribeAsync(breakpointSubscriptionId);
 
         public Breakpoint CurrentBreakpoint { get; set; }
 
@@ -17,7 +17,7 @@ namespace MovieGuide.WebApp.Pages
         {
             if (firstRender)
             {
-                var subscriptionResult = await BreakpointService.Subscribe((breakpoint) =>
+                var subscriptionResult = await BreakpointService.SubscribeAsync((breakpoint) =>
                 {
                     CurrentBreakpoint = breakpoint;
                 }, new ResizeOptions

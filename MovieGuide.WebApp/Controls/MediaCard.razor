@@ -30,12 +30,12 @@
         {
             case SearchMovie movie:
                 image = movie.PosterFullPath;
-                date = movie.ReleaseDate?.ToString("MMM d, yyyy");
+                date = movie.ReleaseDate.GetFormattedDate();
                 break;
 
             case SearchTvShow tv:
                 image = tv.PosterFullPath;
-                date = tv.FirstAirDate?.ToString("MMM d, yyyy");
+                date = tv.FirstAirDate.GetFormattedDate();
                 break;
 
             case SearchPerson person:

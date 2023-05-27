@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Acting" xml:space="preserve">
+    <value>Acting</value>
+    <comment>Department</comment>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Action</value>
     <comment>Genre</comment>
@@ -145,6 +149,10 @@
     <value>Aries</value>
     <comment>Signs</comment>
   </data>
+  <data name="Art" xml:space="preserve">
+    <value>Art</value>
+    <comment>Department</comment>
+  </data>
   <data name="Backdrops" xml:space="preserve">
     <value>Backdrops</value>
   </data>
@@ -156,6 +164,10 @@
   </data>
   <data name="Budget" xml:space="preserve">
     <value>Budget</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Camera</value>
+    <comment>Department</comment>
   </data>
   <data name="Canceled" xml:space="preserve">
     <value>Canceled</value>
@@ -198,6 +210,10 @@
   <data name="Department" xml:space="preserve">
     <value>Department</value>
   </data>
+  <data name="Directing" xml:space="preserve">
+    <value>Directing</value>
+    <comment>Department</comment>
+  </data>
   <data name="Director" xml:space="preserve">
     <value>Director</value>
     <comment>Job</comment>
@@ -212,6 +228,10 @@
   <data name="Drama" xml:space="preserve">
     <value>Drama</value>
     <comment>Genre</comment>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Editing</value>
+    <comment>Department</comment>
   </data>
   <data name="Ended" xml:space="preserve">
     <value>Ended</value>
@@ -314,6 +334,10 @@
     <value>Light</value>
     <comment>Theme</comment>
   </data>
+  <data name="Lighting" xml:space="preserve">
+    <value>Lighting</value>
+    <comment>Department</comment>
+  </data>
   <data name="MinimumRuntime" xml:space="preserve">
     <value>Minimum Runtime</value>
   </data>
@@ -413,6 +437,10 @@
   </data>
   <data name="PreviousPage" xml:space="preserve">
     <value>Previous Page</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Production</value>
+    <comment>Department</comment>
   </data>
   <data name="ProductionCompanies" xml:space="preserve">
     <value>Production Companies</value>
@@ -517,6 +545,10 @@
   <data name="Sort" xml:space="preserve">
     <value>Sort</value>
   </data>
+  <data name="Sound" xml:space="preserve">
+    <value>Sound</value>
+    <comment>Department</comment>
+  </data>
   <data name="Starring" xml:space="preserve">
     <value>Starring</value>
   </data>
@@ -607,5 +639,9 @@
   <data name="Writer" xml:space="preserve">
     <value>Writer</value>
     <comment>Job</comment>
+  </data>
+  <data name="Writing" xml:space="preserve">
+    <value>Writing</value>
+    <comment>Department</comment>
   </data>
 </root>

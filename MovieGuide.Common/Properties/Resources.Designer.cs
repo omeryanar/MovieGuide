@@ -61,6 +61,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acting.
+        /// </summary>
+        public static string Acting {
+            get {
+                return ResourceManager.GetString("Acting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
         public static string Action {
@@ -124,6 +133,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Art.
+        /// </summary>
+        public static string Art {
+            get {
+                return ResourceManager.GetString("Art", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backdrops.
         /// </summary>
         public static string Backdrops {
@@ -156,6 +174,15 @@ namespace MovieGuide.Common.Properties {
         public static string Budget {
             get {
                 return ResourceManager.GetString("Budget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera.
+        /// </summary>
+        public static string Camera {
+            get {
+                return ResourceManager.GetString("Camera", resourceCulture);
             }
         }
         
@@ -259,6 +286,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directing.
+        /// </summary>
+        public static string Directing {
+            get {
+                return ResourceManager.GetString("Directing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Director.
         /// </summary>
         public static string Director {
@@ -291,6 +327,15 @@ namespace MovieGuide.Common.Properties {
         public static string Drama {
             get {
                 return ResourceManager.GetString("Drama", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing.
+        /// </summary>
+        public static string Editing {
+            get {
+                return ResourceManager.GetString("Editing", resourceCulture);
             }
         }
         
@@ -552,6 +597,15 @@ namespace MovieGuide.Common.Properties {
         public static string Light {
             get {
                 return ResourceManager.GetString("Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lighting.
+        /// </summary>
+        public static string Lighting {
+            get {
+                return ResourceManager.GetString("Lighting", resourceCulture);
             }
         }
         
@@ -826,6 +880,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Production.
+        /// </summary>
+        public static string Production {
+            get {
+                return ResourceManager.GetString("Production", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Production Companies.
         /// </summary>
         public static string ProductionCompanies {
@@ -1087,6 +1150,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sound.
+        /// </summary>
+        public static string Sound {
+            get {
+                return ResourceManager.GetString("Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starring.
         /// </summary>
         public static string Starring {
@@ -1308,6 +1380,15 @@ namespace MovieGuide.Common.Properties {
         public static string Writer {
             get {
                 return ResourceManager.GetString("Writer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Writing.
+        /// </summary>
+        public static string Writing {
+            get {
+                return ResourceManager.GetString("Writing", resourceCulture);
             }
         }
     }

@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Acting" xml:space="preserve">
+    <value>Oyunculuk</value>
+    <comment>Department</comment>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Aksiyon</value>
     <comment>Genre</comment>
@@ -145,6 +149,10 @@
     <value>Koç</value>
     <comment>Signs</comment>
   </data>
+  <data name="Art" xml:space="preserve">
+    <value>Sanat</value>
+    <comment>Department</comment>
+  </data>
   <data name="Backdrops" xml:space="preserve">
     <value>Sahneler</value>
   </data>
@@ -156,6 +164,10 @@
   </data>
   <data name="Budget" xml:space="preserve">
     <value>Bütçe</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Kamera</value>
+    <comment>Department</comment>
   </data>
   <data name="Canceled" xml:space="preserve">
     <value>İptal Edildi</value>
@@ -198,6 +210,10 @@
   <data name="Department" xml:space="preserve">
     <value>Bölüm</value>
   </data>
+  <data name="Directing" xml:space="preserve">
+    <value>Yönetmenlik</value>
+    <comment>Department</comment>
+  </data>
   <data name="Director" xml:space="preserve">
     <value>Yönetmen</value>
     <comment>Job</comment>
@@ -212,6 +228,10 @@
   <data name="Drama" xml:space="preserve">
     <value>Dram</value>
     <comment>Genre</comment>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Kurgu</value>
+    <comment>Department</comment>
   </data>
   <data name="Ended" xml:space="preserve">
     <value>Bitti</value>
@@ -314,6 +334,10 @@
     <value>Açık</value>
     <comment>Theme</comment>
   </data>
+  <data name="Lighting" xml:space="preserve">
+    <value>Işık</value>
+    <comment>Department</comment>
+  </data>
   <data name="MinimumRuntime" xml:space="preserve">
     <value>Minimum Süre</value>
   </data>
@@ -413,6 +437,10 @@
   </data>
   <data name="PreviousPage" xml:space="preserve">
     <value>Önceki Sayfa</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Yapım</value>
+    <comment>Department</comment>
   </data>
   <data name="ProductionCompanies" xml:space="preserve">
     <value>Yapımcı Şirketler</value>
@@ -517,6 +545,10 @@
   <data name="Sort" xml:space="preserve">
     <value>Sırala</value>
   </data>
+  <data name="Sound" xml:space="preserve">
+    <value>Ses</value>
+    <comment>Department</comment>
+  </data>
   <data name="Starring" xml:space="preserve">
     <value>Oyuncular</value>
   </data>
@@ -607,5 +639,9 @@
   <data name="Writer" xml:space="preserve">
     <value>Senarist</value>
     <comment>Job</comment>
+  </data>
+  <data name="Writing" xml:space="preserve">
+    <value>Yazarlık</value>
+    <comment>Department</comment>
   </data>
 </root>

@@ -10,8 +10,8 @@
             <MudText Typo="Typo.h1">@Person.Name</MudText>
             <MudStack Class="flex-wrap" Row="true" Spacing="4">
                 <LabeledItem Label="@Resources.PlaceOfBirth" Text="@Person.PlaceOfBirth" />
-                <LabeledItem Label="@Resources.Birthday" Text="@(Person.Birthday == null ? "" : $"{Person.Birthday?.ToString("MMM d, yyyy")} ({Person.Sign})")" />
-                <LabeledItem Label="@Resources.Deathday" Text="@Person.Deathday?.ToString("MMM d, yyyy")" />
+                <LabeledItem Label="@Resources.Birthday" Text="@(Person.Birthday == null ? "" : $"{Person.Birthday.GetFormattedDate()} ({Person.Sign})")" />
+                <LabeledItem Label="@Resources.Deathday" Text="@Person.Deathday.GetFormattedDate()" />
             </MudStack>
             <MudStack Class="ml-n1" Row="true" Spacing="1">
                 <SocialMediaLink SocialMedia="SocialMediaType.ImdbName" Id="@Person.ImdbId" />
@@ -34,34 +34,30 @@
         <MudPaper Elevation="1">
             <MudNavGroup Title="@Resources.Movies">
                 <MudDivider />
-                <MudDataGrid Class="px-4" Items="Person.KnownMovieCredits" Dense="true" Hover="true" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="movieFilter">
+                <MudDataGrid Class="px-4" Items="Person.KnownMovieCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="movieFilter">
                     <ToolBarContent>
                         <MudSpacer />
                         <MudTextField Class="mt-0" @bind-Value="movieSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
                     </ToolBarContent>
                     <Columns>
-                        <TemplateColumn SortBy="x => x.Title" Title="@Resources.Title">
+                        <TemplateColumn Title="@Resources.Title" SortBy="x => x.Title">
                             <CellTemplate>
-                                <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body2" Href="@("movie/" + context.Item.Id)">
+                                <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body1" Href="@("movie/" + context.Item.Id)">
                                     <MudHighlighter Text="@context.Item.Title" HighlightedText="@movieSearchString" />
                                 </MudLink>
                             </CellTemplate>
                         </TemplateColumn>
-                        <TemplateColumn SortBy="x => x.Job" Title="@Resources.JobRole">
+                        <TemplateColumn Title="@Resources.JobRole" SortBy="x => x.Job">
                             <CellTemplate>
                                 <MudHighlighter Text="@context.Item.Job" HighlightedText="@movieSearchString" />
                             </CellTemplate>
                         </TemplateColumn>
-                        <TemplateColumn SortBy="x => x.Department" Title="@Resources.Department" HideSmall="true">
-                            <CellTemplate>
-                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
-                            </CellTemplate>
-                        </TemplateColumn>                        
-                        <TemplateColumn SortBy="x => x.ReleaseDate" Title="@Resources.ReleaseDate" HideSmall="true" InitialDirection="SortDirection.Descending">
-                            <CellTemplate>
-                                <MudText Typo="Typo.body2">@context.Item.ReleaseDate?.ToString("MMM d, yyyy")</MudText>
-                            </CellTemplate>
-                        </TemplateColumn>
+                        <PropertyColumn Title="@Resources.Department" Property="x => x.Department.GetLocalizedText()" Hidden="true" Grouping="true">
+                            <GroupTemplate>
+                                <MudText Typo="Typo.h5" Class="ml-1" Inline="true">@context.Grouping.Key</MudText>
+                            </GroupTemplate>
+                        </PropertyColumn>
+                        <PropertyColumn Title="@Resources.ReleaseDate" Property="x => x.ReleaseDate.GetFormattedDate()" InitialDirection="SortDirection.Descending" />
                     </Columns>
                 </MudDataGrid>
             </MudNavGroup>
@@ -69,34 +65,30 @@
         <MudPaper Elevation="1">
             <MudNavGroup Title="@Resources.TvShows">
                 <MudDivider />
-                <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="tvShowFilter">
+                <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="tvShowFilter">
                     <ToolBarContent>
                         <MudSpacer />
                         <MudTextField Class="mt-0" @bind-Value="tvShowSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
                     </ToolBarContent>
                     <Columns>
-                        <TemplateColumn SortBy="x => x.Name" Title="@Resources.Name">
+                        <TemplateColumn Title="@Resources.Name" SortBy="x => x.Name">
                             <CellTemplate>
-                                <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body2" Href="@("tv/" + context.Item.Id)">
+                                <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body1" Href="@("movie/" + context.Item.Id)">
                                     <MudHighlighter Text="@context.Item.Name" HighlightedText="@tvShowSearchString" />
                                 </MudLink>
                             </CellTemplate>
                         </TemplateColumn>
-                        <TemplateColumn SortBy="x => x.Job" Title="@Resources.JobRole">
+                        <TemplateColumn Title="@Resources.JobRole" SortBy="x => x.Job">
                             <CellTemplate>
                                 <MudHighlighter Text="@context.Item.Job" HighlightedText="@tvShowSearchString" />
                             </CellTemplate>
                         </TemplateColumn>
-                        <TemplateColumn SortBy="x => x.Department" Title="@Resources.Department" HideSmall="true">
-                            <CellTemplate>
-                                <MudText Typo="Typo.body2">@context.Item.Department</MudText>
-                            </CellTemplate>
-                        </TemplateColumn>                        
-                        <TemplateColumn SortBy="x => x.FirstAirDate" Title="@Resources.FirstAirDate" HideSmall="true" InitialDirection="SortDirection.Descending">
-                            <CellTemplate>
-                                <MudText Typo="Typo.body2">@context.Item.FirstAirDate?.ToString("MMM d, yyyy")</MudText>
-                            </CellTemplate>
-                        </TemplateColumn>
+                        <PropertyColumn Title="@Resources.Department" Property="x => x.Department.GetLocalizedText()" Hidden="true" Grouping="true">
+                            <GroupTemplate>
+                                <MudText Typo="Typo.h5" Class="ml-1" Inline="true">@context.Grouping.Key</MudText>
+                            </GroupTemplate>
+                        </PropertyColumn>
+                        <PropertyColumn Title="@Resources.FirstAirDate" Property="x => x.FirstAirDate.GetFormattedDate()" InitialDirection="SortDirection.Descending" />
                     </Columns>
                 </MudDataGrid>
             </MudNavGroup>

@@ -4,7 +4,7 @@
         <MudCardContent Class="pt-0 px-3">
             <MudText Typo="Typo.h5">@Season.Name</MudText>
             <MudText Typo="Typo.h6" Class="@(Season.EpisodeCount == 0 ? "d-none" : "")">@String.Format(Resources.SeasonEpisodes, Season.EpisodeCount)</MudText>
-            <MudText Typo="Typo.h6">@Season.AirDate?.ToString("MMM d, yyyy")</MudText>
+            <MudText Typo="Typo.h6">@Season.AirDate.GetFormattedDate()</MudText>
         </MudCardContent>
     </MudCard>
 </MudLink>

@@ -28,5 +28,10 @@ namespace MovieGuide.Common.Helper
         {
             return String.Join(" - ", runtimes?.Select(x => (x as int?).GetRuntimeDescription()));
         }
+
+        public static string GetFormattedDate(this DateTime? releaseDate)
+        {
+            return releaseDate.HasValue ? releaseDate.Value.ToString("MMM d, yyyy") : String.Empty;
+        }
     }
 }
