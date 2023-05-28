@@ -18,26 +18,32 @@
         </MudStack>
     </MudStack>
     <MudStack Class="mt-4">
-        <ExpansionPanel Title="@Resources.GuestStars" Items="Episode.GuestStars" Expanded="true">
-            <PersonCastCard Cast="context" />
+        <ExpansionPanel Title="@Resources.GuestStars" Items="Episode.GuestStars" InitiallyExpanded="true">
+            <ItemTemplate>
+                <PersonCastCard Cast="context" />
+            </ItemTemplate>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Crew" Items="Episode.Crew">
-            <PersonCrewCard Crew="context" />
+            <ItemTemplate>
+                <PersonCrewCard Crew="context" />
+            </ItemTemplate>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Backdrops" Items="Episode.Images?.Stills" OverlayClass="wide-window">
-            <ChildContent>
+            <ItemTemplate>
                 <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
-            </ChildContent>
-            <OverlayContent>
+            </ItemTemplate>
+            <OverlayTemplate>
                 <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
                     <MudImage Class="fullscreen" Src="@(String.Format(Constants.Original, context.FilePath))" />
                 </MudStack>
-            </OverlayContent>
+            </OverlayTemplate>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Videos" Items="Episode.Videos?.Results">
-            <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
-                <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
-            </MediaViewer>
+            <ItemTemplate>
+                <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                    <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
+                </MediaViewer>
+            </ItemTemplate>
         </ExpansionPanel>
     </MudStack>
 </LoadingContent>

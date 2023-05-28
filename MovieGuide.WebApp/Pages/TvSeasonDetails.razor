@@ -27,29 +27,37 @@
         </MudStack>
     </MudStack>
     <MudStack Class="mt-4">
-        <ExpansionPanel Title="@Resources.Starring" Items="Season.Starring" Expanded="true">
-            <PersonCastCard Cast="context" />
+        <ExpansionPanel Title="@Resources.Starring" Items="Season.Starring" InitiallyExpanded="true">
+            <ItemTemplate>
+                <PersonCastCard Cast="context" />
+            </ItemTemplate>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Crew" Items="Season.Crew">
-            <PersonCrewCard Crew="context" />
+            <ItemTemplate>
+                <PersonCrewCard Crew="context" />
+            </ItemTemplate>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Episodes" Items="Season.Episodes">
-            <TvEpisodeCard TvShow="@TvShow" Episode="@context" />
+            <ItemTemplate>
+                <TvEpisodeCard TvShow="@TvShow" Episode="@context" />
+            </ItemTemplate>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Posters" Items="Season.Images?.Posters" OverlayClass="narrow-window">
-            <ChildContent>
+            <ItemTemplate>
                 <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
-            </ChildContent>
-            <OverlayContent>
+            </ItemTemplate>
+            <OverlayTemplate>
                 <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
                     <MudImage Class="fullscreen" Src="@(String.Format(Constants.Original, context.FilePath))" />
                 </MudStack>
-            </OverlayContent>
+            </OverlayTemplate>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.Videos" Items="Season.Videos?.Results">
-            <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
-                <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
-            </MediaViewer>
+            <ItemTemplate>
+                <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                    <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
+                </MediaViewer>
+            </ItemTemplate>
         </ExpansionPanel>
     </MudStack>
 </LoadingContent>

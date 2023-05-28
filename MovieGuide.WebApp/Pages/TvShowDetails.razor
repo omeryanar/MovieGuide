@@ -29,39 +29,47 @@
     <MudGrid Class="mt-4" Spacing="2">
         <MudItem xs=12 sm="12" md="9">
             <MudStack>
-                <ExpansionPanel Title="@Resources.Starring" Items="TvShow.Starring" Expanded="true">
-                    <PersonCastCard Cast="context" />
+                <ExpansionPanel Title="@Resources.Starring" Items="TvShow.Starring" InitiallyExpanded="true">
+                    <ItemTemplate>
+                        <PersonCastCard Cast="context" />
+                    </ItemTemplate>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Crew" Items="TvShow.Crew">
-                    <PersonCrewCard Crew="context" />
+                    <ItemTemplate>
+                        <PersonCrewCard Crew="context" />
+                    </ItemTemplate>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Seasons" Items="TvShow.Seasons">
-                    <TvSeasonCard TvShow="TvShow" Season="context" />
+                    <ItemTemplate>
+                        <TvSeasonCard TvShow="TvShow" Season="context" />
+                    </ItemTemplate>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Posters" Items="TvShow.Images?.Posters" OverlayClass="narrow-window">
-                    <ChildContent>
+                    <ItemTemplate>
                         <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
-                    </ChildContent>
-                    <OverlayContent>
+                    </ItemTemplate>
+                    <OverlayTemplate>
                         <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
                             <MudImage Class="fullscreen" Src="@(String.Format(Constants.Original, context.FilePath))" />
                         </MudStack>
-                    </OverlayContent>
+                    </OverlayTemplate>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Backdrops" Items="TvShow.Images?.Backdrops" OverlayClass="wide-window">
-                    <ChildContent>
+                    <ItemTemplate>
                         <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
-                    </ChildContent>
-                    <OverlayContent>
+                    </ItemTemplate>
+                    <OverlayTemplate>
                         <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
                             <MudImage Class="fullscreen" Src="@(String.Format(Constants.Original, context.FilePath))" />
                         </MudStack>
-                    </OverlayContent>
+                    </OverlayTemplate>
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Videos" Items="TvShow.Videos?.Results">
-                    <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
-                        <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
-                    </MediaViewer>
+                    <ItemTemplate>
+                        <MediaViewer Title="@context.Name" MediaUrl="@(String.Format(Constants.YoutubeVideo, context.Key))">
+                            <MudImage Width="240" Height="180" Src="@(String.Format(Constants.YouTubeImage, context.Key))" />
+                        </MediaViewer>
+                    </ItemTemplate>
                 </ExpansionPanel>
             </MudStack>
         </MudItem>

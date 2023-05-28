@@ -1,36 +1,42 @@
 ﻿@typeparam T
+@inject NavigationManager NavigationManager
+@inject ISyncSessionStorageService SessionStorage
 
 <MudPaper Elevation="1">
     <MudNavGroup Title="@Title" @bind-Expanded="Expanded">
         <MudDivider />
-        <MudStack Class="overflow-auto pa-4" Spacing="4" Row="true">            
-            @if(Items != null)
-            {
-                foreach (T item in viewAll ? Items : Items.Take(8))
+        @if (ChildContent != null)
+        {
+            @ChildContent;
+        }
+        else if (Items != null && ItemTemplate != null)
+        {
+            <MudStack Class="overflow-auto pa-4" Spacing="4" Row="true">
+                @foreach (T item in ViewAll ? Items : Items.Take(8))
                 {
                     <MudLink Underline="Underline.None" OnClick="() => ShowOverlay(item)">
-                        @ChildContent(item)
+                        @ItemTemplate(item)
                     </MudLink>
                 }
 
-                if (!viewAll && Items.Count > 8)
+                @if (!ViewAll && Items.Count > 8)
                 {
                     <MudTooltip RootClass="align-self-center" Text="@Resources.ViewAll">
-                        <MudIconButton Size="Size.Large" Icon="@Icons.Material.Filled.ArrowCircleRight" OnClick="ToggleViewAll" />
+                        <MudIconButton Size="Size.Large" Icon="@Icons.Material.Filled.ArrowCircleRight" OnClick="() => ViewAll = true" />
                     </MudTooltip>
                 }
-            }
-        </MudStack>
+            </MudStack>
+        }
     </MudNavGroup>
 </MudPaper>
 
-@if (OverlayContent != null)
+@if (OverlayTemplate != null)
 {
     <MudOverlay @bind-Visible="overlayVisible" DarkBackground="true" AutoClose="true" ZIndex="9999">
         <MudSwipeArea PreventDefault="true" @onclick:stopPropagation="true">
             <MudCarousel Class="@OverlayClass" ItemsSource="Items" @bind-SelectedIndex="selectedItemIndex" AutoCycle="false" ShowBullets="false">
                 <ItemTemplate>
-                    @OverlayContent(Items[selectedItemIndex])
+                    @OverlayTemplate(Items[selectedItemIndex])
                 </ItemTemplate>
                 <PreviousButtonTemplate>
                     <MudIconButton Class="rounded-circle ma-0 white-text" Icon="@Icons.Material.Filled.ArrowBackIosNew" OnClick="Back" />
@@ -43,36 +49,61 @@
     </MudOverlay>
 }
 
-@code {
-
+@code
+{
     [Parameter]
     public string Title { get; set; }
 
     [Parameter]
-    public bool Expanded { get; set; }
+    public bool InitiallyExpanded { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
 
     [Parameter]
     public IList<T> Items{ get; set; }
 
     [Parameter]
-    public RenderFragment<T> ChildContent { get; set; }
+    public RenderFragment<T> ItemTemplate { get; set; }
 
     [Parameter]
-    public RenderFragment<T> OverlayContent { get; set; }
+    public RenderFragment<T> OverlayTemplate { get; set; }
 
     [Parameter]
     public string OverlayClass { get; set; }
 
+    public string SessionKey => $"{NavigationManager.Uri.Substring(NavigationManager.BaseUri.Length)}-{Title}";
+
+    public bool Expanded
+    {
+        get => expanded;
+        set
+        {
+            expanded = value;
+            SavePanelState();
+        }
+    }
+    private bool expanded;
+
+    public bool ViewAll
+    {
+        get => viewAll;
+        set
+        {
+            viewAll = value;
+            SavePanelState();
+        }
+    }
     private bool viewAll;
 
     private bool overlayVisible;
 
     private int selectedItemIndex = 1;
 
-    private void ToggleViewAll()
+    protected override void OnInitialized()
     {
-        viewAll = true;
-        Expanded = true;
+        expanded = InitiallyExpanded;
+        RestorePanelState();
     }
 
     private void ShowOverlay(T item)
@@ -91,5 +122,30 @@
     {
         if (selectedItemIndex < Items.Count - 1)
             selectedItemIndex++;
+    }
+
+    private void SavePanelState()
+    {
+        ExpansionPanelState panelState = new ExpansionPanelState { Expanded = this.Expanded, ViewAll = this.ViewAll };
+        SessionStorage.SetItem<ExpansionPanelState>(SessionKey, panelState);
+    }
+
+    private void RestorePanelState()
+    {
+        ExpansionPanelState panelState = SessionStorage.GetItem<ExpansionPanelState>(SessionKey);
+        if (panelState != null)
+        {
+            Expanded = panelState.Expanded;
+            ViewAll = panelState.ViewAll;
+
+            StateHasChanged();
+        }
+    }
+
+    private class ExpansionPanelState
+    {
+        public bool Expanded { get; set; }
+
+        public bool ViewAll { get; set; }
     }
 }
