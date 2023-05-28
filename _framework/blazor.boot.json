@@ -8,6 +8,7 @@
   "resources": {
     "assembly": {
       "Blazored.LocalStorage.dll": "sha256-eXVgTw72kEn74FZgDQbLtvAmXbiZDSj5gzUnxVmwowQ=",
+      "Blazored.SessionStorage.dll": "sha256-Y5WVl4GeKE4HMIAYngGySxcPse+7tZjlwyN0jaZSWS4=",
       "Microsoft.AspNetCore.Components.dll": "sha256-qWcoH5JUyKK7ovuTfRbdzzW8Oq4SjXhBZvzSj1ZdNKs=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-wcPyGU\/T7lzlTPNy+M4AeOL1yYc7qTSAkQwoYJPJdO0=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-NkDyV73rhzUUx7KZ4f\/ueY\/WwAY1L4R90LbwQ1neeWM=",
@@ -27,8 +28,8 @@
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-3+dHa65PgCYOsUMlsJSDYPxt294+nWZxeMbopoWb+fA=",
       "Microsoft.Net.Http.Headers.dll": "sha256-P66ftDrXwc6ayND8uYzIk0CPQy1GjNZAPHx9RMhi3V4=",
       "MovieGuide.Common.dll": "sha256-CcqKdQZ7+VdvDLAy8UWQCf5CU50UpdzgIDSfpYCgHb8=",
-      "MovieGuide.WebApp.dll": "sha256-o4SOeKd19ZYERaTRYz4Q3hX6yAboThz7wk51v5nNN7s=",
-      "MudBlazor.dll": "sha256-ugHY6ueaW7d5y8CPFgrEY9wgUMBMTmZVbqvlzePa9iw=",
+      "MovieGuide.WebApp.dll": "sha256-9sTFdBHGL6xfKB+BxLzPdFkb5wdHw2UaEA0irY0l5PU=",
+      "MudBlazor.dll": "sha256-P94488Vn8Jim\/rx5gg7reFxEzkvXhWjQoewwTvSZIoE=",
       "netstandard.dll": "sha256-uKB0kZwG\/A\/RYHMls2VovqZuLCKtiGqwMurZ5VJPCVk=",
       "System.Buffers.dll": "sha256-R0nSyOnB04go+ugf73L8UDEEEAkhphK238WQknFs0fs=",
       "System.Collections.Concurrent.dll": "sha256-BqFiRZ9bdT\/ddz\/v9EW3jy7liWc7\/MGk6EgTUQO1+Fw=",

@@ -249,12 +249,16 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-7btr9G5mYN6Yny5bKqReYOVHVGP8fYOFWBAxLWOuA+Y=",
+      "hash": "sha256-XU6aAFCHJLX7WxPAfHS82\/oldr\/DkF0cHQ7ab4j+d24=",
       "url": "_framework\/blazor.boot.json"
     },
     {
       "hash": "sha256-eXVgTw72kEn74FZgDQbLtvAmXbiZDSj5gzUnxVmwowQ=",
       "url": "_framework\/Blazored.LocalStorage.dll"
+    },
+    {
+      "hash": "sha256-Y5WVl4GeKE4HMIAYngGySxcPse+7tZjlwyN0jaZSWS4=",
+      "url": "_framework\/Blazored.SessionStorage.dll"
     },
     {
       "hash": "sha256-qWcoH5JUyKK7ovuTfRbdzzW8Oq4SjXhBZvzSj1ZdNKs=",
@@ -333,11 +337,11 @@
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-o4SOeKd19ZYERaTRYz4Q3hX6yAboThz7wk51v5nNN7s=",
+      "hash": "sha256-9sTFdBHGL6xfKB+BxLzPdFkb5wdHw2UaEA0irY0l5PU=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
-      "hash": "sha256-ugHY6ueaW7d5y8CPFgrEY9wgUMBMTmZVbqvlzePa9iw=",
+      "hash": "sha256-P94488Vn8Jim\/rx5gg7reFxEzkvXhWjQoewwTvSZIoE=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -453,7 +457,7 @@
       "url": "_framework\/tr\/MovieGuide.Common.resources.dll"
     },
     {
-      "hash": "sha256-jNa6WyXYBta9gzPV10ISrjh8Lpika2Fy9SrfFNKTkX4=",
+      "hash": "sha256-7bmNDaqyaj7bFcVJ6tVt4bcHsM5+iSuU91C8Up1djZ0=",
       "url": "_content\/MudBlazor\/MudBlazor.min.css"
     },
     {
@@ -461,5 +465,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "Cwe0T8zA"
+  "version": "ALqQX1nW"
 };
