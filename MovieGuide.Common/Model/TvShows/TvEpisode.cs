@@ -24,6 +24,9 @@ namespace MovieGuide.Common.Model.TvShows
         [JsonPropertyName("episode_number")]
         public int EpisodeNumber { get; set; }
 
+        [JsonPropertyName("runtime")]
+        public int? Runtime { get; set; }
+
         [JsonPropertyName("air_date")]
         public DateTime? AirDate { get; set; }
 

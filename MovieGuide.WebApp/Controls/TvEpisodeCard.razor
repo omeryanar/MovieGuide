@@ -3,8 +3,12 @@
         <MudImage Class="rounded-t episode-card-img" Src="@Episode.StillFullPath" />
         <MudCardContent Class="media-card-content media-card-rating">
             <RatingCircular Value="@Episode.VoteAverage"></RatingCircular>
-            <MudText Typo="Typo.h5" >@Episode</MudText>
-            <MudText Typo="Typo.h6" >@Episode.LocalizedOverview</MudText>
+            <MudText Typo="Typo.h5">@Episode</MudText>            
+            <MudText Typo="Typo.h6" Class="my-2">@Episode.LocalizedOverview</MudText>
+            <MudStack Class="flex-wrap" Row="true" AlignItems="AlignItems.Center">
+                <MudText Typo="Typo.h5" Class="@(Episode.AirDate == null ? "d-none" : "")">@Episode.AirDate.GetFormattedDate()</MudText>
+                <MudText Typo="Typo.h6" Class="@(Episode.Runtime == null ? "d-none" : "")">@($"({Episode.Runtime.GetRuntimeDescription()})")</MudText>
+            </MudStack>
         </MudCardContent>
     </MudCard>
 </MudLink>

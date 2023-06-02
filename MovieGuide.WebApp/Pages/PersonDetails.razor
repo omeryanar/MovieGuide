@@ -62,7 +62,7 @@
             </MudDataGrid>
         </ExpansionPanel>
         <ExpansionPanel Title="@Resources.TvShows" T="Person">
-            <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="tvShowFilter">
+            <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="tvShowFilter">
                 <ToolBarContent>
                     <MudSpacer />
                     <MudTextField Class="mt-0" @bind-Value="tvShowSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
@@ -70,7 +70,7 @@
                 <Columns>
                     <TemplateColumn Title="@Resources.Name" SortBy="x => x.Name">
                         <CellTemplate>
-                            <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body1" Href="@("movie/" + context.Item.Id)">
+                            <MudLink Underline="Underline.Hover" Color="Color.Default" Typo="Typo.body1" Href="@("tv/" + context.Item.Id)">
                                 <MudHighlighter Text="@context.Item.Name" HighlightedText="@tvShowSearchString" />
                             </MudLink>
                         </CellTemplate>
