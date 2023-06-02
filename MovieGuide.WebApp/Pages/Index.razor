@@ -1,7 +1,31 @@
 ﻿@page "/"
 @inject TmdbService TmdbService;
+@inject RecentService RecentService;
 
 <PageTitle>Movie Guide</PageTitle>
+
+@if (Recent?.Count > 5)
+{
+    <MudStack Row="true" Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
+        <MudText Typo="Typo.h1">@Resources.RecentlyViewed</MudText>
+        <MudTooltip Text="@Resources.ViewAll">
+            <MudIconButton Size="Size.Large" Icon="@Icons.Material.Filled.ArrowCircleRight" Href="recent" />
+        </MudTooltip>
+    </MudStack>
+    <MudStack Class="flex-wrap mb-4" Row="true" Justify="Justify.Center">
+        @if (Recent == null)
+        {
+            <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" />
+        }
+        else
+        {
+            foreach (SearchBase item in Recent.Take(6))
+            {
+                <MediaCard Media="item" />
+            }
+        }
+    </MudStack>
+}
 
 <MudStack Row="true" Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
     <MudText Typo="Typo.h1">@Resources.Popular @Resources.Movies</MudText>
@@ -65,6 +89,8 @@
 
 @code
 {
+    public List<SearchBase> Recent { get; private set; }
+
     public SearchContainer<SearchMovie> Movies { get; private set; }
 
     public SearchContainer<SearchTvShow> TvShows { get; private set; }
@@ -73,6 +99,8 @@
 
     protected async override Task OnInitializedAsync()
     {
+        Recent = await RecentService.GetRecentItems();
+
         Movies = await TmdbService.GetPopularMovies();
         TvShows = await TmdbService.GetPopularTvShows();
         People = await TmdbService.GetPopularPeople();

@@ -1,0 +1,43 @@
+﻿@page "/recent"
+@inject RecentService RecentService;
+
+<PageTitle>Movie Guide - @Resources.RecentlyViewed</PageTitle>
+
+<LoadingContent LoadingObject="Recent">
+    <MudStack Justify="Justify.Center">
+        <MudText Class="ma-auto" Typo="Typo.h1">@Resources.RecentlyViewed</MudText>
+        <MudStack Class="flex-wrap mb-4" Row="true" Justify="Justify.Center">        
+            @if (Recent != null)
+            {
+                foreach (SearchBase item in Recent.Take(30))
+                {
+                    <MediaCard Media="item">
+                        <Footer>
+                            <MudCardActions Class="absolute px-3" Style="bottom:0px; right:0px">
+                                <MudTooltip Text="@Resources.Remove">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Default" Size="Size.Small" OnClick="() => RemoveItem(item)" />
+                                </MudTooltip>
+                            </MudCardActions>
+                        </Footer>
+                    </MediaCard>
+                }
+            }
+        </MudStack>
+    </MudStack>
+</LoadingContent>
+
+@code 
+{
+    public List<SearchBase> Recent { get; private set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Recent = await RecentService.GetRecentItems();
+    }
+
+    private async Task RemoveItem(SearchBase item)
+    {
+        await RecentService.RemoveRecentItem(item);
+        Recent = await RecentService.GetRecentItems();
+    }
+}

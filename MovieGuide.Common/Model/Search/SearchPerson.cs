@@ -18,6 +18,9 @@ namespace MovieGuide.Common.Model.Search
         [JsonPropertyName("profile_path")]
         public string ProfilePath { get; set; }
 
+        [JsonPropertyName("known_for_department")]
+        public string KnownForDepartment { get; set; }
+
         [JsonIgnore]
         public string ProfileFullPath => Constants.GetProfileFullPath(ProfilePath);
 

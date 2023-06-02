@@ -61,7 +61,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acting.
+        ///   Looks up a localized string similar to Actor.
         /// </summary>
         public static string Acting {
             get {
@@ -286,7 +286,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Directing.
+        ///   Looks up a localized string similar to Director.
         /// </summary>
         public static string Directing {
             get {
@@ -331,7 +331,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Editing.
+        ///   Looks up a localized string similar to Editor.
         /// </summary>
         public static string Editing {
             get {
@@ -880,7 +880,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Production.
+        ///   Looks up a localized string similar to Producer.
         /// </summary>
         public static string Production {
             get {
@@ -921,6 +921,15 @@ namespace MovieGuide.Common.Properties {
         public static string Reality {
             get {
                 return ResourceManager.GetString("Reality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recently Viewed.
+        /// </summary>
+        public static string RecentlyViewed {
+            get {
+                return ResourceManager.GetString("RecentlyViewed", resourceCulture);
             }
         }
         
@@ -966,6 +975,15 @@ namespace MovieGuide.Common.Properties {
         public static string ReleaseYear {
             get {
                 return ResourceManager.GetString("ReleaseYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        public static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         
@@ -1384,7 +1402,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Writing.
+        ///   Looks up a localized string similar to Writer.
         /// </summary>
         public static string Writing {
             get {

@@ -1,4 +1,4 @@
-﻿@inject TmdbService TmdbService
+﻿@inject CacheService CacheService
 
 <MudAutocomplete @bind-Value="Language" SearchFunc="SearchLanguages"></MudAutocomplete>
 
@@ -25,20 +25,14 @@
     }
     private Language language;
 
-    private Task<IEnumerable<Language>> SearchLanguages(string query)
+    private async Task<IEnumerable<Language>> SearchLanguages(string query)
     {
-        if (String.IsNullOrWhiteSpace(query))
-            return Task.FromResult(languages?.FindAll(x => x.Iso_639_1 != "xx").AsEnumerable());
-
-        return Task.FromResult(languages?.FindAll(x => x.Name.StartsWith(query, StringComparison.OrdinalIgnoreCase) || x.EnglishName.StartsWith(query, StringComparison.OrdinalIgnoreCase)).AsEnumerable());
+        return await CacheService.SearchLanguage(query);
     }
 
     protected async override Task OnInitializedAsync()
     {
-        languages = await TmdbService.GetLanguages();
         if (SelectedLanguage != null)
-            Language = languages.Find(x => x.Iso_639_1 == SelectedLanguage);
+            Language = await CacheService.GetLanguage(SelectedLanguage);
     }
-
-    private List<Language> languages;
 }

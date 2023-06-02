@@ -185,16 +185,6 @@ namespace MovieGuide.Common
             return await GetAsync<SearchList<SearchBase>>($"list/{id}", $"?page={page}", true);
         }
 
-        public async Task<List<Language>> GetLanguages()
-        {
-            return await GetAsync<List<Language>>("configuration/languages");
-        }
-
-        public async Task<List<ProductionCountry>> GetCountries()
-        {
-            return await GetAsync<List<ProductionCountry>>("configuration/countries");
-        }
-
         #endregion
 
         public TmdbService(HttpClient httpClient)

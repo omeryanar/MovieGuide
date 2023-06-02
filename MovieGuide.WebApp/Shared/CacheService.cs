@@ -11,15 +11,15 @@ namespace MovieGuide.WebApp.Shared
             HttpClient = httpClient;
         }
 
-        public async Task<List<Network>> SearchNetwork(string query)
+        public async Task<IEnumerable<Network>> SearchNetwork(string query)
         {
-            if (String.IsNullOrWhiteSpace(query) || query.Length < 2)
-                return null;
-
             if (Networks == null)
                 Networks = await HttpClient.GetFromJsonAsync<List<Network>>("cache-data/networks.json");
 
-            return Networks?.Where(x => x.Name.Contains(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            if (String.IsNullOrWhiteSpace(query))
+                return Networks;
+
+            return Networks?.Where(x => x.Name.Contains(query, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public async Task<Network> GetNetwork(string networkId)
@@ -30,12 +30,42 @@ namespace MovieGuide.WebApp.Shared
             return Networks?.FirstOrDefault(x => x.Id.ToString() == networkId);
         }
 
-        public async Task<string> GetLanguageName(string languageCode)
+        public async Task<IEnumerable<ProductionCountry>> SearchCountry(string query)
+        {
+            if (Countries == null)
+                Countries = await HttpClient.GetFromJsonAsync<List<ProductionCountry>>("cache-data/countries.json");
+
+            if (String.IsNullOrWhiteSpace(query))
+                return Countries;
+
+            return Countries?.Where(x => x.ToString().Contains(query, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public async Task<ProductionCountry> GetCountry(string countryCode)
+        {
+            if (Countries == null)
+                Countries = await HttpClient.GetFromJsonAsync<List<ProductionCountry>>("cache-data/countries.json");
+
+            return Countries?.FirstOrDefault(x => x.Iso_3166_1 == countryCode);
+        }
+
+        public async Task<IEnumerable<Language>> SearchLanguage(string query)
         {
             if (Languages == null)
                 Languages = await HttpClient.GetFromJsonAsync<List<Language>>("cache-data/languages.json");
 
-            return Languages?.Find(x => x.Iso_639_1 == languageCode)?.ToString();
+            if (String.IsNullOrWhiteSpace(query))
+                return Languages;
+
+            return Languages?.Where(x => x.ToString().Contains(query, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public async Task<Language> GetLanguage(string languageCode)
+        {
+            if (Languages == null)
+                Languages = await HttpClient.GetFromJsonAsync<List<Language>>("cache-data/languages.json");
+
+            return Languages?.FirstOrDefault(x => x.Iso_639_1 == languageCode);
         }
 
         private HttpClient HttpClient;
@@ -43,5 +73,7 @@ namespace MovieGuide.WebApp.Shared
         private static List<Network> Networks;
 
         private static List<Language> Languages;
+
+        private static List<ProductionCountry> Countries;
     }
 }

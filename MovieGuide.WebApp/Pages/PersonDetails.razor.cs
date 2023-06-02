@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MovieGuide.Common;
 using MovieGuide.Common.Model.People;
+using MovieGuide.Common.Model.Search;
+using MovieGuide.WebApp.Shared;
 
 namespace MovieGuide.WebApp.Pages
 {
@@ -8,6 +10,9 @@ namespace MovieGuide.WebApp.Pages
     {
         [Inject]
         public TmdbService TmdbService { get; set; }
+
+        [Inject]
+        public RecentService RecentService { get; set; }
 
         [Parameter]
         public int Id { get; set; }
@@ -19,6 +24,14 @@ namespace MovieGuide.WebApp.Pages
             if (Id != 0)
             {
                 Person = await TmdbService.GetPersonDetails(Id);
+
+                await RecentService.AddRecentItem(new SearchPerson
+                {
+                    Id = Person.Id,
+                    Name = Person.Name,
+                    ProfilePath = Person.ProfilePath,
+                    KnownForDepartment = Person.KnownForDepartment
+                });
             }
         }
 

@@ -57,7 +57,7 @@
                             <MudText Typo="Typo.h5" Class="ml-1" Inline="true">@context.Grouping.Key</MudText>
                         </GroupTemplate>
                     </PropertyColumn>
-                    <PropertyColumn Title="@Resources.ReleaseDate" Property="x => x.ReleaseDate.GetFormattedDate()" InitialDirection="SortDirection.Descending" />
+                    <PropertyColumn Title="@Resources.ReleaseDate" Property="x => x.ReleaseDate.GetFormattedDate()" SortBy="x => x.ReleaseDate" InitialDirection="SortDirection.Descending" />
                 </Columns>
             </MudDataGrid>
         </ExpansionPanel>
@@ -85,7 +85,7 @@
                             <MudText Typo="Typo.h5" Class="ml-1" Inline="true">@context.Grouping.Key</MudText>
                         </GroupTemplate>
                     </PropertyColumn>
-                    <PropertyColumn Title="@Resources.FirstAirDate" Property="x => x.FirstAirDate.GetFormattedDate()" InitialDirection="SortDirection.Descending" />
+                    <PropertyColumn Title="@Resources.FirstAirDate" Property="x => x.FirstAirDate.GetFormattedDate()" SortBy="x => x.FirstAirDate" InitialDirection="SortDirection.Descending" />
                 </Columns>
             </MudDataGrid>
         </ExpansionPanel>

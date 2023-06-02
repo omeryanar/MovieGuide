@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Acting" xml:space="preserve">
-    <value>Acting</value>
+    <value>Actor</value>
     <comment>Department</comment>
   </data>
   <data name="Action" xml:space="preserve">
@@ -211,7 +211,7 @@
     <value>Department</value>
   </data>
   <data name="Directing" xml:space="preserve">
-    <value>Directing</value>
+    <value>Director</value>
     <comment>Department</comment>
   </data>
   <data name="Director" xml:space="preserve">
@@ -230,7 +230,7 @@
     <comment>Genre</comment>
   </data>
   <data name="Editing" xml:space="preserve">
-    <value>Editing</value>
+    <value>Editor</value>
     <comment>Department</comment>
   </data>
   <data name="Ended" xml:space="preserve">
@@ -439,7 +439,7 @@
     <value>Previous Page</value>
   </data>
   <data name="Production" xml:space="preserve">
-    <value>Production</value>
+    <value>Producer</value>
     <comment>Department</comment>
   </data>
   <data name="ProductionCompanies" xml:space="preserve">
@@ -454,6 +454,9 @@
   <data name="Reality" xml:space="preserve">
     <value>Reality</value>
     <comment>Genre</comment>
+  </data>
+  <data name="RecentlyViewed" xml:space="preserve">
+    <value>Recently Viewed</value>
   </data>
   <data name="Released" xml:space="preserve">
     <value>Released</value>
@@ -472,6 +475,9 @@
   </data>
   <data name="ReleaseYear" xml:space="preserve">
     <value>Release Year</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Returning Series" xml:space="preserve">
     <value>Returning Series</value>
@@ -641,7 +647,7 @@
     <comment>Job</comment>
   </data>
   <data name="Writing" xml:space="preserve">
-    <value>Writing</value>
+    <value>Writer</value>
     <comment>Department</comment>
   </data>
 </root>

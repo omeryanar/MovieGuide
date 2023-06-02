@@ -1,4 +1,4 @@
-﻿@inject TmdbService TmdbService
+﻿@inject CacheService CacheService
 
 <MudAutocomplete @bind-Value="Country" SearchFunc="SearchCountries"></MudAutocomplete>
 
@@ -25,20 +25,14 @@
     }
     private ProductionCountry country;
 
-    private Task<IEnumerable<ProductionCountry>> SearchCountries(string query)
+    private async Task<IEnumerable<ProductionCountry>> SearchCountries(string query)
     {
-        if (String.IsNullOrWhiteSpace(query))
-            return Task.FromResult(countries?.AsEnumerable());
-
-        return Task.FromResult(countries?.FindAll(x => x.ToString().StartsWith(query, StringComparison.OrdinalIgnoreCase)).AsEnumerable());
+        return await CacheService.SearchCountry(query);
     }
 
     protected async override Task OnInitializedAsync()
     {
-        countries = await TmdbService.GetCountries();
         if (SelectedCountry != null)
-            Country = countries.Find(x => x.Iso_3166_1 == SelectedCountry);
+            Country = await CacheService.GetCountry(SelectedCountry);
     }
-
-    private List<ProductionCountry> countries;
 }
