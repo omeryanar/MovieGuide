@@ -253,7 +253,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-qmGgNnfNjMOcsxMoA9ojUS2OKjbZGbiPOsBFW15X\/\/w=",
+      "hash": "sha256-sjP\/l7nzwrJTZtmQ8K4Cu6R8NioDPBCuOnaN5PYPGrc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -265,7 +265,7 @@
       "url": "_framework\/Blazored.SessionStorage.dll"
     },
     {
-      "hash": "sha256-qWcoH5JUyKK7ovuTfRbdzzW8Oq4SjXhBZvzSj1ZdNKs=",
+      "hash": "sha256-EUTGEVKeShJ7Pj+vAjp5WBfG54vRuENt+41+BaN5vbA=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -277,7 +277,7 @@
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-3vPiAet+7rAfZacktr3LOIqfSDar\/UoA5OtX9rjZODs=",
+      "hash": "sha256-l+i7ZukJUUk7uOP9d6AszdWtjxuwhhzC3WSHONGYDq4=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -341,7 +341,7 @@
       "url": "_framework\/MovieGuide.Common.dll"
     },
     {
-      "hash": "sha256-XhC9K0dqssVvNdup55um5tYYe5+Y1EZDdkHRlb\/lvmc=",
+      "hash": "sha256-mJDI9d+jk+PjcMEoO9s8euO55tm+i31facwFzG9Dzp4=",
       "url": "_framework\/MovieGuide.WebApp.dll"
     },
     {
@@ -469,5 +469,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "T96yEsKy"
+  "version": "RboxOFpl"
 };
