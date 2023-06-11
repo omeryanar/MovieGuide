@@ -7,8 +7,8 @@
 <MudLayout>
     <MudAppBar Elevation="0">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => drawerOpen = !drawerOpen)" />
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" Title="@Resources.PreviousPage" />
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" Title="@Resources.NextPage" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" Disabled="BackwardStack.Count == 0" Title="@Resources.PreviousPage" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" Disabled="ForwardStack.Count == 0" Title="@Resources.NextPage" />
         <MudSpacer />
         <SearchBar />
         <MudSpacer />

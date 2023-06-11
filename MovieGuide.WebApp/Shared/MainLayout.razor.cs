@@ -2,13 +2,13 @@
 using System.Globalization;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components.Routing;
 using MovieGuide.Common.Model.General;
 using MovieGuide.Common.Properties;
 
 namespace MovieGuide.WebApp.Shared
 {
-    public partial class MainLayout
+    public partial class MainLayout : IDisposable
     {
         [Inject]
         public ILocalStorageService LocalStorage { get; set; }
@@ -16,8 +16,7 @@ namespace MovieGuide.WebApp.Shared
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        [Inject]
-        public IJSRuntime JSRuntime { get; set; }
+        #region Language
 
         public Language Language { get; private set; }
 
@@ -31,18 +30,8 @@ namespace MovieGuide.WebApp.Shared
         {
             SetLanguage(languageCode);
             await LocalStorage.SetItemAsStringAsync("Language", Language.Iso_639_1);
-            
+
             NavigationManager.NavigateTo(NavigationManager.Uri, true);
-        }
-
-        public async Task GoBackward()
-        {
-            await JSRuntime.InvokeVoidAsync("history.back");
-        }
-
-        public async Task GoForward()
-        {
-            await JSRuntime.InvokeVoidAsync("history.forward");
         }
 
         protected override void OnInitialized()
@@ -59,5 +48,61 @@ namespace MovieGuide.WebApp.Shared
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         }
+
+        #endregion
+
+        #region Navigation
+
+        public void Dispose()
+        {
+             locationChangingRegistration?.Dispose();
+        }
+
+        public void GoBackward()
+        {
+            if (BackwardStack.Count > 0)
+                NavigationManager.NavigateTo(BackwardStack.Peek());
+        }
+
+        public void GoForward()
+        {
+            if (ForwardStack.Count > 0)
+                NavigationManager.NavigateTo(ForwardStack.Pop());
+        }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            if (firstRender)
+                locationChangingRegistration = NavigationManager.RegisterLocationChangingHandler(OnLocationChanging);
+        }
+
+        private ValueTask OnLocationChanging(LocationChangingContext context)
+        {
+            if (NavigationManager.Uri.EndsWith(context.TargetLocation, StringComparison.Ordinal))
+                return ValueTask.CompletedTask;
+
+            if (BackwardStack.Count > 0 && BackwardStack.Peek() == context.TargetLocation)
+            {
+                BackwardStack.Pop();
+
+                if (ForwardStack.Count == 0 || ForwardStack.Peek() != NavigationManager.Uri)
+                    ForwardStack.Push(NavigationManager.Uri);
+            }
+            else
+            {
+                if (BackwardStack.Count == 0 || BackwardStack.Peek() != NavigationManager.Uri)
+                    BackwardStack.Push(NavigationManager.Uri);
+            }
+
+            return ValueTask.CompletedTask;
+        }
+
+        private Stack<string> BackwardStack = new Stack<string>();
+
+        private Stack<string> ForwardStack = new Stack<string>();
+
+        private IDisposable locationChangingRegistration;
+
+        #endregion
     }
 }
