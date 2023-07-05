@@ -94,7 +94,7 @@ namespace MovieGuide.Common.Model.People
 
         private IEnumerable<MovieCrew> MovieActingCredits
         {
-            get => MovieCredits?.Cast?.Select(x => new MovieCrew { Id = x.Id, Title = x.Title, PosterPath = x.PosterPath, VoteAverage = x.VoteAverage, Department = "Acting", Job = x.Character, ReleaseDate = x.ReleaseDate });
+            get => MovieCredits?.Cast?.Select(x => new MovieCrew { Id = x.Id, Title = x.Title, PosterPath = x.PosterPath, VoteAverage = x.VoteAverage, Department = (String.IsNullOrEmpty(x.Character) || Constants.OtherCharacters.Any(y => x.Character.Contains(y, StringComparison.InvariantCultureIgnoreCase))) ? "Other" : "Acting", Job = x.Character, ReleaseDate = x.ReleaseDate });
         }
 
         private IEnumerable<MovieCrew> MovieKnownForCredits
@@ -105,7 +105,7 @@ namespace MovieGuide.Common.Model.People
 
         private IEnumerable<TvCrew> TvActingCredits
         {
-            get => TvCredits?.Cast?.Select(x => new TvCrew { Id = x.Id, Name = x.Name, PosterPath = x.PosterPath, VoteAverage = x.VoteAverage, Department = "Acting", Job = x.Character, FirstAirDate = x.FirstAirDate, EpisodeCount = x.EpisodeCount });
+            get => TvCredits?.Cast?.Select(x => new TvCrew { Id = x.Id, Name = x.Name, PosterPath = x.PosterPath, VoteAverage = x.VoteAverage, Department = (String.IsNullOrEmpty(x.Character) || Constants.OtherCharacters.Any(y => x.Character.Contains(y, StringComparison.InvariantCultureIgnoreCase))) ? "Other" : "Acting", Job = x.Character, FirstAirDate = x.FirstAirDate, EpisodeCount = x.EpisodeCount });
         }
 
         private IEnumerable<TvCrew> TvKnownForCredits

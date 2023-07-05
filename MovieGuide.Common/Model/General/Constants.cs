@@ -26,6 +26,8 @@
 
         public static readonly string[] FeaturedJobs = { "Creator", "Director", "Novel", "Characters", "Screenplay", "Screenstory", "Story", "Writer" };
 
+        public static readonly string[] OtherCharacters = { "Self", "Himself", "Guest", "Archive Footage", "Uncredited" };
+
         public static string GetStillFullPath(string stillPath, string size = W300)
         {
             if (String.IsNullOrEmpty(stillPath))

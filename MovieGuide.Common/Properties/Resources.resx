@@ -390,6 +390,9 @@
   <data name="OscarWinners" xml:space="preserve">
     <value>Oscar Winners</value>
   </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
   <data name="Overview" xml:space="preserve">
     <value>Overview</value>
   </data>

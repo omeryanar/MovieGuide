@@ -16,7 +16,7 @@
     }
 </style>
 
-<MudElement HtmlTag="div" Style="cursor: pointer" @onclick="() => showPopup = true">
+<MudElement HtmlTag="div" Style="@(InvalidUrl ? "" : "cursor: pointer")" @onclick="() => showPopup = !InvalidUrl">
     <MudTooltip Text="@Title">
         @ChildContent
     </MudTooltip>
@@ -49,6 +49,8 @@
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    public bool InvalidUrl => MediaUrl.EndsWith("original") || MediaUrl.Contains("/?");
 
     private bool showPopup;
 
