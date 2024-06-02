@@ -8,7 +8,10 @@
         </MediaViewer>
         <MudStack Class="detail-info">
             <MudStack Class="flex-wrap" Row="true">
-                <MudText Typo="Typo.h1">@TvShow?.Name - @Season.Name</MudText>
+                <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("tv/" + TvShow?.Id)">
+                    <MudText Typo="Typo.h1">@TvShow?.Name</MudText>
+                </MudLink>
+                <MudText Typo="Typo.h1"> - @Season.Name</MudText>
                 <MudText Typo="Typo.h2">@Season.AirDate?.ToString("(yyyy)")</MudText>
             </MudStack>
             <GenreChipSet Genres="@TvShow?.Genres" MediaType="MediaType.TvShow" />

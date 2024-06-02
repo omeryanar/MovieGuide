@@ -7,7 +7,16 @@
             <MudImage Class="rounded-lg" Width="300" Height="169" Src="@Episode.StillFullPath" />
         </MediaViewer>
         <MudStack Style="max-width:800px">
-            <MudText Typo="Typo.h1">@TvShow?.Name - @Resources.Season @Episode.SeasonNumber - @Resources.Episode @Episode.EpisodeNumber</MudText>
+            <MudStack Class="flex-wrap" Row="true">
+                <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("tv/" + TvShow?.Id)">
+                    <MudText Typo="Typo.h1">@TvShow?.Name</MudText>
+                </MudLink>
+                <MudText Typo="Typo.h1"> - </MudText>
+                <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("tv/" + TvShow?.Id + "/season/" + SeasonNumber)">
+                    <MudText Typo="Typo.h1">@Resources.Season @Episode.SeasonNumber</MudText>
+                </MudLink>
+                <MudText Typo="Typo.h1"> - @Resources.Episode @Episode.EpisodeNumber </MudText>
+            </MudStack>
             <MudStack Row="true" AlignItems="AlignItems.Center">
                 <RatingCircular Value="@Episode.VoteAverage" Size="Size.Large" />
                 <MudText Typo="Typo.h4" Style="font-weight:500; font-style:italic">@Episode.Name</MudText>

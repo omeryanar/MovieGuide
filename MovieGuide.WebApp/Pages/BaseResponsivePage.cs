@@ -4,32 +4,40 @@ using MudBlazor.Services;
 
 namespace MovieGuide.WebApp.Pages
 {
-    public class BaseResponsivePage : BasePaginatedPage
+    public class BaseResponsivePage : BasePaginatedPage, IBrowserViewportObserver
     {
         [Inject]
-        public IBreakpointService BreakpointService { get; set; }
+        public IBrowserViewportService BrowserViewportService { get; set; }
 
-        public async ValueTask DisposeAsync() => await BreakpointService.UnsubscribeAsync(breakpointSubscriptionId);
+        public async ValueTask DisposeAsync() => await BrowserViewportService.UnsubscribeAsync(this);
 
         public Breakpoint CurrentBreakpoint { get; set; }
+
+        #region IBrowserViewportObserver
+
+        public Guid Id { get; } = Guid.NewGuid();
+
+        public ResizeOptions ResizeOptions { get; } = new()
+        {
+            ReportRate = 250,
+            NotifyOnBreakpointOnly = true
+        };
+
+        public Task NotifyBrowserViewportChangeAsync(BrowserViewportEventArgs eventArgs)
+        {
+            CurrentBreakpoint = eventArgs.Breakpoint;
+
+            return InvokeAsync(StateHasChanged);
+        }
+
+        #endregion
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
-            {
-                var subscriptionResult = await BreakpointService.SubscribeAsync((breakpoint) =>
-                {
-                    CurrentBreakpoint = breakpoint;
-                }, new ResizeOptions
-                {
-                    NotifyOnBreakpointOnly = true,
-                });
+                await BrowserViewportService.SubscribeAsync(this);
 
-                breakpointSubscriptionId = subscriptionResult.SubscriptionId;
-                CurrentBreakpoint = subscriptionResult.Breakpoint;
-            }
+            await base.OnAfterRenderAsync(firstRender);
         }
-
-        private Guid breakpointSubscriptionId;
     }
 }
