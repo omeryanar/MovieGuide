@@ -1,12 +1,12 @@
 ﻿@inject CacheService CacheService
 
 <MudAutocomplete Margin="Margin.Dense" @bind-Value="Network" SearchFunc="SearchNetworks"></MudAutocomplete>
-<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+<MudChipSet T="Network" AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
     @if (Networks != null)
     {
         foreach (Network network in Networks)
         {
-            <MudChip Class="chip" Text="@network.Name" Value="network.Id" Tag="@network" Color="Color.Primary">@network</MudChip>
+            <MudChip Class="chip" Text="@network.Name" Value="network" Color="Color.Primary" />
         }
     }
 </MudChipSet>
@@ -14,10 +14,10 @@
 @code
 {
     [Parameter]
-    public ICollection<object> SelectedNetworks { get; set; }
+    public ICollection<int> SelectedNetworks { get; set; }
 
     [Parameter]
-    public EventCallback<ICollection<object>> SelectedNetworksChanged { get; set; }
+    public EventCallback<ICollection<int>> SelectedNetworksChanged { get; set; }
 
     public Network Network
     {
@@ -30,7 +30,7 @@
                 Networks.Add(network);
 
                 if (SelectedNetworks == null)
-                    SelectedNetworks = new List<object>() { network.Id };
+                    SelectedNetworks = new List<int>() { network.Id };
                 else
                     SelectedNetworks.Add(network.Id);
 
@@ -47,7 +47,7 @@
     {
         if (SelectedNetworks?.Count > Networks.Count)
         {
-            foreach(object networkId in SelectedNetworks)
+            foreach (int networkId in SelectedNetworks)
             {
                 Network network = await CacheService.GetNetwork(networkId.ToString());
                 if (network != null)
@@ -56,18 +56,15 @@
         }
     }
 
-    private async Task<IEnumerable<Network>> SearchNetworks(string query)
+    private async Task<IEnumerable<Network>> SearchNetworks(string query, CancellationToken token)
     {
         return await CacheService.SearchNetwork(query);
     }
 
-    private void Remove(MudChip chip)
+    private void Remove(MudChip<Network> chip)
     {
-        if (chip?.Tag is Network network)
-        {
-            Networks?.Remove(network);
-            SelectedNetworks?.Remove(network.Id);
-            SelectedNetworksChanged.InvokeAsync(SelectedNetworks);
-        }
+        Networks?.Remove(network);
+        SelectedNetworks?.Remove(network.Id);
+        SelectedNetworksChanged.InvokeAsync(SelectedNetworks);
     }
 }

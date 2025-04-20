@@ -2,6 +2,7 @@
 
 <ThemeProvider @bind-IsDarkMode="darkMode" />
 <MudDialogProvider />
+<MudPopoverProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
@@ -20,7 +21,7 @@
                 @foreach(Language language in SupportedLanguages)
                 {
                     <MudMenuItem Disabled="@(CultureInfo.DefaultThreadCurrentCulture.Name == language.Iso_639_1)"
-                        OnClick="@((e) => ChangeLanguage(language.Iso_639_1))" OnTouch="@((e) => ChangeLanguage(language.Iso_639_1))">@language
+                        OnClick="@((e) => ChangeLanguage(language.Iso_639_1))">@language
                     </MudMenuItem>
                 }
             </ChildContent>

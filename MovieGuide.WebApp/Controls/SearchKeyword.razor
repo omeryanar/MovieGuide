@@ -1,12 +1,12 @@
 ﻿@inject TmdbService TmdbService
 
 <MudAutocomplete Margin="Margin.Dense" @bind-Value="Keyword" SearchFunc="SearchKeywords"></MudAutocomplete>
-<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+<MudChipSet T="Keyword" AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
     @if (Keywords != null)
     {
         foreach (Keyword keyword in Keywords)
         {
-            <MudChip Class="chip" Text="@keyword.Name" Value="keyword.Id" Tag="@keyword" Color="Color.Primary">@keyword</MudChip>
+            <MudChip Class="chip" Text="@keyword.Name" Value="keyword" Color="Color.Primary" />
         }
     }
 </MudChipSet>
@@ -14,10 +14,10 @@
 @code
 {
     [Parameter]
-    public ICollection<object> SelectedKeywords { get; set; }
+    public ICollection<int> SelectedKeywords { get; set; }
 
     [Parameter]
-    public EventCallback<ICollection<object>> SelectedKeywordsChanged { get; set; }
+    public EventCallback<ICollection<int>> SelectedKeywordsChanged { get; set; }
 
     public Keyword Keyword
     {
@@ -30,7 +30,7 @@
                 Keywords.Add(keyword);
 
                 if (SelectedKeywords == null)
-                    SelectedKeywords = new List<object>() { keyword.Id };
+                    SelectedKeywords = new List<int>() { keyword.Id };
                 else
                     SelectedKeywords.Add(keyword.Id);
 
@@ -47,7 +47,7 @@
     {
         if (SelectedKeywords?.Count > Keywords.Count)
         {
-            foreach(object keywordId in SelectedKeywords)
+            foreach (int keywordId in SelectedKeywords)
             {
                 Keyword keyword = await TmdbService.GetKeyword(keywordId.ToString());
                 if (keyword != null)
@@ -56,19 +56,16 @@
         }
     }
 
-    private async Task<IEnumerable<Keyword>> SearchKeywords(string query)
+    private async Task<IEnumerable<Keyword>> SearchKeywords(string query, CancellationToken token)
     {
         SearchContainer<Keyword> search = await TmdbService.SearchKeyword(query);
         return search.Results;
     }
 
-    private void Remove(MudChip chip)
+    private void Remove(MudChip<Keyword> chip)
     {
-        if (chip?.Tag is Keyword keyword)
-        {
-            Keywords?.Remove(keyword);
-            SelectedKeywords?.Remove(keyword.Id);
-            SelectedKeywordsChanged.InvokeAsync(SelectedKeywords);
-        }
+        Keywords?.Remove(keyword);
+        SelectedKeywords?.Remove(keyword.Id);
+        SelectedKeywordsChanged.InvokeAsync(SelectedKeywords);
     }
 }

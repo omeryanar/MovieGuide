@@ -93,10 +93,10 @@ namespace MovieGuide.WebApp.Pages
             if (!String.IsNullOrEmpty(SortBy))
                 sortBy = SortHelper.TvShowSortBy.FirstOrDefault(x => x.Id == SortBy);
 
-            withGenres = WithGenres?.Select(x => (object)x).ToList();
-            withNetworks = WithNetworks?.Select(x => (object)x).ToList();
-            withKeywords = WithKeywords?.Select(x => (object)x).ToList();
-            withCompanies = WithCompanies?.Select(x => (object)x).ToList();
+            withGenres = WithGenres?.ToList();
+            withNetworks = WithNetworks?.ToList();
+            withKeywords = WithKeywords?.ToList();
+            withCompanies = WithCompanies?.ToList();
 
             withLanguage = OriginalLanguage;
             withCountry = OriginCountry;

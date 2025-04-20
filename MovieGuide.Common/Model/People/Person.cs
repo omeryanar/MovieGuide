@@ -77,7 +77,7 @@ namespace MovieGuide.Common.Model.People
         public List<SearchMovieTvBase> KnownFor
         {
             get => KnownForDepartment == "Acting" ? MovieCredits?.Cast?.Cast<SearchMovieTvBase>().Union(TvCredits?.Cast?.Cast<SearchMovieTvBase>())?.OrderByDescending(x => x.VoteAverage * x.VoteCount).Take(8).ToList()
-                : MovieKnownForCredits?.Cast<SearchMovieTvBase>().Union(TvKnownForCredits?.Cast<SearchMovieTvBase>())?.OrderByDescending(x => x.VoteAverage * x.VoteCount).Take(8).ToList();
+                : MovieKnownForCredits?.Union(TvKnownForCredits)?.OrderByDescending(x => x.VoteAverage * x.VoteCount).Take(8).ToList();
         }
 
         [JsonIgnore]
@@ -94,13 +94,14 @@ namespace MovieGuide.Common.Model.People
 
         private IEnumerable<MovieCrew> MovieActingCredits
         {
-            get => MovieCredits?.Cast?.Select(x => new MovieCrew { Id = x.Id, Title = x.Title, PosterPath = x.PosterPath, VoteAverage = x.VoteAverage, Department = (String.IsNullOrEmpty(x.Character) || Constants.OtherCharacters.Any(y => x.Character.Contains(y, StringComparison.InvariantCultureIgnoreCase))) ? "Other" : "Acting", Job = x.Character, ReleaseDate = x.ReleaseDate });
+            get => MovieCredits?.Cast?.Select(x => new MovieCrew { Id = x.Id, Title = x.Title, PosterPath = x.PosterPath, VoteAverage = x.VoteAverage, Department = (String.IsNullOrEmpty(x.Character) || Constants.
+                 OtherCharacters.Any(y => x.Character.Contains(y, StringComparison.InvariantCultureIgnoreCase))) ? "Other" : "Acting", Job = x.Character, ReleaseDate = x.ReleaseDate });
         }
 
-        private IEnumerable<MovieCrew> MovieKnownForCredits
+        private IEnumerable<SearchMovieTvBase> MovieKnownForCredits
         {
-            get => MovieCredits?.Crew?.Where(x => x.Department == KnownForDepartment).GroupBy(x => new { x.Id, x.Title, x.PosterPath, x.ReleaseDate, x.VoteAverage }).
-               Select(x => new MovieCrew { Id = x.Key.Id, Title = x.Key.Title, PosterPath = x.Key.PosterPath, ReleaseDate = x.Key.ReleaseDate, VoteAverage = x.Key.VoteAverage, Job = String.Join(Constants.ListSeparator, x.OrderBy(y => y.Job).Select(z => z.Job)) });
+            get => MovieCredits?.Crew?.Where(x => x.Department == KnownForDepartment).GroupBy(x => new { x.Id, x.Title, x.PosterPath, x.VoteCount, x.VoteAverage, x.ReleaseDate }).
+               Select(x => new MovieCrew { Id = x.Key.Id, Title = x.Key.Title, PosterPath = x.Key.PosterPath, VoteCount = x.Key.VoteCount, VoteAverage = x.Key.VoteAverage, ReleaseDate = x.Key.ReleaseDate, Job = String.Join(Constants.ListSeparator, x.OrderBy(y => y.Job).Select(z => z.Job)) });
         }
 
         private IEnumerable<TvCrew> TvActingCredits
@@ -108,7 +109,7 @@ namespace MovieGuide.Common.Model.People
             get => TvCredits?.Cast?.Select(x => new TvCrew { Id = x.Id, Name = x.Name, PosterPath = x.PosterPath, VoteAverage = x.VoteAverage, Department = (String.IsNullOrEmpty(x.Character) || Constants.OtherCharacters.Any(y => x.Character.Contains(y, StringComparison.InvariantCultureIgnoreCase))) ? "Other" : "Acting", Job = x.Character, FirstAirDate = x.FirstAirDate, EpisodeCount = x.EpisodeCount });
         }
 
-        private IEnumerable<TvCrew> TvKnownForCredits
+        private IEnumerable<SearchMovieTvBase> TvKnownForCredits
         {
             get => TvCredits?.Crew?.Where(x => x.Department == KnownForDepartment).GroupBy(x => new { x.Id, x.Name, x.PosterPath, x.FirstAirDate, x.VoteAverage }).
                 Select(x => new TvCrew { Id = x.Key.Id, Name = x.Key.Name, PosterPath = x.Key.PosterPath, FirstAirDate = x.Key.FirstAirDate, VoteAverage = x.Key.VoteAverage, Job = String.Join(Constants.ListSeparator, x.OrderBy(y => y.Job).Select(z => z.Job)) });

@@ -1,0 +1,39 @@
+﻿@page "/awards/movie"
+@inherits BaseResponsivePage
+
+<PageTitle>Movie Guide - @Resources.OscarWinners</PageTitle>
+
+<LoadingContent LoadingObject="@Awards">
+    <MudStack Justify="Justify.Center">
+        <MudText Class="ma-auto" Typo="Typo.h1">@Resources.OscarWinners</MudText>
+        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudTimeline TimelinePosition="TimelinePosition.Start" Modifiers="false">
+            @if (Awards != null)
+            {
+                foreach(MovieAward award in Awards.Results)
+                {
+                    <MudTimelineItem Color="Color.Primary" Size="Size.Large">
+                        <ItemDot>
+                            <MudText Typo="Typo.subtitle2">@award.Year</MudText>
+                        </ItemDot>
+                        <ItemContent>
+                            <MudStack Row="true" Spacing="0">
+                                <MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
+                                    <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.ArrowLeft" />
+                                    <MediaCard Media="@award.Nominees.FirstOrDefault(x => x.Id == award.WinnerId)" />
+                                    <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.ArrowRight" />
+                                </MudStack>
+                                <MudStack Row="true" Class="overflow-auto pa-4">
+                                    @foreach (SearchMovie movie in award.Nominees.Where(x => x.Id != award.WinnerId))
+                                    {
+                                        <MediaCard Media="@movie" />
+                                    }
+                                </MudStack>
+                            </MudStack>
+                        </ItemContent>
+                    </MudTimelineItem>
+                }
+            }
+        </MudTimeline>
+    </MudStack>
+</LoadingContent>

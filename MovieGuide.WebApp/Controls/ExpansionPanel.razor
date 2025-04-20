@@ -2,7 +2,7 @@
 @inject NavigationManager NavigationManager
 @inject ISyncSessionStorageService SessionStorage
 
-<MudPaper Elevation="1">
+<MudPaper Elevation="0">
     <MudNavGroup Title="@Title" @bind-Expanded="Expanded">
         <MudDivider />
         @if (ChildContent != null)
@@ -12,14 +12,14 @@
         else if (Items != null && ItemTemplate != null)
         {
             <MudStack Class="overflow-auto pa-4" Spacing="4" Row="true">
-                @foreach (T item in ViewAll ? Items : Items.Take(8))
+                @foreach (T item in ViewAll ? Items : Items.Take(InitialItemCount))
                 {
                     <MudLink Underline="Underline.None" OnClick="() => ShowOverlay(item)">
                         @ItemTemplate(item)
                     </MudLink>
                 }
 
-                @if (!ViewAll && Items.Count > 8)
+                @if (!ViewAll && Items.Count > InitialItemCount)
                 {
                     <MudTooltip RootClass="align-self-center" Text="@Resources.ViewAll">
                         <MudIconButton Size="Size.Large" Icon="@Icons.Material.Filled.ArrowCircleRight" OnClick="() => ViewAll = true" />
@@ -58,10 +58,13 @@
     public bool InitiallyExpanded { get; set; }
 
     [Parameter]
+    public int InitialItemCount { get; set; } = 8;
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
     [Parameter]
-    public IList<T> Items{ get; set; }
+    public IList<T> Items { get; set; }    
 
     [Parameter]
     public RenderFragment<T> ItemTemplate { get; set; }

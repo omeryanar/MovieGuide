@@ -11,21 +11,28 @@ namespace MovieGuide.WebApp.Shared
 
         public ThemeProvider()
         {
-            Theme = new MudTheme();
-            Theme.Palette.Primary = Colors.Blue.Default;
-            Theme.Palette.Secondary = Colors.Orange.Default;
-            Theme.Palette.AppbarBackground = Colors.Blue.Darken2;
-            Theme.Palette.Background = Colors.Grey.Lighten5;
-            Theme.Palette.BackgroundGrey = Colors.Grey.Lighten5;
-            Theme.Palette.DrawerBackground = Colors.Grey.Lighten4;            
-            
-            Theme.PaletteDark.Primary = Colors.Blue.Default;
-            Theme.PaletteDark.Secondary = Colors.Orange.Default;
-            Theme.PaletteDark.AppbarBackground = Colors.Blue.Darken2;
-            Theme.PaletteDark.Surface = "#383838";
-            Theme.PaletteDark.Background = "#303030";
-            Theme.PaletteDark.BackgroundGrey = "#282828";
-            Theme.PaletteDark.DrawerBackground = "#282828";            
+            Theme = new MudTheme()
+            {
+                PaletteLight = new PaletteLight()
+                {
+                    Primary = Colors.Blue.Default,
+                    Secondary = Colors.Orange.Default,
+                    AppbarBackground = Colors.Blue.Darken2,
+                    Background = Colors.Gray.Lighten5,
+                    BackgroundGray = Colors.Gray.Lighten5,
+                    DrawerBackground = Colors.Gray.Lighten4
+                },
+                PaletteDark = new PaletteDark()
+                {
+                    Primary = Colors.Blue.Default,
+                    Secondary = Colors.Orange.Default,
+                    AppbarBackground = Colors.Blue.Darken2,
+                    Surface = "#383838",
+                    Background = "#303030",
+                    BackgroundGray = "#282828",
+                    DrawerBackground = "#282828"
+                }
+            };
         }
 
         protected async override Task OnAfterRenderAsync(bool firstRender)
@@ -40,6 +47,7 @@ namespace MovieGuide.WebApp.Shared
                 if (IsDarkMode != DarkModeSetting)
                 {
                     IsDarkMode = DarkModeSetting;
+                    await IsDarkModeChanged.InvokeAsync(DarkModeSetting);
                     StateHasChanged();
                 }
             }

@@ -1,12 +1,12 @@
 ﻿@inject TmdbService TmdbService
 
 <MudAutocomplete Margin="Margin.Dense" @bind-Value="Company" SearchFunc="SearchCompanies"></MudAutocomplete>
-<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+<MudChipSet T="ProductionCompany" AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
     @if (Companies != null)
     {
         foreach (ProductionCompany company in Companies)
         {
-            <MudChip Class="chip" Text="@company.Name" Value="company.Id" Tag="@company" Color="Color.Primary">@company</MudChip>
+            <MudChip Class="chip" Text="@company.Name" Value="company" Color="Color.Primary" />
         }
     }
 </MudChipSet>
@@ -14,10 +14,10 @@
 @code
 {
     [Parameter]
-    public ICollection<object> SelectedCompanies { get; set; }
+    public ICollection<int> SelectedCompanies { get; set; }
 
     [Parameter]
-    public EventCallback<ICollection<object>> SelectedCompaniesChanged { get; set; }
+    public EventCallback<ICollection<int>> SelectedCompaniesChanged { get; set; }
 
     public ProductionCompany Company
     {
@@ -30,7 +30,7 @@
                 Companies.Add(company);
 
                 if (SelectedCompanies == null)
-                    SelectedCompanies = new List<object>() { company.Id };
+                    SelectedCompanies = new List<int>() { company.Id };
                 else
                     SelectedCompanies.Add(company.Id);
 
@@ -47,7 +47,7 @@
     {
         if (SelectedCompanies?.Count > Companies.Count)
         {
-            foreach(object companyId in SelectedCompanies)
+            foreach (int companyId in SelectedCompanies)
             {
                 ProductionCompany company = await TmdbService.GetCompany(companyId.ToString());
                 if (company != null)
@@ -56,19 +56,16 @@
         }
     }
 
-    private async Task<IEnumerable<ProductionCompany>> SearchCompanies(string query)
+    private async Task<IEnumerable<ProductionCompany>> SearchCompanies(string query, CancellationToken token)
     {
         SearchContainer<ProductionCompany> search = await TmdbService.SearchCompany(query);
         return search.Results;
     }
 
-    private void Remove(MudChip chip)
+    private void Remove(MudChip<ProductionCompany> chip)
     {
-        if (chip?.Tag is ProductionCompany company)
-        {
-            Companies?.Remove(company);
-            SelectedCompanies?.Remove(company.Id);
-            SelectedCompaniesChanged.InvokeAsync(SelectedCompanies);
-        }        
+        Companies?.Remove(company);
+        SelectedCompanies?.Remove(company.Id);
+        SelectedCompaniesChanged.InvokeAsync(SelectedCompanies);
     }
 }

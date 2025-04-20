@@ -1,12 +1,12 @@
 ﻿@inject TmdbService TmdbService
 
 <MudAutocomplete Margin="Margin.Dense" @bind-Value="Person" SearchFunc="SearchPerson"></MudAutocomplete>
-<MudChipSet AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
+<MudChipSet T="SearchPerson" AllClosable="true" Class="ml-n2 mt-2" OnClose="Remove">
     @if (People != null)
     {
         foreach (SearchPerson person in People)
         {
-            <MudChip Class="chip" Text="@person.Name" Value="person.Id" Tag="@person" Color="Color.Primary">@person</MudChip>
+            <MudChip Class="chip" Text="@person.Name" Value="person" Color="Color.Primary" />
         }
     }
 </MudChipSet>
@@ -14,10 +14,10 @@
 @code
 {
     [Parameter]
-    public ICollection<object> SelectedPeople { get; set; }
+    public ICollection<int> SelectedPeople { get; set; }
 
     [Parameter]
-    public EventCallback<ICollection<object>> SelectedPeopleChanged { get; set; }
+    public EventCallback<ICollection<int>> SelectedPeopleChanged { get; set; }
 
     public SearchPerson Person
     {
@@ -30,7 +30,7 @@
                 People.Add(person);
 
                 if (SelectedPeople == null)
-                    SelectedPeople = new List<object>() { person.Id };
+                    SelectedPeople = new List<int>() { person.Id };
                 else
                     SelectedPeople.Add(person.Id);
 
@@ -47,7 +47,7 @@
     {
         if (SelectedPeople?.Count > People.Count)
         {
-            foreach(object personId in SelectedPeople)
+            foreach (int personId in SelectedPeople)
             {
                 SearchPerson person = await TmdbService.GetPerson(personId.ToString());
                 if (person != null)
@@ -56,19 +56,16 @@
         }
     }
 
-    private async Task<IEnumerable<SearchPerson>> SearchPerson(string query)
+    private async Task<IEnumerable<SearchPerson>> SearchPerson(string query, CancellationToken token)
     {
         SearchContainer<SearchPerson> search = await TmdbService.SearchPerson(query);
         return search.Results;
     }
 
-    private void Remove(MudChip chip)
+    private void Remove(MudChip<SearchPerson> chip)
     {
-        if (chip?.Tag is SearchPerson person)
-        {
-            People?.Remove(person);
-            SelectedPeople?.Remove(person.Id);
-            SelectedPeopleChanged.InvokeAsync(SelectedPeople);
-        }        
+        People?.Remove(chip.Value);
+        SelectedPeople?.Remove(chip.Value.Id);
+        SelectedPeopleChanged.InvokeAsync(SelectedPeople);
     }
 }

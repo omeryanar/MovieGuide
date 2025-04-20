@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using MovieGuide.Common.Model.General;
+using MovieGuide.Common.Model.Search;
 using MovieGuide.Common.Model.TvShows;
 
 namespace MovieGuide.WebApp.Shared
@@ -49,6 +50,27 @@ namespace MovieGuide.WebApp.Shared
             return Countries?.FirstOrDefault(x => x.Iso_3166_1 == countryCode);
         }
 
+        public async Task<SearchContainer<MovieAward>> GetMovieAwards(int page)
+        {
+            if (MovieAwards == null)
+                MovieAwards = await HttpClient.GetFromJsonAsync<List<MovieAward>>("cache-data/movie-awards.json");
+
+            int year = MovieAwards.FirstOrDefault().Year;
+            int start = year - (page * 10);
+            int end = start + 10;
+
+            List<MovieAward> results = MovieAwards.Where(x => x.Year > start && x.Year <= end).ToList();
+            SearchContainer<MovieAward> searchContainer = new SearchContainer<MovieAward>()
+            {
+                Page = page,
+                Results = results,                
+                TotalResults = MovieAwards.Count
+            };
+            searchContainer.TotalPages = (int)Math.Ceiling((decimal)MovieAwards.Count / 10);
+
+            return searchContainer;
+        }
+
         public async Task<IEnumerable<Language>> SearchLanguage(string query)
         {
             if (Languages == null)
@@ -75,5 +97,7 @@ namespace MovieGuide.WebApp.Shared
         private static List<Language> Languages;
 
         private static List<ProductionCountry> Countries;
+
+        private static List<MovieAward> MovieAwards;
     }
 }

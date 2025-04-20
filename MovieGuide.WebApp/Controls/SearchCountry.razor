@@ -25,7 +25,7 @@
     }
     private ProductionCountry country;
 
-    private async Task<IEnumerable<ProductionCountry>> SearchCountries(string query)
+    private async Task<IEnumerable<ProductionCountry>> SearchCountries(string query, CancellationToken token)
     {
         return await CacheService.SearchCountry(query);
     }

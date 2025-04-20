@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MovieGuide.Common;
+using MovieGuide.Common.Helper;
 using MovieGuide.Common.Model.People;
 using MovieGuide.Common.Model.Search;
+using MovieGuide.Common.Properties;
 using MovieGuide.WebApp.Shared;
 
 namespace MovieGuide.WebApp.Pages
@@ -24,6 +26,8 @@ namespace MovieGuide.WebApp.Pages
             if (Id != 0)
             {
                 Person = await TmdbService.GetPersonDetails(Id);
+                movieSelectedDepartment = Person.KnownForDepartment;
+                tvShowSelectedDepartment = Person.KnownForDepartment;
 
                 await RecentService.AddRecentItem(new SearchPerson
                 {
@@ -37,6 +41,9 @@ namespace MovieGuide.WebApp.Pages
 
         private Func<MovieCrew, bool> movieFilter => x =>
         {
+            if(x.Department != movieSelectedDepartment && movieSelectedDepartment != Resources.ViewAll)
+                return false;
+
             if (string.IsNullOrWhiteSpace(movieSearchString))
                 return true;
 
@@ -51,6 +58,9 @@ namespace MovieGuide.WebApp.Pages
 
         private Func<TvCrew, bool> tvShowFilter => x =>
         {
+            if (x.Department != tvShowSelectedDepartment && tvShowSelectedDepartment != Resources.ViewAll)
+                return false;
+
             if (string.IsNullOrWhiteSpace(tvShowSearchString))
                 return true;
 
@@ -65,6 +75,10 @@ namespace MovieGuide.WebApp.Pages
 
         private string movieSearchString;
 
+        private string movieSelectedDepartment;
+
         private string tvShowSearchString;
+
+        private string tvShowSelectedDepartment;
     }
 }

@@ -36,6 +36,14 @@
         <ExpansionPanel Title="@Resources.Movies" T="Person">
             <MudDataGrid Class="px-4" Items="Person.KnownMovieCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="movieFilter">
                 <ToolBarContent>
+                    <MudText Class="mr-3">@Resources.Department:</MudText>
+                    <MudSelect @bind-Value="movieSelectedDepartment">
+                        @foreach (var item in Person.KnownMovieCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
+                        {
+                            <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>
+                        }
+                        <MudSelectItem Value="Resources.ViewAll">@Resources.ViewAll</MudSelectItem>
+                    </MudSelect>
                     <MudSpacer />
                     <MudTextField Class="mt-0" @bind-Value="movieSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
                 </ToolBarContent>
@@ -64,6 +72,14 @@
         <ExpansionPanel Title="@Resources.TvShows" T="Person">
             <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="tvShowFilter">
                 <ToolBarContent>
+                    <MudText Class="mr-3">@Resources.Department:</MudText>
+                    <MudSelect @bind-Value="tvShowSelectedDepartment">
+                        @foreach (var item in Person.KnownTvCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
+                        {
+                            <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>
+                        }
+                        <MudSelectItem Value="Resources.ViewAll">@Resources.ViewAll</MudSelectItem>
+                    </MudSelect>
                     <MudSpacer />
                     <MudTextField Class="mt-0" @bind-Value="tvShowSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
                 </ToolBarContent>
