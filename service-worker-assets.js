@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "d8rX5Gme",
+  "version": "FrmO9Njb",
   "assets": [
     {
       "hash": "sha256-NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc=",
@@ -102,12 +102,12 @@ self.assetsManifest = {
       "url": "_framework/Microsoft.JSInterop.apnmspbbpu.wasm"
     },
     {
-      "hash": "sha256-lLoST0xy+22uJZvpn7+vFdYcLvcZb3O2wDRyNtZu3N8=",
-      "url": "_framework/MovieGuide.Common.s8vh5uzc3d.wasm"
+      "hash": "sha256-V4/g9KReibr/Pk4JEIR3phbm4ANXcTF49xnaVzf8R3Q=",
+      "url": "_framework/MovieGuide.Common.lpxk9wuyt0.wasm"
     },
     {
-      "hash": "sha256-ZTbC1JwGaF44bAAyMs/o3Xr/fv+BGvx6ij5dWMH/KwM=",
-      "url": "_framework/MovieGuide.WebApp.5czivpflnf.wasm"
+      "hash": "sha256-JhnaNB0oMm5fTFcH+IjiZ1xdYVQfhs+cBpgqNhS06zc=",
+      "url": "_framework/MovieGuide.WebApp.idc26efjlt.wasm"
     },
     {
       "hash": "sha256-jd0BkGy0l+F+2OIQy162z+SYxsZPPQ9aHUVj/xHc3Vw=",
@@ -226,7 +226,7 @@ self.assetsManifest = {
       "url": "_framework/System.f0fr8djds0.wasm"
     },
     {
-      "hash": "sha256-G5zPZLJrzVKbg5GuQZEOMRiNeQ4oxnkcRqBWphaqKRs=",
+      "hash": "sha256-0Bb0HWrJ8eHLbf4HuNTYd+rKhhydAPW3Kn1v/KXmBEU=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -254,8 +254,8 @@ self.assetsManifest = {
       "url": "_framework/icudt.oh1zvcfom8.dat"
     },
     {
-      "hash": "sha256-4wvpIktgZcifUSfLlJJdGbNgcmBsNfNwInLSFQloFKQ=",
-      "url": "_framework/tr/MovieGuide.Common.resources.tggr8sj18a.wasm"
+      "hash": "sha256-qsUQJ7Gld5L3NKxY3d0okJfK4VMwZ0mNCM5t26Zvmdg=",
+      "url": "_framework/tr/MovieGuide.Common.resources.605gto6vhu.wasm"
     },
     {
       "hash": "sha256-C+C+CBM59GxC/1llTSTgnbO4fy89y7PpZ4zlVHiXIE4=",

@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MovieGuide.WebApp",
   "resources": {
-    "hash": "sha256-kr0np2SW8VZi/2mpmUy1TLGkZjl+3s+TKBin4fVc9P0=",
+    "hash": "sha256-X+SzsOeYsLfP7BO4dbWOAWosH56SwmMMOlzZbf3SDso=",
     "fingerprinting": {
       "Blazored.LocalStorage.12n6dz54qr.wasm": "Blazored.LocalStorage.wasm",
       "Blazored.SessionStorage.34xr2ein7y.wasm": "Blazored.SessionStorage.wasm",
@@ -26,8 +26,8 @@
       "Microsoft.Extensions.Primitives.cwt3secsa7.wasm": "Microsoft.Extensions.Primitives.wasm",
       "Microsoft.JSInterop.apnmspbbpu.wasm": "Microsoft.JSInterop.wasm",
       "Microsoft.JSInterop.WebAssembly.lsljofql11.wasm": "Microsoft.JSInterop.WebAssembly.wasm",
-      "MovieGuide.Common.s8vh5uzc3d.wasm": "MovieGuide.Common.wasm",
-      "MovieGuide.WebApp.5czivpflnf.wasm": "MovieGuide.WebApp.wasm",
+      "MovieGuide.Common.lpxk9wuyt0.wasm": "MovieGuide.Common.wasm",
+      "MovieGuide.WebApp.idc26efjlt.wasm": "MovieGuide.WebApp.wasm",
       "MudBlazor.dwkbb196c7.wasm": "MudBlazor.wasm",
       "System.Collections.Concurrent.6t3iy39vrb.wasm": "System.Collections.Concurrent.wasm",
       "System.Collections.Immutable.ov4zgmvqjh.wasm": "System.Collections.Immutable.wasm",
@@ -57,7 +57,7 @@
       "System.Text.RegularExpressions.1s0e0f4uof.wasm": "System.Text.RegularExpressions.wasm",
       "System.Threading.vuopdrx302.wasm": "System.Threading.wasm",
       "System.f0fr8djds0.wasm": "System.wasm",
-      "MovieGuide.Common.resources.tggr8sj18a.wasm": "MovieGuide.Common.resources.wasm",
+      "MovieGuide.Common.resources.605gto6vhu.wasm": "MovieGuide.Common.resources.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.hvg7u8bimp.js": "dotnet.native.js",
       "dotnet.native.3c4wvb350q.wasm": "dotnet.native.wasm",
@@ -104,8 +104,8 @@
       "Microsoft.Extensions.Primitives.cwt3secsa7.wasm": "sha256-HA6vwd/vE0oQionQyPoNA2USvQam9FhyP0hW1MluoMQ=",
       "Microsoft.JSInterop.apnmspbbpu.wasm": "sha256-gs6UfXTMqRndXscw/E9MLDl6gagNO3gnrghLwrN7i14=",
       "Microsoft.JSInterop.WebAssembly.lsljofql11.wasm": "sha256-63bzxZLVvNOmTsso6iLrptxGmKBQh2HUIEGtPUrRPeQ=",
-      "MovieGuide.Common.s8vh5uzc3d.wasm": "sha256-lLoST0xy+22uJZvpn7+vFdYcLvcZb3O2wDRyNtZu3N8=",
-      "MovieGuide.WebApp.5czivpflnf.wasm": "sha256-ZTbC1JwGaF44bAAyMs/o3Xr/fv+BGvx6ij5dWMH/KwM=",
+      "MovieGuide.Common.lpxk9wuyt0.wasm": "sha256-V4/g9KReibr/Pk4JEIR3phbm4ANXcTF49xnaVzf8R3Q=",
+      "MovieGuide.WebApp.idc26efjlt.wasm": "sha256-JhnaNB0oMm5fTFcH+IjiZ1xdYVQfhs+cBpgqNhS06zc=",
       "MudBlazor.dwkbb196c7.wasm": "sha256-jd0BkGy0l+F+2OIQy162z+SYxsZPPQ9aHUVj/xHc3Vw=",
       "System.Collections.Concurrent.6t3iy39vrb.wasm": "sha256-Nn7TaslqkMrqPB7gA/yRTdiTnm5aeF1brJyG6Zyr+TM=",
       "System.Collections.Immutable.ov4zgmvqjh.wasm": "sha256-jGSWoV+nMK7lBcHloEPH2xtax8brVboh+odicDRKY6Q=",
@@ -136,7 +136,7 @@
     },
     "satelliteResources": {
       "tr": {
-        "MovieGuide.Common.resources.tggr8sj18a.wasm": "sha256-4wvpIktgZcifUSfLlJJdGbNgcmBsNfNwInLSFQloFKQ="
+        "MovieGuide.Common.resources.605gto6vhu.wasm": "sha256-qsUQJ7Gld5L3NKxY3d0okJfK4VMwZ0mNCM5t26Zvmdg="
       }
     }
   },
