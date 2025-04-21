@@ -22,7 +22,7 @@
     </MudTooltip>
 </MudElement>
 
-<MudDialog @bind-IsVisible="showPopup" Options="dialogOptions" ClassContent="pa-0" DefaultFocus="DefaultFocus.Element">
+<MudDialog @bind-Visible="showPopup" Options="dialogOptions" ContentClass="pa-0 ma-0" DefaultFocus="DefaultFocus.Element">
     <DialogContent>
         @if (MediaUrl?.Contains("image") == true)
         {
@@ -33,7 +33,7 @@
         else
         {
             <MudElement HtmlTag="div" Class="container">
-                <MudElement HtmlTag="iframe" Class="video-frame" allowfullscreen src="@MediaUrl" />
+                <MudElement HtmlTag="iframe" Class="video-frame" allowfullscreen allow="autoplay" src="@MediaUrl" />
             </MudElement>
         }
     </DialogContent>

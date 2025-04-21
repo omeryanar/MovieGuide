@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MovieGuide.Common;
-using MovieGuide.Common.Helper;
 using MovieGuide.Common.Model.People;
 using MovieGuide.Common.Model.Search;
-using MovieGuide.Common.Properties;
 using MovieGuide.WebApp.Shared;
 
 namespace MovieGuide.WebApp.Pages
@@ -41,10 +39,10 @@ namespace MovieGuide.WebApp.Pages
 
         private Func<MovieCrew, bool> movieFilter => x =>
         {
-            if(x.Department != movieSelectedDepartment && movieSelectedDepartment != Resources.ViewAll)
+            if (!String.IsNullOrEmpty(movieSelectedDepartment) && x.Department != movieSelectedDepartment)
                 return false;
 
-            if (string.IsNullOrWhiteSpace(movieSearchString))
+            if (String.IsNullOrWhiteSpace(movieSearchString))
                 return true;
 
             if (x.Title.Contains(movieSearchString, StringComparison.OrdinalIgnoreCase))
@@ -58,7 +56,7 @@ namespace MovieGuide.WebApp.Pages
 
         private Func<TvCrew, bool> tvShowFilter => x =>
         {
-            if (x.Department != tvShowSelectedDepartment && tvShowSelectedDepartment != Resources.ViewAll)
+            if (!String.IsNullOrEmpty(tvShowSelectedDepartment) && x.Department != tvShowSelectedDepartment)
                 return false;
 
             if (string.IsNullOrWhiteSpace(tvShowSearchString))
