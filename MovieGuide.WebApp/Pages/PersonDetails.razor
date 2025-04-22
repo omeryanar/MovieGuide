@@ -36,15 +36,17 @@
         <ExpansionPanel Title="@Resources.Movies" T="Person">
             <MudDataGrid Class="px-4" Items="Person.KnownMovieCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="movieFilter">
                 <ToolBarContent>
-                    <MudSelect Class="ml-n4" @bind-Value="movieSelectedDepartment" Adornment="Adornment.Start" AdornmentIcon="@(movieSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
-                        @foreach (var item in Person.KnownMovieCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
-                        {
-                            <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>
-                        }
-                        <MudSelectItem Value="@String.Empty">@Resources.ViewAll</MudSelectItem>
-                    </MudSelect>
-                    <MudSpacer />
-                    <MudTextField Class="ml-8" @bind-Value="movieSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search"></MudTextField> 
+                    <MudStack Class="flex-grow-1 ml-n4" Row="true" StretchItems="StretchItems.Start">
+                        <MudSelect @bind-Value="movieSelectedDepartment" Adornment="Adornment.Start" AdornmentIcon="@(movieSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
+                            @foreach (var item in Person.KnownMovieCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
+                            {
+                                <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>
+                            }
+                            <MudSpacer />
+                            <MudSelectItem Value="@String.Empty">@Resources.ViewAll</MudSelectItem>
+                        </MudSelect>
+                        <MudTextField Class="mr-n2" @bind-Value="movieSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" />
+                    </MudStack>                    
                 </ToolBarContent>
                 <Columns>
                     <TemplateColumn Title="@Resources.Title" SortBy="x => x.Title">
@@ -71,15 +73,17 @@
         <ExpansionPanel Title="@Resources.TvShows" T="Person">
             <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="tvShowFilter">
                 <ToolBarContent>
-                    <MudSelect Class="ml-n4" @bind-Value="tvShowSelectedDepartment" Adornment="Adornment.Start" AdornmentIcon="@(tvShowSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
-                        @foreach (var item in Person.KnownTvCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
-                        {
-                            <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>
-                        }
-                        <MudSelectItem Value="String.Empty">@Resources.ViewAll</MudSelectItem>
-                    </MudSelect>
-                    <MudSpacer />
-                    <MudTextField Class="ml-8" @bind-Value="tvShowSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search"></MudTextField>
+                    <MudStack Class="flex-grow-1 ml-n4" Row="true" StretchItems="StretchItems.Start">
+                        <MudSelect Class="ml-n4" @bind-Value="tvShowSelectedDepartment" Adornment="Adornment.Start" AdornmentIcon="@(tvShowSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
+                            @foreach (var item in Person.KnownTvCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
+                            {
+                                <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>
+                            }
+                            <MudSelectItem Value="String.Empty">@Resources.ViewAll</MudSelectItem>
+                        </MudSelect>
+                        <MudSpacer />
+                        <MudTextField Class="mr-n2" @bind-Value="tvShowSearchString" Placeholder="@Resources.Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" />
+                    </MudStack>
                 </ToolBarContent>
                 <Columns>
                     <TemplateColumn Title="@Resources.Name" SortBy="x => x.Name">

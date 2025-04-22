@@ -64,8 +64,8 @@
 
     private void Remove(MudChip<Keyword> chip)
     {
-        Keywords?.Remove(keyword);
-        SelectedKeywords?.Remove(keyword.Id);
+        Keywords?.Remove(chip.Value);
+        SelectedKeywords?.Remove(chip.Value.Id);
         SelectedKeywordsChanged.InvokeAsync(SelectedKeywords);
     }
 }

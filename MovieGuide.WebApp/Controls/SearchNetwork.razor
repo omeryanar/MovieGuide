@@ -63,8 +63,8 @@
 
     private void Remove(MudChip<Network> chip)
     {
-        Networks?.Remove(network);
-        SelectedNetworks?.Remove(network.Id);
+        Networks?.Remove(chip.Value);
+        SelectedNetworks?.Remove(chip.Value.Id);
         SelectedNetworksChanged.InvokeAsync(SelectedNetworks);
     }
 }

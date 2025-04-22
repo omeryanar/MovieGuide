@@ -64,8 +64,8 @@
 
     private void Remove(MudChip<ProductionCompany> chip)
     {
-        Companies?.Remove(company);
-        SelectedCompanies?.Remove(company.Id);
+        Companies?.Remove(chip.Value);
+        SelectedCompanies?.Remove(chip.Value.Id);
         SelectedCompaniesChanged.InvokeAsync(SelectedCompanies);
     }
 }
