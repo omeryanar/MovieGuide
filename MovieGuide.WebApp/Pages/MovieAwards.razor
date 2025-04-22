@@ -17,18 +17,23 @@
                             <MudText Typo="Typo.subtitle2">@award.Year</MudText>
                         </ItemDot>
                         <ItemContent>
-                            <MudStack Row="true" Spacing="0">
+                            <MudStack Row="true" Class="overflow-auto pb-3">
                                 <MudStack Row="true" Spacing="0" AlignItems="AlignItems.Center">
-                                    <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.ArrowLeft" />
-                                    <MediaCard Media="@award.Nominees.FirstOrDefault(x => x.Id == award.WinnerId)" />
+                                    <MediaCard Media="@award.Nominees.FirstOrDefault(x => x.Id == award.WinnerId)">
+                                        <Footer>
+                                            <MudStack Class="mb-3" Row="true" Spacing="1" Justify="Justify.Center">
+                                                <MudIcon Size="Size.Small" Color="Color.Warning" Icon="@Icons.Material.Filled.Star" />
+                                                <MudIcon Size="Size.Small" Color="Color.Warning" Icon="@Icons.Material.Filled.Star" />
+                                                <MudIcon Size="Size.Small" Color="Color.Warning" Icon="@Icons.Material.Filled.Star" />
+                                            </MudStack>
+                                        </Footer>
+                                    </MediaCard>
                                     <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.ArrowRight" />
                                 </MudStack>
-                                <MudStack Row="true" Class="overflow-auto pa-4">
-                                    @foreach (SearchMovie movie in award.Nominees.Where(x => x.Id != award.WinnerId))
-                                    {
-                                        <MediaCard Media="@movie" />
-                                    }
-                                </MudStack>
+                                @foreach (SearchMovie movie in award.Nominees.Where(x => x.Id != award.WinnerId))
+                                {
+                                    <MediaCard Media="@movie" />
+                                }
                             </MudStack>
                         </ItemContent>
                     </MudTimelineItem>
