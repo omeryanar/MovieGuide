@@ -10,10 +10,19 @@
         <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
             @if (Items != null)
             {
-                foreach (SearchMovieTvBase item in Items.Results)
+                for (int i = 0; i < Items.Results.Count; i++)
                 {
-                    <MediaCard Media="item" />
-                }
+                    int order = ((Page - 1) * 20) + i + 1;
+
+                    <MediaCard Media="Items.Results[i]">
+                        <Footer>
+                            <MudSpacer />
+                            <MudStack Row="true" Justify="Justify.FlexEnd">
+                                <MudChip Class="mx-2 mb-2 mt-n5" T="string">@order</MudChip>
+                            </MudStack>
+                        </Footer>
+                    </MediaCard>
+                }                
             }
         </MudStack>
     </MudStack>

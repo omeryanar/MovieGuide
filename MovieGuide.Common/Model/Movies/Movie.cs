@@ -149,7 +149,8 @@ namespace MovieGuide.Common.Model.Movies
         [JsonIgnore]
         public List<Crew> Crew
         {
-            get => Credits?.Crew?.Where(x => !Constants.FeaturedJobs.Contains(x.Job))?.OrderByDescending(x => x.ProfilePath).ToList();
+            get => Credits?.Crew?.OrderByDescending(x => Array.IndexOf(Constants.JobOrder, x.Job)).GroupBy(x => new { x.Id, x.Name, x.ProfilePath }).
+                Select(x => new Crew { Id = x.Key.Id, Name = x.Key.Name, ProfilePath = x.Key.ProfilePath, Job = String.Join(Constants.ListSeparator, x.OrderBy(y => y.Job).Select(z => z.Job)) }).ToList();
         }
 
         public override string ToString()
