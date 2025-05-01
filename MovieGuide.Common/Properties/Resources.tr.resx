@@ -269,6 +269,9 @@
     <value>İlk Yayın Tarihi &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
+  <data name="FirstEpisode" xml:space="preserve">
+    <value>İlk Bölüm</value>
+  </data>
   <data name="FirstMovie" xml:space="preserve">
     <value>İlk Film</value>
   </data>
@@ -318,6 +321,9 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Dil</value>
+  </data>
+  <data name="LastEpisode" xml:space="preserve">
+    <value>Son Bölüm</value>
   </data>
   <data name="LastMovie" xml:space="preserve">
     <value>Son Film</value>
@@ -373,6 +379,9 @@
   <data name="News" xml:space="preserve">
     <value>Haber</value>
     <comment>Genre</comment>
+  </data>
+  <data name="NextEpisode" xml:space="preserve">
+    <value>Sonraki Bölüm</value>
   </data>
   <data name="NextPage" xml:space="preserve">
     <value>Sonraki Sayfa</value>
@@ -437,6 +446,9 @@
   </data>
   <data name="Posters" xml:space="preserve">
     <value>Posterler</value>
+  </data>
+  <data name="PreviousEpisode" xml:space="preserve">
+    <value>Önceki Bölüm</value>
   </data>
   <data name="PreviousPage" xml:space="preserve">
     <value>Önceki Sayfa</value>

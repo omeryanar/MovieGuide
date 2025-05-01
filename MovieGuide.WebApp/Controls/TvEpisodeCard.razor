@@ -1,6 +1,6 @@
 ﻿<MudLink Underline="Underline.None" Href="@($"tv/{TvShow.Id}/season/{Episode.SeasonNumber}/episode/{Episode.EpisodeNumber}")">
     <MudCard Class="episode-card" Elevation="3">
-        <MudImage Class="rounded-t episode-card-img" Src="@Episode.StillFullPath" />
+        <MudImage Class="rounded-t episode-card-img" Src="@Episode.StilCardPath" />
         <MudCardContent Class="media-card-content media-card-rating">
             <RatingCircular Value="@Episode.VoteAverage"></RatingCircular>
             <MudText Typo="Typo.h5">@Episode</MudText>            

@@ -269,6 +269,9 @@
     <value>First Air Date &lt;b&gt;&amp;#x2B63;&lt;/b&gt;</value>
     <comment>Sort</comment>
   </data>
+  <data name="FirstEpisode" xml:space="preserve">
+    <value>First Episode</value>
+  </data>
   <data name="FirstMovie" xml:space="preserve">
     <value>First Movie</value>
   </data>
@@ -318,6 +321,9 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="LastEpisode" xml:space="preserve">
+    <value>Last Episode</value>
   </data>
   <data name="LastMovie" xml:space="preserve">
     <value>Last Movie</value>
@@ -373,6 +379,9 @@
   <data name="News" xml:space="preserve">
     <value>News</value>
     <comment>Genre</comment>
+  </data>
+  <data name="NextEpisode" xml:space="preserve">
+    <value>Next Episode</value>
   </data>
   <data name="NextPage" xml:space="preserve">
     <value>Next Page</value>
@@ -437,6 +446,9 @@
   </data>
   <data name="Posters" xml:space="preserve">
     <value>Posters</value>
+  </data>
+  <data name="PreviousEpisode" xml:space="preserve">
+    <value>Previous Episode</value>
   </data>
   <data name="PreviousPage" xml:space="preserve">
     <value>Previous Page</value>

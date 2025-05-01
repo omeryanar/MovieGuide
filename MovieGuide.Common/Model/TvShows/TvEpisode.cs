@@ -52,7 +52,10 @@ namespace MovieGuide.Common.Model.TvShows
         public TranslationContainer<TranslationTvEpisode> Translations { get; set; }
 
         [JsonIgnore]
-        public string StillFullPath => Constants.GetStillFullPath(StillPath);
+        public string StilCardPath => Constants.GetStillFullPath(StillPath);
+
+        [JsonIgnore]
+        public string StillFullPath => Constants.GetStillFullPath(StillPath, Constants.W780);
 
         [JsonIgnore]
         public string LocalizedOverview

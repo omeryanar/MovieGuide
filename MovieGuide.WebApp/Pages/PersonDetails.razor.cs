@@ -31,6 +31,7 @@ namespace MovieGuide.WebApp.Pages
                 {
                     Id = Person.Id,
                     Name = Person.Name,
+                    Gender = Person.Gender,
                     ProfilePath = Person.ProfilePath,
                     KnownForDepartment = Person.KnownForDepartment
                 });

@@ -430,6 +430,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Episode.
+        /// </summary>
+        public static string FirstEpisode {
+            get {
+                return ResourceManager.GetString("FirstEpisode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Movie.
         /// </summary>
         public static string FirstMovie {
@@ -561,6 +570,15 @@ namespace MovieGuide.Common.Properties {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Episode.
+        /// </summary>
+        public static string LastEpisode {
+            get {
+                return ResourceManager.GetString("LastEpisode", resourceCulture);
             }
         }
         
@@ -705,6 +723,15 @@ namespace MovieGuide.Common.Properties {
         public static string News {
             get {
                 return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Episode.
+        /// </summary>
+        public static string NextEpisode {
+            get {
+                return ResourceManager.GetString("NextEpisode", resourceCulture);
             }
         }
         
@@ -876,6 +903,15 @@ namespace MovieGuide.Common.Properties {
         public static string Posters {
             get {
                 return ResourceManager.GetString("Posters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous Episode.
+        /// </summary>
+        public static string PreviousEpisode {
+            get {
+                return ResourceManager.GetString("PreviousEpisode", resourceCulture);
             }
         }
         

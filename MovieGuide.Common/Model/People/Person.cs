@@ -56,7 +56,7 @@ namespace MovieGuide.Common.Model.People
         public TranslationContainer<TranslationPerson> Translations { get; set; }
 
         [JsonIgnore]
-        public string ProfileFullPath => Constants.GetProfileFullPath(ProfilePath, Gender, Constants.W300);
+        public string ProfileFullPath => Constants.GetProfileFullPath(ProfilePath, Gender, Constants.W500);
 
         [JsonIgnore]
         public string Sign => SignHelper.GetSignByBirthday(Birthday);

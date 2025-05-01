@@ -46,7 +46,7 @@
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Posters" Items="TvShow.Images?.Posters" OverlayClass="narrow-window">
                     <ItemTemplate>
-                        <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W185, context.FilePath))" />
+                        <MudImage Width="185" Height="278" Src="@(String.Format(Constants.W300, context.FilePath))" />
                     </ItemTemplate>
                     <OverlayTemplate>
                         <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
@@ -56,7 +56,7 @@
                 </ExpansionPanel>
                 <ExpansionPanel Title="@Resources.Backdrops" Items="TvShow.Images?.Backdrops" OverlayClass="wide-window">
                     <ItemTemplate>
-                        <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W300, context.FilePath))" />
+                        <MudImage Width="300" Height="169" Src="@(String.Format(Constants.W500, context.FilePath))" />
                     </ItemTemplate>
                     <OverlayTemplate>
                         <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">

@@ -15,6 +15,9 @@ namespace MovieGuide.Common.Model.Search
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
+        [JsonPropertyName("gender")]
+        public Gender Gender { get; set; }
+
         [JsonPropertyName("profile_path")]
         public string ProfilePath { get; set; }
 
@@ -22,7 +25,7 @@ namespace MovieGuide.Common.Model.Search
         public string KnownForDepartment { get; set; }
 
         [JsonIgnore]
-        public string ProfileFullPath => Constants.GetProfileFullPath(ProfilePath);
+        public string ProfileFullPath => Constants.GetProfileFullPath(ProfilePath, Gender);
 
         public override string ToString()
         {

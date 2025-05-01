@@ -95,7 +95,7 @@ namespace MovieGuide.Common.Model.TvShows
         public TranslationContainer<TranslationTvShow> Translations { get; set; }
 
         [JsonIgnore]
-        public string PosterFullPath => Constants.GetPosterFullPath(PosterPath, MediaType.TvShow, Constants.W300);
+        public string PosterFullPath => Constants.GetPosterFullPath(PosterPath, MediaType.TvShow, Constants.W500);
 
         [JsonIgnore]
         public string TrailerLink
@@ -153,7 +153,8 @@ namespace MovieGuide.Common.Model.TvShows
         [JsonIgnore]
         public List<Crew> Crew
         {
-            get => Credits?.Crew?.Where(x => !Constants.FeaturedJobs.Contains(x.Job))?.OrderByDescending(x => x.ProfilePath).ToList();
+            get => CreatedBy?.Select(x => new Crew { Id = x.Id, Name = x.Name, Gender = x.Gender, ProfilePath = x.ProfilePath, Job = "Creator" }).Union(Credits?.Crew).OrderByDescending(x => Array.IndexOf(Constants.JobOrder, x.Job)).GroupBy(x => new { x.Id, x.Name, x.Gender, x.ProfilePath }).
+                Select(x => new Crew { Id = x.Key.Id, Name = x.Key.Name, Gender = x.Key.Gender, ProfilePath = x.Key.ProfilePath, Job = String.Join(Constants.ListSeparator, x.OrderBy(y => y.Job).Select(z => z.Job)) }).ToList();
         }
 
         public override string ToString()

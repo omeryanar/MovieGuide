@@ -17,7 +17,7 @@ namespace MovieGuide.Common.Model.TvShows
         public string LogoPath { get; set; }
 
         [JsonIgnore]
-        public string LogoFullPath => String.Format(Constants.W185, LogoPath);
+        public string LogoFullPath => String.Format(Constants.W300, LogoPath);
 
         public override string ToString()
         {

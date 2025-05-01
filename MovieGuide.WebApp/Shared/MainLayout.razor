@@ -8,14 +8,14 @@
 <MudLayout>
     <MudAppBar Elevation="0">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => drawerOpen = !drawerOpen)" />
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" Disabled="BackwardStack.Count == 0" Title="@Resources.PreviousPage" />
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" Disabled="ForwardStack.Count == 0" Title="@Resources.NextPage" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" OnClick="GoBackward" Disabled="BackwardStack.Count == 0" title="@Resources.PreviousPage" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Inherit" OnClick="GoForward" Disabled="ForwardStack.Count == 0" title="@Resources.NextPage" />
         <MudSpacer />
         <SearchBar />
         <MudSpacer />
         <MudMenu AnchorOrigin="Origin.BottomCenter">
             <ActivatorContent>
-                <MudIconButton Icon="@Icons.Material.Filled.Translate" Color="Color.Inherit" Title="@Resources.Language" />
+                <MudIconButton Icon="@Icons.Material.Filled.Translate" Color="Color.Inherit" title="@Resources.Language" />
             </ActivatorContent>
             <ChildContent>
                 @foreach(Language language in SupportedLanguages)
@@ -26,8 +26,8 @@
                 }
             </ChildContent>
         </MudMenu>
-        <MudToggleIconButton Edge="Edge.End" Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" Title="@Resources.Dark"
-            @bind-Toggled="darkMode" ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit" ToggledTitle="@Resources.Light">
+        <MudToggleIconButton Edge="Edge.End" Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" title="@(darkMode ? Resources.Light : Resources.Dark)"
+            @bind-Toggled="darkMode" ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit">
         </MudToggleIconButton>
     </MudAppBar>
     <MudDrawer @bind-Open="drawerOpen" Elevation="1" Anchor="Anchor.Left" ClipMode="DrawerClipMode.Always">

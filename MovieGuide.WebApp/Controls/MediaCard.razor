@@ -54,7 +54,7 @@
 
             case SearchPerson person:
                 image = person.ProfileFullPath;
-                info = person.KnownForDepartment.GetLocalizedText();
+                info = person.KnownForDepartment?.GetLocalizedText();
                 break;
         }
     }

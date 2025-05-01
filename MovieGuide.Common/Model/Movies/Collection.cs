@@ -32,7 +32,7 @@ namespace MovieGuide.Common.Model.Movies
         public TranslationContainer<TranslationCollection> Translations { get; set; }
 
         [JsonIgnore]
-        public string PosterFullPath => Constants.GetPosterFullPath(PosterPath, MediaType.Movie, Constants.W300);
+        public string PosterFullPath => Constants.GetPosterFullPath(PosterPath, MediaType.Movie, Constants.W500);
 
         [JsonIgnore]
         public double? VoteAverage => Parts?.Where(x => x.VoteAverage > 0).DefaultIfEmpty().Average(x => x?.VoteAverage);

@@ -4,7 +4,7 @@
         foreach(Network network in Networks)
         {
             <MudLink Href="@($"discover/tv?with_networks={network.Id}")">
-                <MudImage Src="@network.LogoFullPath" />
+                <MudImage Width="200" Src="@network.LogoFullPath" />
             </MudLink>
         }
     }
