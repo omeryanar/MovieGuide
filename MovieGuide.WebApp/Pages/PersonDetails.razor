@@ -37,7 +37,7 @@
             <MudDataGrid Class="px-4" Items="Person.KnownMovieCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="movieFilter">
                 <ToolBarContent>
                     <MudStack Class="flex-grow-1 ml-n4" Row="true" StretchItems="StretchItems.Start">
-                        <MudSelect @bind-Value="movieSelectedDepartment" Adornment="Adornment.Start" AdornmentIcon="@(movieSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
+                        <MudSelect @bind-Value="movieSelectedDepartment" FitContent="true" Adornment="Adornment.Start" AdornmentIcon="@(movieSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
                             @foreach (var item in Person.KnownMovieCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
                             {
                                 <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>
@@ -74,7 +74,7 @@
             <MudDataGrid Class="px-4" Items="Person.KnownTvCredits" Dense="true" Hover="true" Groupable="true" GroupExpanded="true" GroupClass="justify-start pl-1" SortMode="SortMode.Single" Virtualize="true" Height="400px" QuickFilter="tvShowFilter">
                 <ToolBarContent>
                     <MudStack Class="flex-grow-1 ml-n4" Row="true" StretchItems="StretchItems.Start">
-                        <MudSelect @bind-Value="tvShowSelectedDepartment" Adornment="Adornment.Start" AdornmentIcon="@(tvShowSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
+                        <MudSelect @bind-Value="tvShowSelectedDepartment" FitContent="true" Adornment="Adornment.Start" AdornmentIcon="@(tvShowSelectedDepartment == String.Empty ? Icons.Material.Filled.FilterAltOff : Icons.Material.Filled.FilterAlt)">
                             @foreach (var item in Person.KnownTvCredits.GroupBy(x => x.Department).OrderBy(x => x.Key))
                             {
                                 <MudSelectItem Value="item.Key">@item.Key.GetLocalizedText()</MudSelectItem>

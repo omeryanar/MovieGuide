@@ -33,9 +33,9 @@
 
     @if (Collection.MovieCount > 6)
     {
-        <MudPaper MaxWidth="320px" Class="d-flex flex-row mt-4 pa-3 align-end" Elevation="1">
-            <MudText Typo="Typo.h3" Class="mr-3">@Resources.Sort:</MudText>
-            <MudSelect Class="sort-select" AnchorOrigin="Origin.BottomCenter" @bind-Value="selectedSortFunction">
+        <MudPaper MaxWidth="320px" Class="d-flex flex-row mt-4 px-3 py-2 align-center" Elevation="1">
+            <MudText Typo="Typo.h5" Class="mr-3">@Resources.Sort:</MudText>
+            <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="selectedSortFunction">
                 @foreach(SortFunction item in SortFunctions)
                 {
                     <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>

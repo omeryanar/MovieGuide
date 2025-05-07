@@ -655,7 +655,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Movie Count.
+        ///   Looks up a localized string similar to Number of Movies.
         /// </summary>
         public static string MovieCount {
             get {

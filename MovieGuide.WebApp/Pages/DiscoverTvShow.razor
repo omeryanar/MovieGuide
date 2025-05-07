@@ -19,20 +19,22 @@
                 <MudExpansionPanels MultiExpansion="true" Elevation="3">
                     <MudExpansionPanel Expanded="true">
                         <TitleContent>
-                            <MudText Typo="Typo.h6">@Resources.Sort</MudText>
+                            <MudText Typo="Typo.h3">@Resources.Sort</MudText>
                         </TitleContent>
                         <ChildContent>
-                            <MudSelect Class="sort-select" AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
+                            <MudSelect InputClass="ma-0" @bind-Value="sortBy">
                                 @foreach(SortType item in SortHelper.TvShowSortBy)
                                 {
-                                    <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>
+                                    <MudSelectItem Value="item">
+                                        <MudText Typo="Typo.h5">@((MarkupString)item.ToString())</MudText>
+                                    </MudSelectItem>
                                 }
                             </MudSelect>
                         </ChildContent>                
                     </MudExpansionPanel>
                     <MudExpansionPanel @bind-Expanded="showFilters">
                         <TitleContent>
-                            <MudText Typo="Typo.h6">@Resources.Filter</MudText>
+                            <MudText Typo="Typo.h3">@Resources.Filter</MudText>
                         </TitleContent>
                         <ChildContent>
                             <MudText Class="mb-2">@Resources.Genres</MudText>

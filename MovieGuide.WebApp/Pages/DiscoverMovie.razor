@@ -22,10 +22,12 @@
                             <MudText Typo="Typo.h3">@Resources.Sort</MudText>
                         </TitleContent>
                         <ChildContent>
-                            <MudSelect Class="sort-select" AnchorOrigin="Origin.BottomCenter" @bind-Value="sortBy">
+                            <MudSelect InputClass="ma-0" @bind-Value="sortBy">
                                 @foreach (SortType item in SortHelper.MovieSortBy)
                                 {
-                                    <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>
+                                    <MudSelectItem Value="item">
+                                        <MudText Typo="Typo.h5">@((MarkupString)item.ToString())</MudText>
+                                    </MudSelectItem>
                                 }
                             </MudSelect>
                         </ChildContent>

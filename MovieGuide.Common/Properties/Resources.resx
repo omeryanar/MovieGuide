@@ -354,7 +354,7 @@
     <value>minutes</value>
   </data>
   <data name="MovieCount" xml:space="preserve">
-    <value>Movie Count</value>
+    <value>Number of Movies</value>
   </data>
   <data name="MovieGenres" xml:space="preserve">
     <value>Movie Genres</value>

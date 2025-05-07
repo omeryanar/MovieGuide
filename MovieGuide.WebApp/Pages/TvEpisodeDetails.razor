@@ -5,7 +5,7 @@
     <MudStack Class="flex-wrap" Row="true">
         <MudStack Spacing="0">
             <MediaViewer MediaUrl="@(String.Format(Constants.Original, Episode.StillPath))">
-                <MudImage Class="rounded-lg" Width="520" Height="293" Src="@Episode.StillFullPath" />
+                <MudImage Class="rounded-lg still-img" Width="520" Height="293" Src="@Episode.StillFullPath" />
             </MediaViewer>
             <MudStack Row="true" Justify="Justify.Center">
                 <MudLink Disabled="IsFirstEpisode" Color="Color.Default" Href="@($"tv/{Id}/season/{SeasonNumber}/episode/1")">
