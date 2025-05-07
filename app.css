@@ -233,6 +233,18 @@
     }
 }
 
+.still-img {
+    width: 400px;
+    height: 225px;
+}
+
+@media only screen and (min-width: 960px) {
+    .still-img {
+        width: 520px;
+        height: 293px;
+    }
+}
+
 .disabled-icon {    
     filter: grayscale(100%) invert(82%);
 }
@@ -246,26 +258,6 @@
     .social-icon {
         width: 56px;
         height: 56px;
-    }
-}
-
-.sort-select > .mud-input-control-input-container > .mud-input.mud-input-text {
-    font-size: 14px !important;
-    margin-top: 0px !important;
-}
-
-.sort-select .mud-input-control .mud-select {
-    font-size: 14px !important;
-    margin: 0px !important;
-}
-
-@media only screen and (min-width: 960px) {
-    .sort-select > .mud-input-control-input-container > .mud-input.mud-input-text {
-        font-size: 16px !important;
-    }
-
-    .sort-select .mud-input-control .mud-select {
-        font-size: 16px !important;
     }
 }
 
