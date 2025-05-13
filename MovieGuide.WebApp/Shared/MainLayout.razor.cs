@@ -8,7 +8,7 @@ using MovieGuide.Common.Properties;
 
 namespace MovieGuide.WebApp.Shared
 {
-    public partial class MainLayout : IDisposable
+    public partial class MainLayout
     {
         [Inject]
         public ILocalStorageService LocalStorage { get; set; }
@@ -37,7 +37,10 @@ namespace MovieGuide.WebApp.Shared
         protected override void OnInitialized()
         {
             SetLanguage(CultureInfo.DefaultThreadCurrentCulture?.Name);
-        }
+            CurrentPage = History.AddFirst(NavigationManager.Uri);
+
+            NavigationManager.LocationChanged += OnLocationChanged; 
+        }        
 
         private void SetLanguage(string languageCode = "en")
         {
@@ -53,55 +56,30 @@ namespace MovieGuide.WebApp.Shared
 
         #region Navigation
 
-        public void Dispose()
-        {
-             locationChangingRegistration?.Dispose();
-        }
+        private LinkedList<string> History = new LinkedList<string>();
 
-        public void GoBackward()
-        {
-            if (BackwardStack.Count > 0)
-                NavigationManager.NavigateTo(BackwardStack.Peek());
-        }
+        private LinkedListNode<string> CurrentPage;
 
-        public void GoForward()
+        private void OnLocationChanged(object sender, LocationChangedEventArgs e)
         {
-            if (ForwardStack.Count > 0)
-                NavigationManager.NavigateTo(ForwardStack.Pop());
-        }
-
-        protected override void OnAfterRender(bool firstRender)
-        {
-            if (firstRender)
-                locationChangingRegistration = NavigationManager.RegisterLocationChangingHandler(OnLocationChanging);
-        }
-
-        private ValueTask OnLocationChanging(LocationChangingContext context)
-        {
-            if (NavigationManager.Uri.EndsWith(context.TargetLocation, StringComparison.Ordinal))
-                return ValueTask.CompletedTask;
-
-            if (BackwardStack.Count > 0 && BackwardStack.Peek() == context.TargetLocation)
+            if (e.Location == CurrentPage.Previous?.Value)
             {
-                BackwardStack.Pop();
-
-                if (ForwardStack.Count == 0 || ForwardStack.Peek() != NavigationManager.Uri)
-                    ForwardStack.Push(NavigationManager.Uri);
+                CurrentPage = CurrentPage.Previous;
+            }
+            else if (e.Location == CurrentPage.Next?.Value)
+            {
+                CurrentPage = CurrentPage.Next;
             }
             else
             {
-                if (BackwardStack.Count == 0 || BackwardStack.Peek() != NavigationManager.Uri)
-                    BackwardStack.Push(NavigationManager.Uri);
+                while (CurrentPage.Next != null)
+                    History.Remove(CurrentPage.Next);
+
+                CurrentPage = History.AddAfter(CurrentPage, e.Location);
             }
 
-            return ValueTask.CompletedTask;
+            StateHasChanged();
         }
-
-        private Stack<string> BackwardStack = new Stack<string>();
-
-        private Stack<string> ForwardStack = new Stack<string>();
-
-        private IDisposable locationChangingRegistration;
 
         #endregion
     }

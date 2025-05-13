@@ -35,10 +35,12 @@
     {
         <MudPaper MaxWidth="320px" Class="d-flex flex-row mt-4 px-3 py-2 align-center" Elevation="1">
             <MudText Typo="Typo.h5" Class="mr-3">@Resources.Sort:</MudText>
-            <MudSelect AnchorOrigin="Origin.BottomCenter" @bind-Value="selectedSortFunction">
+            <MudSelect @bind-Value="selectedSortFunction">
                 @foreach(SortFunction item in SortFunctions)
                 {
-                    <MudSelectItem Value="item">@((MarkupString)item.ToString())</MudSelectItem>
+                    <MudSelectItem Value="item">
+                        <MudText Typo="Typo.h5">@((MarkupString)item.ToString())</MudText>
+                    </MudSelectItem>
                 }
             </MudSelect>
         </MudPaper>
