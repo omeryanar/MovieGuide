@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "5xdazd29",
+  "version": "ISgdnUjg",
   "assets": [
     {
       "hash": "sha256-NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc=",
@@ -102,16 +102,16 @@ self.assetsManifest = {
       "url": "_framework/Microsoft.JSInterop.apnmspbbpu.wasm"
     },
     {
-      "hash": "sha256-wmJzUACSyFdIoFhKZjipYWtXefuqVqEJqQLoF7Dzcbs=",
-      "url": "_framework/MovieGuide.Common.qen1yh3r45.wasm"
+      "hash": "sha256-e18du/xWbyDTPsCw7SsBoTfNL7qgcsErOwDfnhrRkL8=",
+      "url": "_framework/MovieGuide.Common.lkyylygbga.wasm"
     },
     {
-      "hash": "sha256-AHGqVcVzk7xhmwC9G/H0K1R5eRu3axWcKCq1frIKH/0=",
-      "url": "_framework/MovieGuide.WebApp.kflywkugxc.wasm"
+      "hash": "sha256-OyqrMnKnfUlhN2XljYPHZSo4G/kK0twPP/6KXl2/Idk=",
+      "url": "_framework/MovieGuide.WebApp.j6xh8cfr37.wasm"
     },
     {
-      "hash": "sha256-jd0BkGy0l+F+2OIQy162z+SYxsZPPQ9aHUVj/xHc3Vw=",
-      "url": "_framework/MudBlazor.dwkbb196c7.wasm"
+      "hash": "sha256-pD2hYSwVMDaZUh+1+FEdJ3sJF/DM8KRQN/aBtavltss=",
+      "url": "_framework/MudBlazor.w3t07y4796.wasm"
     },
     {
       "hash": "sha256-0zlHQ9+8IJ3jrHBKxpXA1qehTNCJnrL0SS8zo/g4bkY=",
@@ -226,7 +226,7 @@ self.assetsManifest = {
       "url": "_framework/System.ezrw3d5kw2.wasm"
     },
     {
-      "hash": "sha256-yC4RMtsWjBAOl4K8T4qyOiRPTxZ/qZylIwu3FgefU6M=",
+      "hash": "sha256-llDs8vJypbfBn6GUMzeRwUyV7fig9GOWdmDAfj+m300=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -254,12 +254,52 @@ self.assetsManifest = {
       "url": "_framework/icudt.oh1zvcfom8.dat"
     },
     {
-      "hash": "sha256-kUvP651D7l3EYflUwGYT9Q7APkSBKcoY0Dxq2oLFVG4=",
-      "url": "_framework/tr/MovieGuide.Common.resources.vgt1d7gj45.wasm"
+      "hash": "sha256-DeUCvP6k2nFdelcjQSy3bTjNuLt9FI1qrFqFfd2+2AE=",
+      "url": "_framework/tr/MovieGuide.Common.resources.hbjtq9s415.wasm"
     },
     {
-      "hash": "sha256-+iZPcSterPsMatmw351yKgCcLaz8VF4fZ5Jg+dd23Pk=",
+      "hash": "sha256-scmGaLuoTPbof3d/Ch7w42+qrcAGYQZNWSrZVvNRexs=",
       "url": "app.css"
+    },
+    {
+      "hash": "sha256-IkgZ9LGQDYpzGfSJWB1UKfyE+TFTk3gS79QpBL1Y1So=",
+      "url": "cache-data/best-actor.json"
+    },
+    {
+      "hash": "sha256-2ll+D5Hl3nEpAmWKkzLsxPaYkdBKrhLC3R54UpO7hxA=",
+      "url": "cache-data/best-actress.json"
+    },
+    {
+      "hash": "sha256-i4xU1V6VBuWant/mEF+3jLx4GAHFztnicX1kh7IWLT4=",
+      "url": "cache-data/best-adapted-screenplay.json"
+    },
+    {
+      "hash": "sha256-AlTkDcZ6VebolB0YFz7O/rLmCsekV11QD8ufIJESMSc=",
+      "url": "cache-data/best-animation.json"
+    },
+    {
+      "hash": "sha256-z+6fhLvHkggxIGkA1mJt7S2KAOFc2Z6u6XKQ3J3X0/U=",
+      "url": "cache-data/best-director.json"
+    },
+    {
+      "hash": "sha256-ibrolkTutgRwYzgE/MEwMSof0x5omESH50stpS3asro=",
+      "url": "cache-data/best-international.json"
+    },
+    {
+      "hash": "sha256-VNW2VS2UW3SN4uaW6V+syHR4TKrHO5np/bEPqd1MlHg=",
+      "url": "cache-data/best-original-screenplay.json"
+    },
+    {
+      "hash": "sha256-FJYGywq6ATDEQK+S8Qg6BG3UmAOsFG7pgpkLJMvhKhY=",
+      "url": "cache-data/best-picture.json"
+    },
+    {
+      "hash": "sha256-yK9/BqTq59STsTyNKZIHgKXu7TB1DVdnGojUJDkRC60=",
+      "url": "cache-data/best-supporting-actor.json"
+    },
+    {
+      "hash": "sha256-KOrnqV1gQNUXB65HFQM2KkjDe010HtMd2/FWOR0Kdms=",
+      "url": "cache-data/best-supporting-actress.json"
     },
     {
       "hash": "sha256-+0YJofsU1bd67QtlSWwF9MHQAYeCsckcvEyfa9+X2eQ=",
@@ -268,10 +308,6 @@ self.assetsManifest = {
     {
       "hash": "sha256-paHAJqnRzVkt5BHmtRYaNHO/ozpcFlEBHn9GvFmJYvo=",
       "url": "cache-data/languages.json"
-    },
-    {
-      "hash": "sha256-w/34M/bg7eK3Dk2mw4l5r3ak3m0FTKGq5uXQl/k8TAs=",
-      "url": "cache-data/movie-awards.json"
     },
     {
       "hash": "sha256-aFI0IZRgAGUQbiOAwUNblnhnEu/jcJ7MZxQbV22UsIE=",
