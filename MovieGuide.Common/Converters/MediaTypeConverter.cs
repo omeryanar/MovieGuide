@@ -30,7 +30,7 @@ namespace MovieGuide.Common.Converters
                             MediaType.Movie => JsonSerializer.Deserialize<SearchMovie>(ref reader, options),
                             MediaType.Person => JsonSerializer.Deserialize<SearchPerson>(ref reader, options),
                             MediaType.TvShow => JsonSerializer.Deserialize<SearchTvShow>(ref reader, options),
-                            _ => throw new JsonException()
+                            _ => JsonSerializer.Deserialize<SearchMovie>(ref reader, options)
                         };
 
                         return searchBase;

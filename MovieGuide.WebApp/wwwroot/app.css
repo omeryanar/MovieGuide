@@ -234,8 +234,8 @@
 }
 
 .still-img {
-    width: 400px;
-    height: 225px;
+    width: 360px;
+    height: 202px;
 }
 
 @media only screen and (min-width: 960px) {

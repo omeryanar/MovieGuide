@@ -61,7 +61,7 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Actor.
+        ///   Looks up a localized string similar to Acting.
         /// </summary>
         public static string Acting {
             get {
@@ -84,6 +84,24 @@ namespace MovieGuide.Common.Properties {
         public static string Action_Adventure {
             get {
                 return ResourceManager.GetString("Action_Adventure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actor.
+        /// </summary>
+        public static string Actor {
+            get {
+                return ResourceManager.GetString("Actor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actress.
+        /// </summary>
+        public static string Actress {
+            get {
+                return ResourceManager.GetString("Actress", resourceCulture);
             }
         }
         
@@ -147,6 +165,96 @@ namespace MovieGuide.Common.Properties {
         public static string Backdrops {
             get {
                 return ResourceManager.GetString("Backdrops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leading Actor.
+        /// </summary>
+        public static string BestActor {
+            get {
+                return ResourceManager.GetString("BestActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leading Actress.
+        /// </summary>
+        public static string BestActress {
+            get {
+                return ResourceManager.GetString("BestActress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adapted Screenplay.
+        /// </summary>
+        public static string BestAdaptedScreenplay {
+            get {
+                return ResourceManager.GetString("BestAdaptedScreenplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Animation.
+        /// </summary>
+        public static string BestAnimation {
+            get {
+                return ResourceManager.GetString("BestAnimation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Director.
+        /// </summary>
+        public static string BestDirector {
+            get {
+                return ResourceManager.GetString("BestDirector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Film.
+        /// </summary>
+        public static string BestFilm {
+            get {
+                return ResourceManager.GetString("BestFilm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to International Film.
+        /// </summary>
+        public static string BestInternational {
+            get {
+                return ResourceManager.GetString("BestInternational", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Original Screenplay.
+        /// </summary>
+        public static string BestOriginalScreenplay {
+            get {
+                return ResourceManager.GetString("BestOriginalScreenplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supporting Actor.
+        /// </summary>
+        public static string BestSupportingActor {
+            get {
+                return ResourceManager.GetString("BestSupportingActor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supporting Actress.
+        /// </summary>
+        public static string BestSupportingActress {
+            get {
+                return ResourceManager.GetString("BestSupportingActress", resourceCulture);
             }
         }
         
@@ -448,6 +556,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Season.
+        /// </summary>
+        public static string FirstSeason {
+            get {
+                return ResourceManager.GetString("FirstSeason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gemini.
         /// </summary>
         public static string Gemini {
@@ -588,6 +705,15 @@ namespace MovieGuide.Common.Properties {
         public static string LastMovie {
             get {
                 return ResourceManager.GetString("LastMovie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Season.
+        /// </summary>
+        public static string LastSeason {
+            get {
+                return ResourceManager.GetString("LastSeason", resourceCulture);
             }
         }
         
@@ -741,6 +867,15 @@ namespace MovieGuide.Common.Properties {
         public static string NextPage {
             get {
                 return ResourceManager.GetString("NextPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Season.
+        /// </summary>
+        public static string NextSeason {
+            get {
+                return ResourceManager.GetString("NextSeason", resourceCulture);
             }
         }
         
@@ -921,6 +1056,15 @@ namespace MovieGuide.Common.Properties {
         public static string PreviousPage {
             get {
                 return ResourceManager.GetString("PreviousPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous Season.
+        /// </summary>
+        public static string PreviousSeason {
+            get {
+                return ResourceManager.GetString("PreviousSeason", resourceCulture);
             }
         }
         

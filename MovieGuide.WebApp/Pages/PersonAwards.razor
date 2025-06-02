@@ -1,4 +1,4 @@
-﻿@page "/awards/movie"
+﻿@page "/awards/person"
 @inherits BasePaginatedPage
 
 <PageTitle>Movie Guide - @Resources.OscarWinners</PageTitle>
@@ -6,13 +6,13 @@
 <MudStack Justify="Justify.Center">
     <MudText Class="ma-auto" Typo="Typo.h1">@Resources.OscarWinners</MudText>
     <MudTabs Centered="true" Rounded="true" Elevation="1" @bind-ActivePanelIndex="Index">
-        <MudTabPanel Text="@Resources.BestFilm" OnClick="Refresh" />
-        <MudTabPanel Text="@Resources.BestOriginalScreenplay" OnClick="Refresh" />
-        <MudTabPanel Text="@Resources.BestAdaptedScreenplay" OnClick="Refresh" />
-        <MudTabPanel Text="@Resources.BestAnimation" OnClick="Refresh" />
-        <MudTabPanel Text="@Resources.BestInternational" OnClick="Refresh" />
+        <MudTabPanel Text="@Resources.BestActor" OnClick="Refresh" />
+        <MudTabPanel Text="@Resources.BestActress" OnClick="Refresh" />
+        <MudTabPanel Text="@Resources.BestSupportingActor" OnClick="Refresh" />
+        <MudTabPanel Text="@Resources.BestSupportingActress" OnClick="Refresh" />
+        <MudTabPanel Text="@Resources.BestDirector" OnClick="Refresh" />
     </MudTabs>
-    <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />    
+    <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
         <LoadingContent LoadingObject="Awards">
             <MudTimeline TimelinePosition="TimelinePosition.Start" Modifiers="false">
                 @foreach (SearchAward award in Awards.Results)

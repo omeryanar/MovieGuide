@@ -6,7 +6,7 @@
 <LoadingContent LoadingObject="TvShows">
     <MudStack Justify="Justify.Center">
         <MudText Class="ma-auto" Typo="Typo.h1">@Resources.TvShows</MudText>
-        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
         <MudGrid>
             <MudItem xs="12" sm="4">
                 <MudButton Class="mb-4" Disabled="isSearching" Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="Refresh">
@@ -76,6 +76,7 @@
                 </MudStack>
             </MudItem>
         </MudGrid>
+        <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
     </MudStack>
 </LoadingContent>
 

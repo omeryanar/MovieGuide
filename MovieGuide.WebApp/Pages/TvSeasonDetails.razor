@@ -3,9 +3,25 @@
 <LoadingContent LoadingObject="Season">
     <PageTitle>Movie Guide - @TvShow?.Name - @Season.Name</PageTitle>
     <MudStack Class="flex-wrap" Row="true">
-        <MediaViewer MediaUrl="@(String.Format(Constants.Original, Season.PosterPath))">
-            <MudImage Class="rounded-lg detail-img" Src="@Season.PosterFullPath" />
-        </MediaViewer>
+        <MudStack Spacing="0">
+            <MediaViewer MediaUrl="@(String.Format(Constants.Original, Season.PosterPath))">
+                <MudImage Class="rounded-lg detail-img" Src="@Season.PosterFullPath" />
+            </MediaViewer>
+            <MudStack Row="true" Justify="Justify.Center">
+                <MudLink Disabled="IsFirstSeason" Color="Color.Default" Href="@($"tv/{Id}/season/1")">
+                    <MudIcon Size="Size.Medium" Icon="@Icons.Material.Filled.FirstPage" Title="@Resources.FirstSeason" />
+                </MudLink>
+                <MudLink Disabled="IsFirstSeason" Color="Color.Default" Href="@($"tv/{Id}/season/{SeasonNumber - 1}")">
+                    <MudIcon Size="Size.Medium" Icon="@Icons.Material.Filled.KeyboardArrowLeft" Title="@Resources.PreviousSeason" />
+                </MudLink>
+                <MudLink Disabled="IsLastSeason" Color="Color.Default" Href="@($"tv/{Id}/season/{SeasonNumber + 1}")">
+                    <MudIcon Size="Size.Medium" Icon="@Icons.Material.Filled.KeyboardArrowRight" Title="@Resources.NextSeason" />
+                </MudLink>
+                <MudLink Disabled="IsLastSeason" Color="Color.Default" Href="@($"tv/{Id}/season/{LastSeasonNumber}")">
+                    <MudIcon Size="Size.Medium" Icon="@Icons.Material.Filled.LastPage" Title="@Resources.LastSeason" />
+                </MudLink>
+            </MudStack>
+        </MudStack>
         <MudStack Class="detail-info">
             <MudStack Class="flex-wrap" Row="true">
                 <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@("tv/" + TvShow?.Id)">

@@ -6,7 +6,7 @@
 <LoadingContent LoadingObject="@Items">
     <MudStack Justify="Justify.Center">
         <MudText Class="ma-auto" Typo="Typo.h1">@Title</MudText>
-        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
         <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
             @if (Items != null)
             {
@@ -25,5 +25,6 @@
                 }                
             }
         </MudStack>
+        <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
     </MudStack>
 </LoadingContent>

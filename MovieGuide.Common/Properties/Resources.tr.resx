@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Acting" xml:space="preserve">
-    <value>Oyuncu</value>
+    <value>Oyunculuk</value>
     <comment>Department</comment>
   </data>
   <data name="Action" xml:space="preserve">
@@ -128,6 +128,12 @@
   <data name="Action_Adventure" xml:space="preserve">
     <value>Aksiyon &amp; Macera</value>
     <comment>Genre</comment>
+  </data>
+  <data name="Actor" xml:space="preserve">
+    <value>Oyuncu</value>
+  </data>
+  <data name="Actress" xml:space="preserve">
+    <value>Oyuncu</value>
   </data>
   <data name="Adventure" xml:space="preserve">
     <value>Macera</value>
@@ -155,6 +161,36 @@
   </data>
   <data name="Backdrops" xml:space="preserve">
     <value>Sahneler</value>
+  </data>
+  <data name="BestActor" xml:space="preserve">
+    <value>Erkek Oyuncu</value>
+  </data>
+  <data name="BestActress" xml:space="preserve">
+    <value>Kadın Oyuncu</value>
+  </data>
+  <data name="BestAdaptedScreenplay" xml:space="preserve">
+    <value>Uyarlama Senaryo</value>
+  </data>
+  <data name="BestAnimation" xml:space="preserve">
+    <value>Animasyon</value>
+  </data>
+  <data name="BestDirector" xml:space="preserve">
+    <value>Yönetmen</value>
+  </data>
+  <data name="BestFilm" xml:space="preserve">
+    <value>Film</value>
+  </data>
+  <data name="BestInternational" xml:space="preserve">
+    <value>Uluslararası Film</value>
+  </data>
+  <data name="BestOriginalScreenplay" xml:space="preserve">
+    <value>Orijinal Senaryo</value>
+  </data>
+  <data name="BestSupportingActor" xml:space="preserve">
+    <value>Yardımcı Erkek Oyuncu</value>
+  </data>
+  <data name="BestSupportingActress" xml:space="preserve">
+    <value>Yardımcı Kadın Oyuncu</value>
   </data>
   <data name="Biography" xml:space="preserve">
     <value>Biyografi</value>
@@ -275,6 +311,9 @@
   <data name="FirstMovie" xml:space="preserve">
     <value>İlk Film</value>
   </data>
+  <data name="FirstSeason" xml:space="preserve">
+    <value>İlk Sezon</value>
+  </data>
   <data name="Gemini" xml:space="preserve">
     <value>İkizler</value>
     <comment>Signs</comment>
@@ -327,6 +366,9 @@
   </data>
   <data name="LastMovie" xml:space="preserve">
     <value>Son Film</value>
+  </data>
+  <data name="LastSeason" xml:space="preserve">
+    <value>Son Sezon</value>
   </data>
   <data name="Leo" xml:space="preserve">
     <value>Aslan</value>
@@ -385,6 +427,9 @@
   </data>
   <data name="NextPage" xml:space="preserve">
     <value>Sonraki Sayfa</value>
+  </data>
+  <data name="NextSeason" xml:space="preserve">
+    <value>Sonraki Sezon</value>
   </data>
   <data name="Novel" xml:space="preserve">
     <value>Roman</value>
@@ -452,6 +497,9 @@
   </data>
   <data name="PreviousPage" xml:space="preserve">
     <value>Önceki Sayfa</value>
+  </data>
+  <data name="PreviousSeason" xml:space="preserve">
+    <value>Önceki Sezon</value>
   </data>
   <data name="Production" xml:space="preserve">
     <value>Yapımcı</value>

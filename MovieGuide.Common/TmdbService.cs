@@ -193,7 +193,7 @@ namespace MovieGuide.Common
 
             SerializerOptions = new JsonSerializerOptions();
             SerializerOptions.Converters.Add(new PartialDateConverter());
-            SerializerOptions.Converters.Add(new MediaTypeConverter());      
+            SerializerOptions.Converters.Add(new MediaTypeConverter());
         }
     }
 }

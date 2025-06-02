@@ -11,5 +11,8 @@
         <MudNavLink Href="genre/tv" Match="NavLinkMatch.Prefix">@Resources.Genres</MudNavLink>
         <MudNavLink Href="list/142134" Match="NavLinkMatch.Prefix">@Resources.ImdbTop250</MudNavLink>
     </MudNavGroup>
-    <MudNavLink Icon="@Icons.Material.Filled.PeopleAlt" Href="person/popular" Match="NavLinkMatch.Prefix">@Resources.People</MudNavLink>
+    <MudNavGroup Icon="@Icons.Material.Outlined.PeopleAlt" Title="@Resources.People" Expanded="true">
+        <MudNavLink Href="person/popular" Match="NavLinkMatch.Prefix">@Resources.PopularPeople</MudNavLink>
+        <MudNavLink Href="awards/person" Match="NavLinkMatch.Prefix">@Resources.OscarWinners</MudNavLink>
+    </MudNavGroup>    
 </MudNavMenu>

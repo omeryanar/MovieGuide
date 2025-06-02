@@ -6,7 +6,7 @@
 <LoadingContent LoadingObject="@Search">
     <MudStack Justify="Justify.Center">
         <MudText Class="ma-auto" Typo="Typo.h1">@Resources.Search: @Query</MudText>
-        <MudPagination Class="ma-auto" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
+        <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
         <MudStack Class="flex-wrap" Row="true" Justify="Justify.Center">
             @if (Search != null)
             {
@@ -16,5 +16,6 @@
                 }
             }
         </MudStack>
+        <MudPagination Class="@(PageCount > 1 ? "ma-auto" : "invisible")" Color="Color.Primary" BoundaryCount="1" Count="PageCount" @bind-Selected="Page" />
     </MudStack>
 </LoadingContent>

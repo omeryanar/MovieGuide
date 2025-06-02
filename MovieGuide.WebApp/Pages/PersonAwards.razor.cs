@@ -5,7 +5,7 @@ using MovieGuide.WebApp.Shared;
 
 namespace MovieGuide.WebApp.Pages
 {
-    public partial class MovieAwards
+    public partial class PersonAwards
     {
         [Inject]
         public CacheService CacheService { get; set; }
@@ -34,21 +34,21 @@ namespace MovieGuide.WebApp.Pages
                 switch (Index)
                 {
                     case 0:
-                        Awards = await CacheService.GetBestPictures(Page);
+                        Awards = await CacheService.GetBestActors(Page);
                         break;
                     case 1:
-                        Awards = await CacheService.GetBestOriginalScreenplays(Page);
+                        Awards = await CacheService.GetBestActresses(Page);
                         break;
                     case 2:
-                        Awards = await CacheService.GetBestAdaptedScreenplays(Page);
+                        Awards = await CacheService.GetBestSupportingActors(Page);
                         break;
                     case 3:
-                        Awards = await CacheService.GetBestAnimations(Page);
+                        Awards = await CacheService.GetBestSupportingActresses(Page);
                         break;
                     case 4:
-                        Awards = await CacheService.GetBestInternational(Page);
+                        Awards = await CacheService.GetBestDirectors(Page);
                         break;
-                }
+                }                
                 PageCount = Awards.TotalPages;
 
                 StateHasChanged();
@@ -60,6 +60,6 @@ namespace MovieGuide.WebApp.Pages
             ShouldRefresh = true;
         }
 
-        private string baseUri => $"awards/movie";
+        private string baseUri => $"awards/person";
     }
 }

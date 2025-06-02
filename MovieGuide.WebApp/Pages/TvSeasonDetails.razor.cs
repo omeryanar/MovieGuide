@@ -27,5 +27,11 @@ namespace MovieGuide.WebApp.Pages
                 Season = await TmdbService.GetTvSeasonDetails(Id, SeasonNumber);
             }
         }
+
+        private int LastSeasonNumber => TvShow.Seasons.Last().SeasonNumber; 
+
+        private bool IsFirstSeason => SeasonNumber == 1;
+
+        private bool IsLastSeason => SeasonNumber == LastSeasonNumber;
     }
 }
