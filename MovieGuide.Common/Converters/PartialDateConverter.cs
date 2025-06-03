@@ -2,27 +2,27 @@
 
 namespace MovieGuide.Common.Converters
 {
-    public class PartialDateConverter : JsonConverter<DateTime?>
+    public class PartialDateConverter : JsonConverter<DateOnly?>
     {
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(DateTime?);
+            return objectType == typeof(DateOnly?);
         }
 
-        public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override DateOnly? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             string str = reader.GetString();
             if (string.IsNullOrEmpty(str))
                 return null;
 
-            DateTime result;
-            if (!DateTime.TryParse(str, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out result))
+            DateOnly result;
+            if (!DateOnly.TryParse(str, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out result))
                 return null;
 
             return result;
         }
 
-        public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, DateOnly? value, JsonSerializerOptions options)
         {
             writer.WriteStringValue(value?.ToString(CultureInfo.InvariantCulture));
         }

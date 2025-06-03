@@ -41,7 +41,7 @@ namespace MovieGuide.Common.Model.Movies
         public int? Runtime { get; set; }
 
         [JsonPropertyName("release_date")]
-        public DateTime? ReleaseDate { get; set; }
+        public DateOnly? ReleaseDate { get; set; }
 
         [JsonPropertyName("budget")]
         public long Budget { get; set; }

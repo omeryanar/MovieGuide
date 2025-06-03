@@ -28,7 +28,7 @@ namespace MovieGuide.Common.Model.TvShows
         public int? Runtime { get; set; }
 
         [JsonPropertyName("air_date")]
-        public DateTime? AirDate { get; set; }
+        public DateOnly? AirDate { get; set; }
 
         [JsonPropertyName("crew")]
         public List<Crew> Crew { get; set; }        

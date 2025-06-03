@@ -38,7 +38,7 @@ namespace MovieGuide.Common.Model.TvShows
         public List<int> EpisodeRunTime { get; set; }
 
         [JsonPropertyName("first_air_date")]
-        public DateTime? FirstAirDate { get; set; }
+        public DateOnly? FirstAirDate { get; set; }
 
         [JsonPropertyName("vote_average")]
         public double VoteAverage { get; set; }
@@ -68,7 +68,7 @@ namespace MovieGuide.Common.Model.TvShows
         public ResultContainer<Keyword> Keywords { get; set; }
 
         [JsonPropertyName("last_air_date")]
-        public DateTime? LastAirDate { get; set; }
+        public DateOnly? LastAirDate { get; set; }
 
         [JsonPropertyName("networks")]
         public List<Network> Networks { get; set; }   

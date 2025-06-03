@@ -2,12 +2,12 @@
 {
     public class SignHelper
     {
-        public static string GetSignByBirthday(DateTime? birthday)
+        public static string GetSignByBirthday(DateOnly? birthday)
         {
             if (birthday == null)
                 return String.Empty;
 
-            DateTime birthDate = birthday.Value;
+            DateOnly birthDate = birthday.Value;
             switch (birthDate.Month)
             {
                 case 1: return birthDate.Day < 20 ? Properties.Resources.Capricorn : Properties.Resources.Aquarius;

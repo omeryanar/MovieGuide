@@ -16,7 +16,7 @@ namespace MovieGuide.Common.Model.Search
         public string OriginalTitle { get; set; }
 
         [JsonPropertyName("release_date")]
-        public DateTime? ReleaseDate { get; set; }
+        public DateOnly? ReleaseDate { get; set; }
 
         public override string ToString()
         {

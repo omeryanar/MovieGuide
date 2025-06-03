@@ -32,10 +32,10 @@ namespace MovieGuide.Common.Model.People
         public string PlaceOfBirth { get; set; }
 
         [JsonPropertyName("birthday")]
-        public DateTime? Birthday { get; set; }
+        public DateOnly? Birthday { get; set; }
 
         [JsonPropertyName("deathday")]
-        public DateTime? Deathday { get; set; }
+        public DateOnly? Deathday { get; set; }
 
         [JsonPropertyName("imdb_id")]
         public string ImdbId { get; set; }

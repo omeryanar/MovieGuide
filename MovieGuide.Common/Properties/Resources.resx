@@ -443,6 +443,9 @@
   <data name="NextSeason" xml:space="preserve">
     <value>Next Season</value>
   </data>
+  <data name="Nominee" xml:space="preserve">
+    <value>Nominee</value>
+  </data>
   <data name="Novel" xml:space="preserve">
     <value>Novel</value>
     <comment>Job</comment>
@@ -716,6 +719,9 @@
   <data name="Western" xml:space="preserve">
     <value>Western</value>
     <comment>Genre</comment>
+  </data>
+  <data name="Winner" xml:space="preserve">
+    <value>Winner</value>
   </data>
   <data name="Writer" xml:space="preserve">
     <value>Writer</value>

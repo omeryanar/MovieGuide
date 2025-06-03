@@ -20,7 +20,7 @@ namespace MovieGuide.Common.Model.Search
         public int SeasonNumber { get; set; }
 
         [JsonPropertyName("air_date")]
-        public DateTime? AirDate { get; set; }
+        public DateOnly? AirDate { get; set; }
 
         [JsonPropertyName("episode_count")]
         public int EpisodeCount { get; set; }

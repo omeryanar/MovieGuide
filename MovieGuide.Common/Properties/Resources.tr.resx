@@ -431,6 +431,9 @@
   <data name="NextSeason" xml:space="preserve">
     <value>Sonraki Sezon</value>
   </data>
+  <data name="Nominee" xml:space="preserve">
+    <value>Aday</value>
+  </data>
   <data name="Novel" xml:space="preserve">
     <value>Roman</value>
     <comment>Job</comment>
@@ -704,6 +707,9 @@
   <data name="Western" xml:space="preserve">
     <value>Vahşi Batı</value>
     <comment>Genre</comment>
+  </data>
+  <data name="Winner" xml:space="preserve">
+    <value>Kazanan</value>
   </data>
   <data name="Writer" xml:space="preserve">
     <value>Senarist</value>

@@ -22,7 +22,7 @@ namespace MovieGuide.Common.Model.TvShows
         public int SeasonNumber { get; set; }
 
         [JsonPropertyName("air_date")]
-        public DateTime? AirDate { get; set; }
+        public DateOnly? AirDate { get; set; }
 
         [JsonPropertyName("credits")]
         public Credits Credits { get; set; }

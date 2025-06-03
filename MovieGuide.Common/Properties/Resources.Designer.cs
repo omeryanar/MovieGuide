@@ -880,6 +880,15 @@ namespace MovieGuide.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nominee.
+        /// </summary>
+        public static string Nominee {
+            get {
+                return ResourceManager.GetString("Nominee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Novel.
         /// </summary>
         public static string Novel {
@@ -1578,6 +1587,15 @@ namespace MovieGuide.Common.Properties {
         public static string Western {
             get {
                 return ResourceManager.GetString("Western", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Winner.
+        /// </summary>
+        public static string Winner {
+            get {
+                return ResourceManager.GetString("Winner", resourceCulture);
             }
         }
         

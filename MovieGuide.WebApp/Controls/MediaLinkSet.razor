@@ -3,9 +3,16 @@
     {
         foreach(SearchBase item in MediaItems)
         {
-            <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@item.Link">
-                <MudText Typo="Typo.body2">@item</MudText>
-            </MudLink>
+            <MudTooltip Class="pa-2" Color="Color.Warning" Delay="1000" Arrow="true" Placement="Placement.Left">
+                <ChildContent>
+                    <MudLink Underline="Underline.Hover" Color="Color.Default" Href="@item.Link">
+                        <MudText Typo="Typo.body2">@item</MudText>
+                    </MudLink>
+                </ChildContent>
+                <TooltipContent>
+                    <MediaCard Media="item" />
+                </TooltipContent>
+            </MudTooltip>
         }
     }
 </MudStack>

@@ -16,7 +16,7 @@ namespace MovieGuide.Common.Model.Search
         public string OriginalName { get; set; }
 
         [JsonPropertyName("first_air_date")]
-        public DateTime? FirstAirDate { get; set; }
+        public DateOnly? FirstAirDate { get; set; }
 
         [JsonPropertyName("origin_country")]
         public List<string> OriginCountry { get; set; }

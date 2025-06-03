@@ -4,6 +4,7 @@ using MovieGuide.Common.Converters;
 using MovieGuide.Common.Model.General;
 using MovieGuide.Common.Model.Search;
 using MovieGuide.Common.Model.TvShows;
+using MovieGuide.Common.Properties;
 
 namespace MovieGuide.WebApp.Shared
 {
@@ -104,30 +105,30 @@ namespace MovieGuide.WebApp.Shared
 
         public async Task<SearchContainer<SearchAward>> GetBestActors(int page)
         {
-            return await GetOscars(BestActors, "cache-data/best-actor.json", page);
+            return await GetOscars(BestActors, "cache-data/best-actor.json", page, true);
         }
 
         public async Task<SearchContainer<SearchAward>> GetBestActresses(int page)
         {
-            return await GetOscars(BestActresses, "cache-data/best-actress.json", page);
+            return await GetOscars(BestActresses, "cache-data/best-actress.json", page, true);
         }
 
         public async Task<SearchContainer<SearchAward>> GetBestDirectors(int page)
         {
-            return await GetOscars(BestDirectors, "cache-data/best-director.json", page);
+            return await GetOscars(BestDirectors, "cache-data/best-director.json", page, true);
         }
 
         public async Task<SearchContainer<SearchAward>> GetBestSupportingActors(int page)
         {
-            return await GetOscars(BestSupportingActors, "cache-data/best-supporting-actor.json", page);
+            return await GetOscars(BestSupportingActors, "cache-data/best-supporting-actor.json", page, true);
         }
 
         public async Task<SearchContainer<SearchAward>> GetBestSupportingActresses(int page)
         {
-            return await GetOscars(BestSupportingActresses, "cache-data/best-supporting-actress.json", page);
+            return await GetOscars(BestSupportingActresses, "cache-data/best-supporting-actress.json", page, true);
         }
 
-        private async Task<SearchContainer<SearchAward>> GetOscars(List<SearchAward> cacheData, string cacheFile, int page)
+        private async Task<SearchContainer<SearchAward>> GetOscars(List<SearchAward> cacheData, string cacheFile, int page, bool markWinner = false)
         {
             if (cacheData == null)
             {
@@ -148,6 +149,20 @@ namespace MovieGuide.WebApp.Shared
                 TotalResults = cacheData.Count
             };
             searchContainer.TotalPages = (int)Math.Ceiling((decimal)cacheData.Count / 10);
+
+            if (markWinner)
+            {
+                foreach (SearchAward award in searchContainer.Results)
+                {
+                    foreach (SearchPerson nominee in award.Nominees)
+                    {
+                        if (award.Winners.Contains(nominee.Id))
+                            nominee.KnownForDepartment = Resources.Winner;
+                        else
+                            nominee.KnownForDepartment = Resources.Nominee;
+                    }
+                }
+            }
             
             return searchContainer;
         }

@@ -41,10 +41,10 @@ namespace MovieGuide.Common.Model.Movies
         public int? MovieCount => Parts?.Count();
 
         [JsonIgnore]
-        public SearchMovie FirstMovie => Parts?.Where(x => x.ReleaseDate < DateTime.Today).OrderBy(x => x.ReleaseDate).FirstOrDefault();
+        public SearchMovie FirstMovie => Parts?.Where(x => x.ReleaseDate < DateOnly.FromDateTime(DateTime.Today)).OrderBy(x => x.ReleaseDate).FirstOrDefault();
 
         [JsonIgnore]
-        public SearchMovie LastMovie => Parts?.Where(x => x.ReleaseDate < DateTime.Today).OrderByDescending(x => x.ReleaseDate).FirstOrDefault();
+        public SearchMovie LastMovie => Parts?.Where(x => x.ReleaseDate < DateOnly.FromDateTime(DateTime.Today)).OrderByDescending(x => x.ReleaseDate).FirstOrDefault();
 
         [JsonIgnore]
         public IEnumerable<Genre> Genres => GenreHelper.MovieGenres.Where(x => Parts?.SelectMany(y => y.GenreIds).Contains(x.Id) == true);
