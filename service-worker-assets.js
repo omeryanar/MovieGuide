@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "ISgdnUjg",
+  "version": "wxiHL5I3",
   "assets": [
     {
       "hash": "sha256-NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc=",
@@ -102,12 +102,12 @@ self.assetsManifest = {
       "url": "_framework/Microsoft.JSInterop.apnmspbbpu.wasm"
     },
     {
-      "hash": "sha256-e18du/xWbyDTPsCw7SsBoTfNL7qgcsErOwDfnhrRkL8=",
-      "url": "_framework/MovieGuide.Common.lkyylygbga.wasm"
+      "hash": "sha256-xVVU54AvLVvZylXxuDp2OltfVlmc6yeninubIlUn8Fw=",
+      "url": "_framework/MovieGuide.Common.793zvkitn8.wasm"
     },
     {
-      "hash": "sha256-OyqrMnKnfUlhN2XljYPHZSo4G/kK0twPP/6KXl2/Idk=",
-      "url": "_framework/MovieGuide.WebApp.j6xh8cfr37.wasm"
+      "hash": "sha256-xL9+Pd+hmpwHUrvmC7W9+W5HpeMgjJB0N7v5XJgM58Q=",
+      "url": "_framework/MovieGuide.WebApp.ozkqnbt206.wasm"
     },
     {
       "hash": "sha256-pD2hYSwVMDaZUh+1+FEdJ3sJF/DM8KRQN/aBtavltss=",
@@ -182,8 +182,8 @@ self.assetsManifest = {
       "url": "_framework/System.ObjectModel.d46awmzrcg.wasm"
     },
     {
-      "hash": "sha256-QOEZ+if585S0y6nInqQjIfB2nshipHSryT/TbfAzE4c=",
-      "url": "_framework/System.Private.CoreLib.04byqm0pty.wasm"
+      "hash": "sha256-oNopS8tWtIUK7/tt4OFGp0vVt3KyKaACwebnukeHikI=",
+      "url": "_framework/System.Private.CoreLib.8i9md9dhn0.wasm"
     },
     {
       "hash": "sha256-KO5Et8BPmlpL1YkEJXWDN6lCiINvqkIDa4kGG1yL1VI=",
@@ -202,8 +202,8 @@ self.assetsManifest = {
       "url": "_framework/System.Runtime.Serialization.Primitives.0ya5uawo3s.wasm"
     },
     {
-      "hash": "sha256-CLN6nTfKsWAUT/gYOwBWP/KpbdKWcEpF57g9pD3WwyY=",
-      "url": "_framework/System.Runtime.k1d4getv2i.wasm"
+      "hash": "sha256-LkVI1/7zICkom28TjfTFfKf8JmKqgf8/LuOG/RcHNrs=",
+      "url": "_framework/System.Runtime.mipgkf7ra6.wasm"
     },
     {
       "hash": "sha256-ay+zxFVYRC1+v3UVJnchPQwdy3XX0klafSrO+o20EV4=",
@@ -226,7 +226,7 @@ self.assetsManifest = {
       "url": "_framework/System.ezrw3d5kw2.wasm"
     },
     {
-      "hash": "sha256-llDs8vJypbfBn6GUMzeRwUyV7fig9GOWdmDAfj+m300=",
+      "hash": "sha256-4wuuQXCIxK05fSiTH5CxOJiCZvwqFMXAAA+oxYXxPHY=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -254,51 +254,51 @@ self.assetsManifest = {
       "url": "_framework/icudt.oh1zvcfom8.dat"
     },
     {
-      "hash": "sha256-DeUCvP6k2nFdelcjQSy3bTjNuLt9FI1qrFqFfd2+2AE=",
-      "url": "_framework/tr/MovieGuide.Common.resources.hbjtq9s415.wasm"
+      "hash": "sha256-lEdNanrAYi20BZeLqGG4FxMf6H/ezPV+4T3WoOuxHKU=",
+      "url": "_framework/tr/MovieGuide.Common.resources.0bifu87hm4.wasm"
     },
     {
       "hash": "sha256-scmGaLuoTPbof3d/Ch7w42+qrcAGYQZNWSrZVvNRexs=",
       "url": "app.css"
     },
     {
-      "hash": "sha256-IkgZ9LGQDYpzGfSJWB1UKfyE+TFTk3gS79QpBL1Y1So=",
+      "hash": "sha256-7vcCVeBSI04j+h3TkZdKUwKWnCm3HIGZ06pGR1f8Yps=",
       "url": "cache-data/best-actor.json"
     },
     {
-      "hash": "sha256-2ll+D5Hl3nEpAmWKkzLsxPaYkdBKrhLC3R54UpO7hxA=",
+      "hash": "sha256-yrtqbB0Bb9pDbeTYxko7IO6f9ojNEF3/O9gUF6RSRRU=",
       "url": "cache-data/best-actress.json"
     },
     {
-      "hash": "sha256-i4xU1V6VBuWant/mEF+3jLx4GAHFztnicX1kh7IWLT4=",
+      "hash": "sha256-j1lab3XAOjii032BR7P0zA5/LpVVG57nBhE7Fpx2j24=",
       "url": "cache-data/best-adapted-screenplay.json"
     },
     {
-      "hash": "sha256-AlTkDcZ6VebolB0YFz7O/rLmCsekV11QD8ufIJESMSc=",
+      "hash": "sha256-kvE7Yd/LW726YE3r5EQq9JzGD22PhqplHdITMoUD1YY=",
       "url": "cache-data/best-animation.json"
     },
     {
-      "hash": "sha256-z+6fhLvHkggxIGkA1mJt7S2KAOFc2Z6u6XKQ3J3X0/U=",
+      "hash": "sha256-vMzVGEu1OmAbD+JP2pxKKAswzliM5+G185n98oENCLI=",
       "url": "cache-data/best-director.json"
     },
     {
-      "hash": "sha256-ibrolkTutgRwYzgE/MEwMSof0x5omESH50stpS3asro=",
+      "hash": "sha256-6FqNSIMRFZ6qk87+imPAOqbVBf8MFUe0nHEZMMSwx80=",
       "url": "cache-data/best-international.json"
     },
     {
-      "hash": "sha256-VNW2VS2UW3SN4uaW6V+syHR4TKrHO5np/bEPqd1MlHg=",
+      "hash": "sha256-kprdC//zwIqnucelX7vZd5HyXocwWBS9MS5V1X7VROY=",
       "url": "cache-data/best-original-screenplay.json"
     },
     {
-      "hash": "sha256-FJYGywq6ATDEQK+S8Qg6BG3UmAOsFG7pgpkLJMvhKhY=",
+      "hash": "sha256-V+vkA7039ESzeflLyup4Yo4sG6KmLDxOZ7OMtmEG+Ow=",
       "url": "cache-data/best-picture.json"
     },
     {
-      "hash": "sha256-yK9/BqTq59STsTyNKZIHgKXu7TB1DVdnGojUJDkRC60=",
+      "hash": "sha256-8TtiLDuSh9txTNLmJaw2ye81MkQS1HS8PlZ4LMHQjtc=",
       "url": "cache-data/best-supporting-actor.json"
     },
     {
-      "hash": "sha256-KOrnqV1gQNUXB65HFQM2KkjDe010HtMd2/FWOR0Kdms=",
+      "hash": "sha256-/6wSMnm1ET6L0RmaDLbyfwlzxQoGPcUPYq9OK7m5DUc=",
       "url": "cache-data/best-supporting-actress.json"
     },
     {
